@@ -37,9 +37,9 @@ namespace ParkingSystem.Views.Veiculo.Modelo
                     {
                         if (listaFabricantes.Count > 0)
                         {
-                            foreach (Fabricantes maker in listaFabricantes)
+                            foreach (Fabricantes fabricante in listaFabricantes)
                             {
-                                combo.Items.Add(maker);
+                                combo.Items.Add(fabricante);
                             }
                         }
                     }

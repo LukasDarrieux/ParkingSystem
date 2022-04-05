@@ -116,6 +116,7 @@
     <Compile Include="Controller\Implements\ClientesController.cs" />
     <Compile Include="Controller\Implements\Crud.cs" />
     <Compile Include="Controller\Implements\FabricantesController.cs" />
+    <Compile Include="Controller\Implements\ModelosController.cs" />
     <Compile Include="Controller\Implements\UsuariosController.cs" />
     <Compile Include="Controller\Interfaces\IClientesController.cs" />
     <Compile Include="Controller\Interfaces\ICrud.cs" />

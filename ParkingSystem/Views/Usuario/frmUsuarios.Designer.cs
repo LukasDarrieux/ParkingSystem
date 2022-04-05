@@ -49,7 +49,7 @@
             // lblNome
             // 
             this.lblNome.AutoSize = true;
-            this.lblNome.Location = new System.Drawing.Point(12, 24);
+            this.lblNome.Location = new System.Drawing.Point(12, 15);
             this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(48, 17);
             this.lblNome.TabIndex = 0;
@@ -58,7 +58,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(12, 55);
+            this.lblEmail.Location = new System.Drawing.Point(12, 46);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(48, 17);
             this.lblEmail.TabIndex = 1;
@@ -68,7 +68,7 @@
             // 
             this.txtNome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNome.Location = new System.Drawing.Point(66, 21);
+            this.txtNome.Location = new System.Drawing.Point(66, 12);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(599, 25);
             this.txtNome.TabIndex = 2;
@@ -77,7 +77,7 @@
             // 
             this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEmail.Location = new System.Drawing.Point(66, 52);
+            this.txtEmail.Location = new System.Drawing.Point(66, 43);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(599, 25);
             this.txtEmail.TabIndex = 3;
@@ -85,7 +85,7 @@
             // btnBuscar
             // 
             this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBuscar.Location = new System.Drawing.Point(558, 83);
+            this.btnBuscar.Location = new System.Drawing.Point(558, 74);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(107, 31);
             this.btnBuscar.TabIndex = 4;
@@ -103,9 +103,9 @@
             this.ID,
             this.NOME,
             this.EMAIL});
-            this.gridUsuario.Location = new System.Drawing.Point(15, 120);
+            this.gridUsuario.Location = new System.Drawing.Point(15, 111);
             this.gridUsuario.Name = "gridUsuario";
-            this.gridUsuario.Size = new System.Drawing.Size(650, 237);
+            this.gridUsuario.Size = new System.Drawing.Size(650, 246);
             this.gridUsuario.TabIndex = 5;
             this.gridUsuario.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridUsuario_CellClick);
             // 

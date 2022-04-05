@@ -22,7 +22,8 @@ namespace ParkingSystem
         public const string DIRETORIO = "C:\\ParkingSystem\\";
         public const string ARQUIVOCONFIG = "config.json";
         public static string version = "1.0.0";
-        
+        public const int scroolWidth = 60;
+
         public static void MessageShowAttention(string msg, string title = "Atenção")
         {
             MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -78,6 +79,29 @@ namespace ParkingSystem
         public static void CarregarConfiguracoes()
         {
             LeitorConfiguracoes.LoadConfig();
+        }
+
+        public static void ChangeTitleForm(Form frm, string nameForm,TypeAccess TipoAcesso)
+        {
+            string title = String.Empty;
+            switch (TipoAcesso)
+            {
+                case TypeAccess.CREATE:
+                    title = $"Criar {nameForm}";
+                    break;
+                case General.TypeAccess.READ:
+                    title = $"Exibir {nameForm}";
+                    break;
+                case General.TypeAccess.UPDATE:
+                    title = $"Atualizar {nameForm}";
+                    break;
+                case General.TypeAccess.DELETE:
+                    title = $"Excluir {nameForm}";
+                    break;
+            }
+            frm.Text = title;
+            frm.Refresh();
+
         }
     }
 }

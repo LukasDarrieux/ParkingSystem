@@ -17,37 +17,11 @@ namespace ParkingSystem.Views.Usuario
         private int IdUsuario;
         private General.TypeAccess TipoAcesso;
 
-        public frmUsuariosCrud(int id, int tipoAcesso)
+        public frmUsuariosCrud(int idUsuario, int tipoAcesso)
         {
-            IdUsuario = id;
+            IdUsuario = idUsuario;
             TipoAcesso = (General.TypeAccess)tipoAcesso;
             InitializeComponent();
-        }
-
-        private void ChangeTitleForm()
-        {
-            string title = String.Empty;
-            switch (TipoAcesso)
-            {
-                case General.TypeAccess.CREATE:
-                    title = "Criar Usuário";
-                    break;
-                case General.TypeAccess.READ:
-                    title = "Exibir Usuário";
-                    OnlyView();
-                    break;
-                case General.TypeAccess.UPDATE:
-                    title = "Atualizar Usuário";
-                    break;
-                case General.TypeAccess.DELETE:
-                    title = "Excluir Usuário";
-                    btnSalvar.Text = "Excluir";
-                    OnlyDelete();
-                    break;
-            }
-            this.Text = title;
-            this.Refresh();
-
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -81,11 +55,25 @@ namespace ParkingSystem.Views.Usuario
         {
             try
             {
-                ChangeTitleForm();
+                General.ChangeTitleForm(this, "Usuário", TipoAcesso);
+                
                 if (TipoAcesso != General.TypeAccess.CREATE)
                 {
                     LoadUsuario();
                 }
+
+                switch (TipoAcesso)
+                {
+                    case General.TypeAccess.DELETE:
+                        OnlyDelete();
+                        break;
+
+                    case General.TypeAccess.READ:
+                        OnlyView();
+                        break;
+
+                }
+
             }
             catch(Exception error)
             {
@@ -185,7 +173,7 @@ namespace ParkingSystem.Views.Usuario
             try
             {
                 DisableControls();
-
+                btnSalvar.Text = "Excluir";
                 this.Refresh();
             }
             catch (Exception error)

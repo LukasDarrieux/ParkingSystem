@@ -2,6 +2,7 @@
 using ParkingSystem.Models.Usuario;
 using ParkingSystem.Shared;
 using ParkingSystem.Views.Usuario;
+using ParkingSystem.Views.Veiculo.Fabricante;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,6 +51,11 @@ namespace ParkingSystem.Views
         private void mnuConfiguracoesBancoDados_Click(object sender, EventArgs e)
         {
             new frmConfigDatabase().Show();
+        }
+
+        private void mnuFabricantes_Click(object sender, EventArgs e)
+        {
+            new frmFabricantes().Show();
         }
     }
 }

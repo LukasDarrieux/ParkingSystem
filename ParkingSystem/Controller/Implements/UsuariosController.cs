@@ -2,7 +2,6 @@
 using ParkingSystem.Models.Usuario;
 using ParkingSystem.Shared;
 using ParkingSystem.Utils.Implements;
-using ParkingSystem.Utils.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -99,14 +98,14 @@ namespace ParkingSystem.Controller.Implements
                 {
                     if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
                     else conditions += $" AND ";
-                    conditions += $"NOME LIKE '{usuario.Nome}%'";
+                    conditions += $"{Usuarios.Campos.NOME} LIKE '{usuario.Nome}%'";
                 }
 
                 if (!String.IsNullOrEmpty(usuario.Email))
                 {
                     if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
                     else conditions += $" AND ";
-                    conditions += $"EMAIL LIKE '{usuario.Email}%'";
+                    conditions += $"{Usuarios.Campos.EMAIL} LIKE '{usuario.Email}%'";
                 }
                 sql += conditions;
             }

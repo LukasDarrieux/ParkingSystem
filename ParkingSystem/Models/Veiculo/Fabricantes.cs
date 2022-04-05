@@ -1,6 +1,5 @@
 ﻿using System;
 
-
 namespace ParkingSystem.Models.Veiculo
 {
     class Fabricantes : IDisposable
@@ -12,20 +11,19 @@ namespace ParkingSystem.Models.Veiculo
             LAST = NOME
         }
 
-
+        public int Id { get; private set;  }
         public string Nome { get; set; }
-        public bool Importado { get; set; }
 
-        public Fabricantes(string nome, bool importado)
+        public Fabricantes(int id, string nome)
         {
+            this.Id = id;
             this.Nome = nome;
-            this.Importado = importado;
         }
 
         public void Dispose()
         {
+            Id = ushort.MinValue;
             Nome = null;
-            Importado = false;
         }
 
         public override string ToString()

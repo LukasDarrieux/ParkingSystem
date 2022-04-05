@@ -205,7 +205,7 @@ namespace ParkingSystem.Utils.Implements
 
         private string TableExistsSQL(string sql, string tabela)
         {
-            return $"IF(EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='{NAME_DB}' AND TABLE_NAME='{tabela}'))" +
+            return $"IF(NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_CATALOG='{NAME_DB}' AND TABLE_SCHEMA='dbo' AND TABLE_NAME='{tabela}'))" +
                 $" BEGIN {sql} END ";
         }
 

@@ -184,6 +184,18 @@
     <Compile Include="Views\Usuario\frmUsuariosCrud.Designer.cs">
       <DependentUpon>frmUsuariosCrud.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Veiculo\Fabricante\frmFabricantesCrud.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Veiculo\Fabricante\frmFabricantesCrud.Designer.cs">
+      <DependentUpon>frmFabricantesCrud.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Veiculo\Fabricante\frmFabricantes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Veiculo\Fabricante\frmFabricantes.Designer.cs">
+      <DependentUpon>frmFabricantes.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -211,6 +223,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Usuario\frmUsuariosCrud.resx">
       <DependentUpon>frmUsuariosCrud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Veiculo\Fabricante\frmFabricantesCrud.resx">
+      <DependentUpon>frmFabricantesCrud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Veiculo\Fabricante\frmFabricantes.resx">
+      <DependentUpon>frmFabricantes.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -240,6 +258,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Veiculo\Modelo\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -40,6 +40,9 @@
             this.mnuConfiguracoesBancoDados = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCadastros = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuClientes = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnusVeiculos = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFabricantes = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuModelos = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuVeiculos = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
@@ -114,7 +117,7 @@
             // 
             this.mnuCadastros.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuClientes,
-            this.mnuVeiculos});
+            this.mnusVeiculos});
             this.mnuCadastros.Name = "mnuCadastros";
             this.mnuCadastros.Size = new System.Drawing.Size(71, 20);
             this.mnuCadastros.Text = "Cadastros";
@@ -122,13 +125,36 @@
             // mnuClientes
             // 
             this.mnuClientes.Name = "mnuClientes";
-            this.mnuClientes.Size = new System.Drawing.Size(117, 22);
+            this.mnuClientes.Size = new System.Drawing.Size(180, 22);
             this.mnuClientes.Text = "Clientes";
+            // 
+            // mnusVeiculos
+            // 
+            this.mnusVeiculos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuFabricantes,
+            this.mnuModelos,
+            this.mnuVeiculos});
+            this.mnusVeiculos.Name = "mnusVeiculos";
+            this.mnusVeiculos.Size = new System.Drawing.Size(180, 22);
+            this.mnusVeiculos.Text = "Veículos";
+            // 
+            // mnuFabricantes
+            // 
+            this.mnuFabricantes.Name = "mnuFabricantes";
+            this.mnuFabricantes.Size = new System.Drawing.Size(180, 22);
+            this.mnuFabricantes.Text = "Fabricantes";
+            this.mnuFabricantes.Click += new System.EventHandler(this.mnuFabricantes_Click);
+            // 
+            // mnuModelos
+            // 
+            this.mnuModelos.Name = "mnuModelos";
+            this.mnuModelos.Size = new System.Drawing.Size(180, 22);
+            this.mnuModelos.Text = "Modelos";
             // 
             // mnuVeiculos
             // 
             this.mnuVeiculos.Name = "mnuVeiculos";
-            this.mnuVeiculos.Size = new System.Drawing.Size(117, 22);
+            this.mnuVeiculos.Size = new System.Drawing.Size(180, 22);
             this.mnuVeiculos.Text = "Veículos";
             // 
             // frmPrincipal
@@ -167,6 +193,9 @@
         private System.Windows.Forms.ToolStripMenuItem mnuConfiguracoesBancoDados;
         private System.Windows.Forms.ToolStripMenuItem mnuCadastros;
         private System.Windows.Forms.ToolStripMenuItem mnuClientes;
+        private System.Windows.Forms.ToolStripMenuItem mnusVeiculos;
+        private System.Windows.Forms.ToolStripMenuItem mnuFabricantes;
+        private System.Windows.Forms.ToolStripMenuItem mnuModelos;
         private System.Windows.Forms.ToolStripMenuItem mnuVeiculos;
     }
 }

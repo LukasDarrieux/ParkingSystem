@@ -89,8 +89,7 @@ namespace ParkingSystem.Views.Usuario
         {
             try
             {
-                const int scroolWidth = 60;
-                int widthTotal = gridUsuario.Width - gridUsuario.Columns[(int)ColsGrid.ID].Width - scroolWidth;
+                int widthTotal = gridUsuario.Width - gridUsuario.Columns[(int)ColsGrid.ID].Width - General.scroolWidth;
 
                 gridUsuario.Columns[(int)ColsGrid.NOME].Width = widthTotal / 2;
                 gridUsuario.Columns[(int)ColsGrid.EMAIL].Width = widthTotal / 2;

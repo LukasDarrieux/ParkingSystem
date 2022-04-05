@@ -150,6 +150,7 @@
             this.mnuModelos.Name = "mnuModelos";
             this.mnuModelos.Size = new System.Drawing.Size(180, 22);
             this.mnuModelos.Text = "Modelos";
+            this.mnuModelos.Click += new System.EventHandler(this.mnuModelos_Click);
             // 
             // mnuVeiculos
             // 

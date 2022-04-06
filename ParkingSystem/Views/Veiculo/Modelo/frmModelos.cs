@@ -72,6 +72,8 @@ namespace ParkingSystem.Views.Veiculo.Modelo
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+            btnBuscar.Enabled = false;
             gridModelos.Rows.Clear();
             ModelosController modeloController = new ModelosController();
             FabricantesController fabricanteController = new FabricantesController();
@@ -81,16 +83,16 @@ namespace ParkingSystem.Views.Veiculo.Modelo
             {
                 string nomeModelo = String.Empty;
                 Fabricantes fabricante = null;
-                double potencia = 0.0;
+                string motor = String.Empty;
                 int ano = 0;
 
                 if (txtFabricante.SelectedIndex > -1 && txtFabricante.Text.Trim().Length > 0) fabricante = fabricanteController.Get(((Fabricantes)(txtFabricante.SelectedItem)).Id);
                 if (txtModelo.Text.Trim().Length > 0) nomeModelo = txtModelo.Text;
-                if (txtPotencia.Text.Trim().Length > 0) potencia = double.Parse(txtPotencia.Text.Trim());
+                if (txtMotor.Text.Trim().Length > 0) motor = txtMotor.Text.Trim();
                 if (txtAno.Text.Trim().Length > 0) ano = int.Parse(txtAno.Text.Trim());
 
 
-                modelo = new Modelos(0, nomeModelo, potencia, ano, fabricante);
+                modelo = new Modelos(0, nomeModelo, motor, ano, fabricante);
                 listaModelos = modeloController.GetAll(modelo);
                 if (!(listaModelos is null))
                 {
@@ -104,7 +106,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
                             gridModelos[(int)ColsGrid.ID, row].Value = model.Id.ToString();
                             gridModelos[(int)ColsGrid.FABRICANTE, row].Value = model.Fabricante.Nome;
                             gridModelos[(int)ColsGrid.MODELO, row].Value = model.Nome;
-                            gridModelos[(int)ColsGrid.POTENCIA, row].Value = model.Potencia.ToString();
+                            gridModelos[(int)ColsGrid.POTENCIA, row].Value = model.Motor.ToString();
                             gridModelos[(int)ColsGrid.ANO, row].Value = model.Ano.ToString();
 
                             row++;
@@ -123,6 +125,20 @@ namespace ParkingSystem.Views.Veiculo.Modelo
             catch (Exception error)
             {
                 General.MessageShowError(error.Message);
+            }
+            finally
+            {
+                btnBuscar.Enabled = true;
+                this.Cursor = Cursors.Default;
+
+                modeloController.Dispose();
+                fabricanteController.Dispose();
+                if (!(modelo is null)) modelo.Dispose();
+                if (!(listaModelos is null))
+                {
+                    listaModelos.Clear();
+                    listaModelos = null;
+                }
             }
         }
 

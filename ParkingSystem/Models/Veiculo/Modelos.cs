@@ -9,7 +9,7 @@ namespace ParkingSystem.Models.Veiculo
             ID,
             IDFABRICANTE,
             NOME,
-            POTENCIA,
+            MOTOR,
             ANO,
             LAST = ANO
         }
@@ -17,15 +17,15 @@ namespace ParkingSystem.Models.Veiculo
 
         public int Id { get; private set; }
         public string Nome { get; set; }
-        public double Potencia { get; set; }
+        public string Motor { get; set; }
         public int Ano { get; set; }
         public Fabricantes Fabricante { get; set; }
 
-        public Modelos(int id, string nome, double potencia, int ano, Fabricantes fabricante)
+        public Modelos(int id, string nome, string motor, int ano, Fabricantes fabricante)
         {
             this.Id = id;
             this.Nome = nome;
-            this.Potencia = potencia;
+            this.Motor = motor;
             this.Ano = ano;
             this.Fabricante = fabricante;
         }
@@ -39,9 +39,13 @@ namespace ParkingSystem.Models.Veiculo
         {
             Id = 0;
             Nome = null;
-            Potencia = 0;
+            Motor = null;
             Ano = 0;
-            Fabricante.Dispose();
+            if (!(Fabricante is null))
+            {
+                Fabricante.Dispose();
+            }
+            
         }
     }
 }

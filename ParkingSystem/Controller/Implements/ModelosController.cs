@@ -194,7 +194,7 @@ namespace ParkingSystem.Controller.Implements
                 Modelos.Campos.ID.ToString(),
                 Modelos.Campos.IDFABRICANTE.ToString(),
                 Modelos.Campos.NOME.ToString(),
-                Modelos.Campos.POTENCIA.ToString(),
+                Modelos.Campos.MOTOR.ToString(),
                 Modelos.Campos.ANO.ToString()
             };
 
@@ -210,7 +210,7 @@ namespace ParkingSystem.Controller.Implements
                 modelo.Id.ToString(),
                 modelo.Fabricante.Id.ToString(),
                 modelo.Nome,
-                modelo.Potencia.ToString(),
+                modelo.Motor,
                 modelo.Ano.ToString()
             };
 
@@ -242,13 +242,13 @@ namespace ParkingSystem.Controller.Implements
                     {
                         int id = reader.GetFieldValue<int>((int)Modelos.Campos.ID);
                         string nome = reader.GetString((int)Modelos.Campos.NOME);
-                        double potencia = reader.GetFieldValue<double>((int)Modelos.Campos.POTENCIA);
+                        string motor = reader.GetString((int)Modelos.Campos.MOTOR);
                         int ano = reader.GetFieldValue<int>((int)Modelos.Campos.ANO);
                         Fabricantes fabricante = fabricanteController.Get(reader.GetFieldValue<int>((int)Modelos.Campos.IDFABRICANTE));
 
                         if (!(fabricante is null))
                         {
-                            listaModelos.Add(new Modelos(id, nome, potencia, ano, fabricante));
+                            listaModelos.Add(new Modelos(id, nome, motor, ano, fabricante));
                         }
                     }
                 }

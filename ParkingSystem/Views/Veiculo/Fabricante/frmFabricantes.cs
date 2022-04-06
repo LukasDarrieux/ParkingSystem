@@ -91,6 +91,8 @@ namespace ParkingSystem.Views.Veiculo.Fabricante
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            btnBuscar.Enabled = false;
+            this.Cursor = Cursors.WaitCursor;
             gridFabricantes.Rows.Clear();
             FabricantesController fabricanteController = new FabricantesController();
             Fabricantes fabricante = null;
@@ -132,6 +134,19 @@ namespace ParkingSystem.Views.Veiculo.Fabricante
             catch (Exception error)
             {
                 General.MessageShowError(error.Message);
+            }
+            finally
+            {
+                btnBuscar.Enabled = true;
+                this.Cursor = Cursors.Default;
+
+                fabricanteController.Dispose();
+                if (!(fabricante is null)) fabricante.Dispose();
+                if (!(listaFabricantes is null))
+                {
+                    listaFabricantes.Clear();
+                    listaFabricantes = null;
+                }
             }
         }
 

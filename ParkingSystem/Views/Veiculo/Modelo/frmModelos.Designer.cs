@@ -42,12 +42,12 @@
             this.btnExibir = new System.Windows.Forms.Button();
             this.btnIncluir = new System.Windows.Forms.Button();
             this.lblQuantidade = new System.Windows.Forms.Label();
-            this.lblPotencia = new System.Windows.Forms.Label();
-            this.txtPotencia = new System.Windows.Forms.TextBox();
+            this.lblMotor = new System.Windows.Forms.Label();
+            this.txtMotor = new System.Windows.Forms.TextBox();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FABRICANTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.POTENCIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MOTOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ANO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridModelos)).BeginInit();
             this.SuspendLayout();
@@ -127,7 +127,7 @@
             this.ID,
             this.FABRICANTE,
             this.MODELO,
-            this.POTENCIA,
+            this.MOTOR,
             this.ANO});
             this.gridModelos.Location = new System.Drawing.Point(15, 111);
             this.gridModelos.Name = "gridModelos";
@@ -189,23 +189,21 @@
             this.lblQuantidade.TabIndex = 10;
             this.lblQuantidade.Text = "lblQuantidade";
             // 
-            // lblPotencia
+            // lblMotor
             // 
-            this.lblPotencia.AutoSize = true;
-            this.lblPotencia.Location = new System.Drawing.Point(12, 77);
-            this.lblPotencia.Name = "lblPotencia";
-            this.lblPotencia.Size = new System.Drawing.Size(63, 17);
-            this.lblPotencia.TabIndex = 4;
-            this.lblPotencia.Text = "Potência:";
+            this.lblMotor.AutoSize = true;
+            this.lblMotor.Location = new System.Drawing.Point(12, 77);
+            this.lblMotor.Name = "lblMotor";
+            this.lblMotor.Size = new System.Drawing.Size(50, 17);
+            this.lblMotor.TabIndex = 4;
+            this.lblMotor.Text = "Motor:";
             // 
-            // txtPotencia
+            // txtMotor
             // 
-            this.txtPotencia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPotencia.Location = new System.Drawing.Point(92, 74);
-            this.txtPotencia.Name = "txtPotencia";
-            this.txtPotencia.Size = new System.Drawing.Size(138, 25);
-            this.txtPotencia.TabIndex = 5;
+            this.txtMotor.Location = new System.Drawing.Point(92, 74);
+            this.txtMotor.Name = "txtMotor";
+            this.txtMotor.Size = new System.Drawing.Size(138, 25);
+            this.txtMotor.TabIndex = 5;
             // 
             // ID
             // 
@@ -228,12 +226,11 @@
             this.MODELO.ReadOnly = true;
             this.MODELO.Width = 200;
             // 
-            // POTENCIA
+            // MOTOR
             // 
-            this.POTENCIA.HeaderText = "POTÊNCIA";
-            this.POTENCIA.Name = "POTENCIA";
-            this.POTENCIA.ReadOnly = true;
-            this.POTENCIA.Width = 80;
+            this.MOTOR.HeaderText = "MOTOR";
+            this.MOTOR.Name = "MOTOR";
+            this.MOTOR.ReadOnly = true;
             // 
             // ANO
             // 
@@ -247,8 +244,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(689, 413);
-            this.Controls.Add(this.lblPotencia);
-            this.Controls.Add(this.txtPotencia);
+            this.Controls.Add(this.lblMotor);
+            this.Controls.Add(this.txtMotor);
             this.Controls.Add(this.gridModelos);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnAlterar);
@@ -292,12 +289,12 @@
         private System.Windows.Forms.Button btnExibir;
         private System.Windows.Forms.Button btnIncluir;
         private System.Windows.Forms.Label lblQuantidade;
-        private System.Windows.Forms.Label lblPotencia;
-        private System.Windows.Forms.TextBox txtPotencia;
+        private System.Windows.Forms.Label lblMotor;
+        private System.Windows.Forms.TextBox txtMotor;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn FABRICANTE;
         private System.Windows.Forms.DataGridViewTextBoxColumn MODELO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn POTENCIA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MOTOR;
         private System.Windows.Forms.DataGridViewTextBoxColumn ANO;
     }
 }

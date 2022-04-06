@@ -30,6 +30,8 @@ namespace ParkingSystem.Views.Usuario
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            btnBuscar.Enabled = false;
+            this.Cursor = Cursors.WaitCursor;
             gridUsuario.Rows.Clear();
             UsuariosController usuariosController = new UsuariosController();
             Usuarios usuario = null;
@@ -75,6 +77,9 @@ namespace ParkingSystem.Views.Usuario
             }
             finally
             {
+                btnBuscar.Enabled = true;
+                this.Cursor = Cursors.Default;
+
                 usuariosController.Dispose();
                 if (!(usuario is null)) usuario.Dispose();
                 if (!(listaUsuarios is null))

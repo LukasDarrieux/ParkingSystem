@@ -67,7 +67,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(518, 43);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(107, 31);
-            this.btnBuscar.TabIndex = 5;
+            this.btnBuscar.TabIndex = 2;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -78,7 +78,7 @@
             this.btnExcluir.Location = new System.Drawing.Point(429, 332);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(107, 31);
-            this.btnExcluir.TabIndex = 15;
+            this.btnExcluir.TabIndex = 8;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
@@ -89,7 +89,7 @@
             this.btnAlterar.Location = new System.Drawing.Point(316, 332);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(107, 31);
-            this.btnAlterar.TabIndex = 14;
+            this.btnAlterar.TabIndex = 7;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
@@ -100,7 +100,7 @@
             this.btnExibir.Location = new System.Drawing.Point(203, 332);
             this.btnExibir.Name = "btnExibir";
             this.btnExibir.Size = new System.Drawing.Size(107, 31);
-            this.btnExibir.TabIndex = 13;
+            this.btnExibir.TabIndex = 6;
             this.btnExibir.Text = "Exibir";
             this.btnExibir.UseVisualStyleBackColor = true;
             this.btnExibir.Click += new System.EventHandler(this.btnExibir_Click);
@@ -111,7 +111,7 @@
             this.btnIncluir.Location = new System.Drawing.Point(90, 332);
             this.btnIncluir.Name = "btnIncluir";
             this.btnIncluir.Size = new System.Drawing.Size(107, 31);
-            this.btnIncluir.TabIndex = 12;
+            this.btnIncluir.TabIndex = 5;
             this.btnIncluir.Text = "Incluir";
             this.btnIncluir.UseVisualStyleBackColor = true;
             this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
@@ -123,7 +123,7 @@
             this.lblQuantidade.Location = new System.Drawing.Point(12, 300);
             this.lblQuantidade.Name = "lblQuantidade";
             this.lblQuantidade.Size = new System.Drawing.Size(93, 17);
-            this.lblQuantidade.TabIndex = 11;
+            this.lblQuantidade.TabIndex = 4;
             this.lblQuantidade.Text = "lblQuantidade";
             // 
             // gridFabricantes
@@ -138,7 +138,7 @@
             this.gridFabricantes.Location = new System.Drawing.Point(15, 80);
             this.gridFabricantes.Name = "gridFabricantes";
             this.gridFabricantes.Size = new System.Drawing.Size(610, 217);
-            this.gridFabricantes.TabIndex = 16;
+            this.gridFabricantes.TabIndex = 3;
             this.gridFabricantes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridFabricantes_CellClick);
             // 
             // ID

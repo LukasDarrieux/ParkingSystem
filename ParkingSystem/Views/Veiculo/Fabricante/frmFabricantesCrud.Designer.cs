@@ -42,7 +42,7 @@
             this.txtFabricante.Location = new System.Drawing.Point(90, 12);
             this.txtFabricante.Name = "txtFabricante";
             this.txtFabricante.Size = new System.Drawing.Size(258, 25);
-            this.txtFabricante.TabIndex = 3;
+            this.txtFabricante.TabIndex = 1;
             // 
             // lblFabricante
             // 
@@ -50,7 +50,7 @@
             this.lblFabricante.Location = new System.Drawing.Point(10, 15);
             this.lblFabricante.Name = "lblFabricante";
             this.lblFabricante.Size = new System.Drawing.Size(74, 17);
-            this.lblFabricante.TabIndex = 2;
+            this.lblFabricante.TabIndex = 0;
             this.lblFabricante.Text = "Fabricante:";
             // 
             // btnSalvar
@@ -58,7 +58,7 @@
             this.btnSalvar.Location = new System.Drawing.Point(96, 57);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(84, 35);
-            this.btnSalvar.TabIndex = 7;
+            this.btnSalvar.TabIndex = 2;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
@@ -68,7 +68,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(186, 58);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(84, 35);
-            this.btnCancelar.TabIndex = 6;
+            this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);

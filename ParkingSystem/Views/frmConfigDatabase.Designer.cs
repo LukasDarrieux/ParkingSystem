@@ -118,7 +118,7 @@
             this.txtUsuario.Location = new System.Drawing.Point(75, 59);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(275, 25);
-            this.txtUsuario.TabIndex = 4;
+            this.txtUsuario.TabIndex = 3;
             // 
             // txtServidor
             // 
@@ -127,7 +127,7 @@
             this.txtServidor.Location = new System.Drawing.Point(75, 28);
             this.txtServidor.Name = "txtServidor";
             this.txtServidor.Size = new System.Drawing.Size(275, 25);
-            this.txtServidor.TabIndex = 3;
+            this.txtServidor.TabIndex = 1;
             // 
             // label2
             // 
@@ -135,7 +135,7 @@
             this.label2.Location = new System.Drawing.Point(6, 93);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 17);
-            this.label2.TabIndex = 2;
+            this.label2.TabIndex = 4;
             this.label2.Text = "Senha:";
             // 
             // lblUsuario
@@ -144,7 +144,7 @@
             this.lblUsuario.Location = new System.Drawing.Point(6, 62);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(57, 17);
-            this.lblUsuario.TabIndex = 1;
+            this.lblUsuario.TabIndex = 2;
             this.lblUsuario.Text = "Usuário:";
             // 
             // lblServidor

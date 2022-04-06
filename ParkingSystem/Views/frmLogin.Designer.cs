@@ -51,7 +51,7 @@
             this.lblSenha.Location = new System.Drawing.Point(12, 59);
             this.lblSenha.Name = "lblSenha";
             this.lblSenha.Size = new System.Drawing.Size(48, 17);
-            this.lblSenha.TabIndex = 1;
+            this.lblSenha.TabIndex = 2;
             this.lblSenha.Text = "Senha:";
             // 
             // txtEmail
@@ -59,7 +59,7 @@
             this.txtEmail.Location = new System.Drawing.Point(75, 25);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(197, 25);
-            this.txtEmail.TabIndex = 2;
+            this.txtEmail.TabIndex = 1;
             // 
             // txtSenha
             // 

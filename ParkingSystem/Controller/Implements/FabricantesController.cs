@@ -152,7 +152,7 @@ namespace ParkingSystem.Controller.Implements
         public bool Update(Fabricantes fabricante)
         {
             if (fabricante is null) return false;
-            Crud crud = new Crud(db, TABELA, GetFields(true), GetValues(fabricante, true));
+            Crud crud = new Crud(db, TABELA, GetFields(), GetValues(fabricante));
             try
             {
                 if (FabricanteExists(fabricante))
@@ -198,17 +198,6 @@ namespace ParkingSystem.Controller.Implements
             return campos;
         }
 
-        private string[] GetFields(bool IsUpdate)
-        {
-            string[] campos =
-            {
-                Fabricantes.Campos.ID.ToString(),
-                Fabricantes.Campos.NOME.ToString()
-            };
-
-            return campos;
-        }
-
         private string[] GetValues(Fabricantes fabricante)
         {
             if (fabricante is null) return null;
@@ -217,19 +206,6 @@ namespace ParkingSystem.Controller.Implements
             {
                 fabricante.Id.ToString(),
                 fabricante.Nome
-            };
-
-            return valores;
-        }
-
-        private string[] GetValues(Fabricantes fabricante, bool IsUpdate)
-        {
-            if (fabricante is null) return null;
-
-            string[] valores =
-            {
-                fabricante.Id.ToString(),
-                fabricante.Nome,
             };
 
             return valores;

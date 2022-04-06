@@ -1,12 +1,301 @@
-﻿using System;
+﻿using ParkingSystem.Controller.Interfaces;
+using ParkingSystem.Models.Veiculo;
+using ParkingSystem.Shared;
+using ParkingSystem.Utils.Implements;
+using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ParkingSystem.Controller.Implements
 {
-    class ModelosController
+    class ModelosController : IModelosController, ICrud, IDisposable
     {
+        #region "Atributos"
+
+        private Modelos _modelo;
+        private Database db;
+        private const string TABELA = "MODELOS";
+
+        #endregion
+
+        #region "Construtores"
+
+        public ModelosController(Modelos modelo)
+        {
+            this._modelo = modelo;
+            this.db = Configuracoes.GetDatabase();
+        }
+
+        public ModelosController()
+        {
+            this.db = Configuracoes.GetDatabase();
+        }
+
+        #endregion
+
+        #region "Métodos públicos"
+
+        public bool Delete(Modelos modelo)
+        {
+            if (modelo is null) return false;
+            Crud crud = new Crud(this.db, TABELA, GetFieldID(), GetValueID(modelo.Id));
+            try
+            {
+                if (modelo.Id <= uint.MinValue) return false;
+
+                if (!crud.Delete()) return false;
+
+                return true;
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+            finally
+            {
+                crud.Dispose();
+            }
+        }
+
+        public bool Delete()
+        {
+            return Delete(_modelo);
+        }
+
+        public void Dispose()
+        {
+            this.db.Dispose();
+            if (!(_modelo is null))
+            {
+                _modelo.Dispose();
+            }
+        }
+
+        public Modelos Get(int id)
+        {
+            string sql = $"SELECT * FROM {TABELA} WHERE {Modelos.Campos.ID.ToString()}={id.ToString()}";
+            List<Modelos> listaModelos = GetModelos(sql);
+
+            if (listaModelos is null) return null;
+
+            if (listaModelos.Count == 1)
+            {
+                return listaModelos.ElementAt<Modelos>(0);
+            }
+            return null;
+        }
+
+        public List<Modelos> GetAll()
+        {
+            string sql = $"SELECT * FROM {TABELA}";
+            return GetModelos(sql);
+        }
+
+        public List<Modelos> GetAll(Modelos modelo)
+        {
+            string sql = $"SELECT * FROM {TABELA}";
+            if (!(modelo is null))
+            {
+                string conditions = string.Empty;
+
+                if (modelo.Id > 0) conditions = $" WHERE ID={modelo.Id.ToString()}";
+
+                if (!String.IsNullOrEmpty(modelo.Nome))
+                {
+                    if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
+                    else conditions += $" AND ";
+                    conditions += $"{Modelos.Campos.NOME} LIKE '{modelo.Nome}%'";
+                }
+
+                sql += conditions;
+            }
+            return GetModelos(sql);
+        }
+
+        public bool Insert(Modelos modelo)
+        {
+            if (modelo is null) return false;
+            Crud crud = new Crud(db, TABELA, GetFields(), GetValues(modelo));
+            try
+            {
+                if (ModeloExists(modelo))
+                {
+                    General.MessageShowAttention("Modelo já cadastrado!");
+                    return false;
+                }
+
+                if (!crud.Insert())
+                {
+                    General.MessageShowAttention("Não foi possível salvar modelo!");
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+            finally
+            {
+                crud.Dispose();
+            }
+        }
+
+        public bool Insert()
+        {
+            return Insert(_modelo);
+        }
+
+        public bool Update(Modelos modelo)
+        {
+            if (modelo is null) return false;
+            Crud crud = new Crud(db, TABELA, GetFields(), GetValues(modelo));
+            try
+            {
+                if (ModeloExists(modelo))
+                {
+                    General.MessageShowAttention("Fabricante já cadastrado!");
+                    return false;
+                }
+
+                if (!crud.Update())
+                {
+                    General.MessageShowAttention("Não foi possível atualizar fabricante!");
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+            finally
+            {
+                crud.Dispose();
+            }
+        }
+
+        public bool Update()
+        {
+            return Update(_modelo);
+        }
+
+        #endregion
+
+        #region "Métodos privados"
+
+        private string[] GetFields()
+        {
+            string[] campos =
+            {
+                Modelos.Campos.ID.ToString(),
+                Modelos.Campos.IDFABRICANTE.ToString(),
+                Modelos.Campos.NOME.ToString(),
+                Modelos.Campos.POTENCIA.ToString(),
+                Modelos.Campos.ANO.ToString()
+            };
+
+            return campos;
+        }
+
+        private string[] GetValues(Modelos modelo)
+        {
+            if (modelo is null) return null;
+
+            string[] valores =
+            {
+                modelo.Id.ToString(),
+                modelo.Fabricante.Id.ToString(),
+                modelo.Nome,
+                modelo.Potencia.ToString(),
+                modelo.Ano.ToString()
+            };
+
+            return valores;
+        }
+
+        private string[] GetFieldID()
+        {
+            return new string[] { Modelos.Campos.ID.ToString() };
+        }
+
+        private string[] GetValueID(int id)
+        {
+            return new string[] { id.ToString() };
+        }
+
+        private List<Modelos> GetModelos(string sql)
+        {
+            DbDataReader reader = db.ExecuteQuery(sql);
+            FabricantesController fabricanteController = new FabricantesController();
+            try
+            {
+                List<Modelos> listaModelos = null;
+                if (reader.HasRows)
+                {
+                    listaModelos = new List<Modelos>();
+
+                    while (reader.Read())
+                    {
+                        int id = reader.GetFieldValue<int>((int)Modelos.Campos.ID);
+                        string nome = reader.GetString((int)Modelos.Campos.NOME);
+                        double potencia = reader.GetFieldValue<double>((int)Modelos.Campos.POTENCIA);
+                        int ano = reader.GetFieldValue<int>((int)Modelos.Campos.ANO);
+                        Fabricantes fabricante = fabricanteController.Get(reader.GetFieldValue<int>((int)Modelos.Campos.IDFABRICANTE));
+
+                        if (!(fabricante is null))
+                        {
+                            listaModelos.Add(new Modelos(id, nome, potencia, ano, fabricante));
+                        }
+                    }
+                }
+                return listaModelos;
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+            finally
+            {
+                fabricanteController.Dispose();
+                reader.Close();
+                reader.Dispose();
+            }
+        }
+
+        private bool ModeloExists(Modelos modelo)
+        {
+            List<Modelos> listaModelos = null;
+            try
+            {
+                listaModelos = this.GetAll(modelo);
+
+                if (listaModelos is null) return false;
+
+                foreach (Modelos models in listaModelos)
+                {
+                    if (models.Id != modelo.Id && models.Nome == modelo.Nome && models.Fabricante.Id == modelo.Fabricante.Id)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            finally
+            {
+                if (!(listaModelos is null))
+                {
+                    listaModelos.Clear();
+                    listaModelos = null;
+                }
+
+            }
+
+        }
+
+        #endregion
     }
 }

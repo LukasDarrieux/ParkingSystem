@@ -4,13 +4,26 @@ namespace ParkingSystem.Models.Veiculo
 {
     class Modelos : IDisposable
     {
+        public enum Campos
+        {
+            ID,
+            IDFABRICANTE,
+            NOME,
+            POTENCIA,
+            ANO,
+            LAST = ANO
+        }
+
+
+        public int Id { get; private set; }
         public string Nome { get; set; }
         public double Potencia { get; set; }
         public int Ano { get; set; }
         public Fabricantes Fabricante { get; set; }
 
-        public Modelos(string nome, double potencia, int ano, Fabricantes fabricante)
+        public Modelos(int id, string nome, double potencia, int ano, Fabricantes fabricante)
         {
+            this.Id = id;
             this.Nome = nome;
             this.Potencia = potencia;
             this.Ano = ano;
@@ -24,6 +37,7 @@ namespace ParkingSystem.Models.Veiculo
 
         public void Dispose()
         {
+            Id = 0;
             Nome = null;
             Potencia = 0;
             Ano = 0;

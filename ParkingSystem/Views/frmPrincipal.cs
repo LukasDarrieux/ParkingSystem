@@ -61,7 +61,7 @@ namespace ParkingSystem.Views
 
         private void mnuModelos_Click(object sender, EventArgs e)
         {
-            new frmModelo().Show();
+            new frmModelos().Show();
         }
     }
 }

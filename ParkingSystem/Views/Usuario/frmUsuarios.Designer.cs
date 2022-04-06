@@ -61,7 +61,7 @@
             this.lblEmail.Location = new System.Drawing.Point(12, 46);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(48, 17);
-            this.lblEmail.TabIndex = 1;
+            this.lblEmail.TabIndex = 2;
             this.lblEmail.Text = "E-mail:";
             // 
             // txtNome
@@ -71,7 +71,7 @@
             this.txtNome.Location = new System.Drawing.Point(66, 12);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(599, 25);
-            this.txtNome.TabIndex = 2;
+            this.txtNome.TabIndex = 1;
             // 
             // txtEmail
             // 

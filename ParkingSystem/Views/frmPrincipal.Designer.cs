@@ -127,6 +127,7 @@
             this.mnuClientes.Name = "mnuClientes";
             this.mnuClientes.Size = new System.Drawing.Size(180, 22);
             this.mnuClientes.Text = "Clientes";
+            this.mnuClientes.Click += new System.EventHandler(this.mnuClientes_Click);
             // 
             // mnusVeiculos
             // 
@@ -141,21 +142,21 @@
             // mnuFabricantes
             // 
             this.mnuFabricantes.Name = "mnuFabricantes";
-            this.mnuFabricantes.Size = new System.Drawing.Size(180, 22);
+            this.mnuFabricantes.Size = new System.Drawing.Size(134, 22);
             this.mnuFabricantes.Text = "Fabricantes";
             this.mnuFabricantes.Click += new System.EventHandler(this.mnuFabricantes_Click);
             // 
             // mnuModelos
             // 
             this.mnuModelos.Name = "mnuModelos";
-            this.mnuModelos.Size = new System.Drawing.Size(180, 22);
+            this.mnuModelos.Size = new System.Drawing.Size(134, 22);
             this.mnuModelos.Text = "Modelos";
             this.mnuModelos.Click += new System.EventHandler(this.mnuModelos_Click);
             // 
             // mnuVeiculos
             // 
             this.mnuVeiculos.Name = "mnuVeiculos";
-            this.mnuVeiculos.Size = new System.Drawing.Size(180, 22);
+            this.mnuVeiculos.Size = new System.Drawing.Size(134, 22);
             this.mnuVeiculos.Text = "Veículos";
             // 
             // frmPrincipal

@@ -149,6 +149,18 @@
     <Compile Include="Utils\Implements\SQLServer.cs" />
     <Compile Include="Utils\Implements\SQLServerCreator.cs" />
     <Compile Include="Utils\Interfaces\IDatabase.cs" />
+    <Compile Include="Views\Cliente\frmClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Cliente\frmClientes.Designer.cs">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cliente\frmClientesCrud.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Cliente\frmClientesCrud.Designer.cs">
+      <DependentUpon>frmClientesCrud.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\frmConfigDatabase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +231,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\Cliente\frmClientes.resx">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Cliente\frmClientesCrud.resx">
+      <DependentUpon>frmClientesCrud.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\frmConfigDatabase.resx">
       <DependentUpon>frmConfigDatabase.cs</DependentUpon>
     </EmbeddedResource>

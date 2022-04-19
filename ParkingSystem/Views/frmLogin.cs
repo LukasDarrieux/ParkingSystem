@@ -92,5 +92,13 @@ namespace ParkingSystem.Views
                 General.MessageShowError(error.Message);
             }
         }
+
+        private void txtEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin_Click(null, null);
+            }
+        }
     }
 }

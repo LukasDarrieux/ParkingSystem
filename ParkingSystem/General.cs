@@ -1,4 +1,6 @@
-﻿using ParkingSystem.Shared;
+﻿using ParkingSystem.Controller.Implements;
+using ParkingSystem.Models.Veiculo;
+using ParkingSystem.Shared;
 using ParkingSystem.Utils.Implements;
 using System;
 using System.Collections.Generic;
@@ -55,6 +57,28 @@ namespace ParkingSystem
             }
         }
 
+        public static bool ValidateField(ComboBox comboBox, string nameField)
+        {
+            if (comboBox.SelectedIndex > -1 && comboBox.Text.Trim().Length > 0) return true;
+            else
+            {
+                MessageShowAttention($"Informe {nameField}");
+                comboBox.Focus();
+                return false;
+            }
+        }
+
+        public static bool ValidateField(MaskedTextBox maskedBox, string nameField)
+        {
+            if (maskedBox.Text.Trim().Length > 0 && maskedBox.MaskCompleted) return true;
+            else
+            {
+                MessageShowAttention($"Informe {nameField}");
+                maskedBox.Focus();
+                return false;
+            }
+        }
+
         public static bool CriarBanco()
         {
             DatabaseCreator DbCreator = DatabaseCreator.GetDatabase(Configuracoes.SGBD, Configuracoes.Server, Configuracoes.User, Configuracoes.Password);
@@ -103,5 +127,39 @@ namespace ParkingSystem
             frm.Refresh();
 
         }
-    }
+
+        public static void CarregarComboFabricante(ComboBox combo)
+        {
+            List<Fabricantes> listaFabricantes = null;
+            try
+            {
+                combo.Items.Clear();
+                using (FabricantesController fabricanteController = new FabricantesController())
+                {
+                    listaFabricantes = fabricanteController.GetAll();
+                    if (!(listaFabricantes is null))
+                    {
+                        if (listaFabricantes.Count > 0)
+                        {
+                            foreach (Fabricantes fabricante in listaFabricantes)
+                            {
+                                combo.Items.Add(fabricante);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+            finally
+            {
+                if (!(listaFabricantes is null))
+                {
+                    listaFabricantes = null;
+                }
+            }
+        }
+        }
 }

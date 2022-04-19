@@ -68,6 +68,7 @@
             this.txtSenha.PasswordChar = '•';
             this.txtSenha.Size = new System.Drawing.Size(197, 25);
             this.txtSenha.TabIndex = 3;
+            this.txtSenha.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSenha_KeyDown);
             // 
             // btnLogin
             // 
@@ -98,6 +99,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmLogin_FormClosed);
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

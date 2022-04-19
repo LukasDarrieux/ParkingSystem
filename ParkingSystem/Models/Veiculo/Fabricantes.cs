@@ -30,5 +30,14 @@ namespace ParkingSystem.Models.Veiculo
         {
             return Nome;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Fabricantes)
+            {
+                return (this.Id == ((Fabricantes)obj).Id && this.Nome == ((Fabricantes)obj).Nome);
+            }
+            return false;
+        }
     }
 }

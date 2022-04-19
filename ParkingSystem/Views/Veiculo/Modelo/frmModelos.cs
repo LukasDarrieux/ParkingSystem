@@ -33,41 +33,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
 
         private void frmModelo_Activated(object sender, EventArgs e)
         {
-            CarregarComboFabricante(txtFabricante);
-        }
-
-        private void CarregarComboFabricante(ComboBox combo)
-        {
-            List<Fabricantes> listaFabricantes = null;
-            try
-            {
-                combo.Items.Clear();
-                using (FabricantesController fabricanteController = new FabricantesController())
-                {
-                    listaFabricantes = fabricanteController.GetAll();
-                    if (!(listaFabricantes is null))
-                    {
-                        if (listaFabricantes.Count > 0)
-                        {
-                            foreach (Fabricantes fabricante in listaFabricantes)
-                            {
-                                combo.Items.Add(fabricante);
-                            }
-                        }
-                    }
-                }
-            }
-            catch(Exception error)
-            {
-                throw error;
-            }
-            finally
-            {
-                if (!(listaFabricantes is null))
-                {
-                    listaFabricantes = null;
-                }
-            }
+            General.CarregarComboFabricante(txtFabricante);
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -86,7 +52,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
                 string motor = String.Empty;
                 int ano = 0;
 
-                if (txtFabricante.SelectedIndex > -1 && txtFabricante.Text.Trim().Length > 0) fabricante = fabricanteController.Get(((Fabricantes)(txtFabricante.SelectedItem)).Id);
+                if (txtFabricante.SelectedIndex > -1 && txtFabricante.Text.Trim().Length > 0) fabricante = fabricanteController.Get(((Fabricantes)txtFabricante.SelectedItem).Id);
                 if (txtModelo.Text.Trim().Length > 0) nomeModelo = txtModelo.Text;
                 if (txtMotor.Text.Trim().Length > 0) motor = txtMotor.Text.Trim();
                 if (txtAno.Text.Trim().Length > 0) ano = int.Parse(txtAno.Text.Trim());

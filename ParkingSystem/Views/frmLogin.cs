@@ -66,5 +66,31 @@ namespace ParkingSystem.Views
                 usuarioController.Dispose();
             }
         }
+
+        private void txtSenha_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin_Click(null, null);
+            }
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                #if DEBUG
+                    txtEmail.Text = "adm@darrieuxinfo.com";
+                    txtSenha.Text = "12345678";
+                #else
+                    txtEmail.Text = "";
+                    txtSenha.Text = "";
+                #endif
+            }
+            catch (Exception error)
+            {
+                General.MessageShowError(error.Message);
+            }
+        }
     }
 }

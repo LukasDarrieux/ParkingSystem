@@ -40,6 +40,7 @@
             this.txtFabricante.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFabricante.Location = new System.Drawing.Point(90, 12);
+            this.txtFabricante.MaxLength = 100;
             this.txtFabricante.Name = "txtFabricante";
             this.txtFabricante.Size = new System.Drawing.Size(258, 25);
             this.txtFabricante.TabIndex = 1;
@@ -83,8 +84,10 @@
             this.Controls.Add(this.txtFabricante);
             this.Controls.Add(this.lblFabricante);
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "frmFabricantesCrud";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fabricante";

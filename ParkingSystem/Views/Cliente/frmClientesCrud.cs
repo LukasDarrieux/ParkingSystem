@@ -197,6 +197,15 @@ namespace ParkingSystem.Views.Cliente
             if (!General.ValidateField(txtNome, lblNome.Text)) return false;
             if (!General.ValidateField(txtEmail, lblEmail.Text)) return false;
             if (!General.ValidateField(txtCPF, lblCPF.Text)) return false;
+
+            //Validando se o CPF informado é válido
+            if (!General.ValidateCpf(txtCPF.Text.Trim().Replace(".", "").Replace("-", "").Replace(",", "")))
+            {
+                General.MessageShowAttention("CPF informado é inválido!");
+                txtCPF.Focus();
+                return false;
+            }
+
             return true;
         }
 

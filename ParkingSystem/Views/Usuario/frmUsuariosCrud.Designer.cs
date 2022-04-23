@@ -108,6 +108,7 @@
             this.Name = "frmUsuariosCrud";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usuários";
+            this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmUsuariosCrud_FormClosed);
             this.Load += new System.EventHandler(this.frmUsuariosCrud_Load);
             this.ResumeLayout(false);

@@ -69,7 +69,7 @@ namespace ParkingSystem.Utils.Implements
 
                 if (versaoBanco < 2)
                 {
-                    sql = "CREATE TABLE CLIENTES(ID INT NOT NULL IDENTITY(1,1), NOME VARCHAR(100) NOT NULL, EMAIL VARCHAR(255), CPF VARCHAR(30) NOT NULL, LOGRADOURO VARCHAR(255), NUMERO VARCHAR(20), BAIRRO VARCHAR(255), CIDADE VARCHAR(255), UF VARCHAR(2), PRIMARY KEY(ID))";
+                    sql = "CREATE TABLE CLIENTES(ID INT NOT NULL IDENTITY(1,1), NOME VARCHAR(100) NOT NULL, EMAIL VARCHAR(255), CPF VARCHAR(30) NOT NULL, LOGRADOURO VARCHAR(255), NUMERO VARCHAR(20), BAIRRO VARCHAR(255), CIDADE VARCHAR(255), UF VARCHAR(2), CEP VARCHAR(20), PRIMARY KEY(ID))";
                     ExecuteSql(TableExistsSQL(sql, "CLIENTES"));
                     versaoBanco++;
                     ExecuteSql($"UPDATE CONFIGBANCO SET VERSAO = {versaoBanco}");
@@ -85,6 +85,15 @@ namespace ParkingSystem.Utils.Implements
 
                     sql = "CREATE TABLE VEICULOS(ID INT NOT NULL IDENTITY(1,1), IDMODELO INT NOT NULL, IDCLIENTE INT NOT NULL, PLACA VARCHAR(10) NOT NULL, TIPO INT NOT NULL, PRIMARY KEY(ID))";
                     ExecuteSql(TableExistsSQL(sql, "VEICULOS"));
+                    versaoBanco++;
+
+                    ExecuteSql($"UPDATE CONFIGBANCO SET VERSAO = {versaoBanco}");
+                }
+
+                if (versaoBanco < 4)
+                {
+                    sql = "CREATE TABLE ENDERECOS(ID INT NOT NULL IDENTITY(1, 1), LOGRADOURO VARCHAR(255), NUMERO VARCHAR(20), BAIRRO VARCHAR(255), CIDADE VARCHAR(255), UF VARCHAR(2), PRIMARY KEY(ID))";
+                    ExecuteSql(TableExistsSQL(sql, "ENDERECOS"));
                     versaoBanco++;
 
                     ExecuteSql($"UPDATE CONFIGBANCO SET VERSAO = {versaoBanco}");

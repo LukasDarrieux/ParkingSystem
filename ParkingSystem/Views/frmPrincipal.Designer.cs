@@ -51,7 +51,7 @@
             // 
             this.lblHoraData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblHoraData.AutoSize = true;
-            this.lblHoraData.Location = new System.Drawing.Point(623, 463);
+            this.lblHoraData.Location = new System.Drawing.Point(602, 535);
             this.lblHoraData.Name = "lblHoraData";
             this.lblHoraData.Size = new System.Drawing.Size(170, 17);
             this.lblHoraData.TabIndex = 0;
@@ -61,7 +61,7 @@
             // 
             this.lblUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(12, 463);
+            this.lblUsuario.Location = new System.Drawing.Point(12, 535);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(54, 17);
             this.lblUsuario.TabIndex = 1;
@@ -74,12 +74,13 @@
             // 
             // menu
             // 
+            this.menu.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuSistema,
             this.mnuCadastros});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(805, 24);
+            this.menu.Size = new System.Drawing.Size(784, 24);
             this.menu.TabIndex = 2;
             this.menu.Text = "menuStrip1";
             // 
@@ -90,7 +91,7 @@
             this.mnuConfiguracoes,
             this.mnuConfiguracoesBancoDados});
             this.mnuSistema.Name = "mnuSistema";
-            this.mnuSistema.Size = new System.Drawing.Size(60, 20);
+            this.mnuSistema.Size = new System.Drawing.Size(61, 20);
             this.mnuSistema.Text = "Sistema";
             // 
             // mnuUsuarios
@@ -119,13 +120,13 @@
             this.mnuClientes,
             this.mnusVeiculos});
             this.mnuCadastros.Name = "mnuCadastros";
-            this.mnuCadastros.Size = new System.Drawing.Size(71, 20);
+            this.mnuCadastros.Size = new System.Drawing.Size(70, 20);
             this.mnuCadastros.Text = "Cadastros";
             // 
             // mnuClientes
             // 
             this.mnuClientes.Name = "mnuClientes";
-            this.mnuClientes.Size = new System.Drawing.Size(180, 22);
+            this.mnuClientes.Size = new System.Drawing.Size(118, 22);
             this.mnuClientes.Text = "Clientes";
             this.mnuClientes.Click += new System.EventHandler(this.mnuClientes_Click);
             // 
@@ -136,7 +137,7 @@
             this.mnuModelos,
             this.mnuVeiculos});
             this.mnusVeiculos.Name = "mnusVeiculos";
-            this.mnusVeiculos.Size = new System.Drawing.Size(180, 22);
+            this.mnusVeiculos.Size = new System.Drawing.Size(118, 22);
             this.mnusVeiculos.Text = "Veículos";
             // 
             // mnuFabricantes
@@ -163,7 +164,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(805, 489);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.lblHoraData);
             this.Controls.Add(this.menu);

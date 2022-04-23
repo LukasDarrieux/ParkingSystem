@@ -66,7 +66,7 @@ namespace ParkingSystem.Utils.Implements
 
                 if (versaoBanco < 2)
                 {
-                    ExecuteSql("CREATE TABLE IF NOT EXISTS CLIENTES(ID INT NOT NULL AUTO_INCREMENT, NOME VARCHAR(100) NOT NULL, EMAIL VARCHAR(255), CPF VARCHAR(30) NOT NULL, LOGRADOURO VARCHAR(255), NUMERO VARCHAR(20), BAIRRO VARCHAR(255), CIDADE VARCHAR(255), UF VARCHAR(2), PRIMARY KEY(ID))");
+                    ExecuteSql("CREATE TABLE IF NOT EXISTS CLIENTES(ID INT NOT NULL AUTO_INCREMENT, NOME VARCHAR(100) NOT NULL, EMAIL VARCHAR(255), CPF VARCHAR(30) NOT NULL, LOGRADOURO VARCHAR(255), NUMERO VARCHAR(20), BAIRRO VARCHAR(255), CIDADE VARCHAR(255), UF VARCHAR(2), CEP VARCHAR(20), PRIMARY KEY(ID))");
                     versaoBanco++;
                     ExecuteSql($"UPDATE CONFIGBANCO SET VERSAO = {versaoBanco}");
                 }
@@ -79,6 +79,7 @@ namespace ParkingSystem.Utils.Implements
                     versaoBanco++;
                     ExecuteSql($"UPDATE CONFIGBANCO SET VERSAO = {versaoBanco}");
                 }
+
             }
             catch (Exception error)
             {

@@ -174,6 +174,7 @@
             this.Name = "frmFabricantes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fabricantes";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmFabricantes_Load);
             this.Resize += new System.EventHandler(this.frmFabricantes_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.gridFabricantes)).EndInit();

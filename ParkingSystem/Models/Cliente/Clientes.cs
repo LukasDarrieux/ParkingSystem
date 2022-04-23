@@ -16,17 +16,26 @@ namespace ParkingSystem.Models.Cliente
             BAIRRO,
             CIDADE,
             UF,
-            LAST = UF
+            CEP,
+            LAST = CEP
         }
 
+        private string _cpf = String.Empty;
+
         public int Id { get; private set; }
-        public string Cpf { get; set; }
+
+        public string Cpf
+        {
+            get => _cpf;
+            set => _cpf = removeMaskCPF(value);
+            
+        }
         public Enderecos Endereco { get; set; }
 
         public Clientes(int id, string nome, string email, string cpf, Enderecos endereco) : base(nome, email)
         {
             this.Id = id;
-            this.Cpf = cpf;
+            this._cpf = removeMaskCPF(cpf);
             this.Endereco = endereco;
         }
 
@@ -34,7 +43,12 @@ namespace ParkingSystem.Models.Cliente
         {
             Id = 0;
             base.Dispose();
-            Endereco.Dispose();
+            if (!(Endereco is null)) Endereco.Dispose();
+        }
+
+        private string removeMaskCPF(string cpf)
+        {
+            return cpf.Replace(",", "").Replace(".", "").Replace("-", "").Trim();
         }
     }
 }

@@ -37,6 +37,11 @@
             this.txtAno = new System.Windows.Forms.MaskedTextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.gridModelos = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FABRICANTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MOTOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ANO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnExibir = new System.Windows.Forms.Button();
@@ -44,11 +49,6 @@
             this.lblQuantidade = new System.Windows.Forms.Label();
             this.lblMotor = new System.Windows.Forms.Label();
             this.txtMotor = new System.Windows.Forms.TextBox();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FABRICANTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MOTOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ANO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridModelos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,6 +135,40 @@
             this.gridModelos.TabIndex = 9;
             this.gridModelos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridModelos_CellClick);
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 80;
+            // 
+            // FABRICANTE
+            // 
+            this.FABRICANTE.HeaderText = "FABRICANTE";
+            this.FABRICANTE.Name = "FABRICANTE";
+            this.FABRICANTE.ReadOnly = true;
+            this.FABRICANTE.Width = 190;
+            // 
+            // MODELO
+            // 
+            this.MODELO.HeaderText = "MODELO";
+            this.MODELO.Name = "MODELO";
+            this.MODELO.ReadOnly = true;
+            this.MODELO.Width = 200;
+            // 
+            // MOTOR
+            // 
+            this.MOTOR.HeaderText = "MOTOR";
+            this.MOTOR.Name = "MOTOR";
+            this.MOTOR.ReadOnly = true;
+            // 
+            // ANO
+            // 
+            this.ANO.HeaderText = "ANO";
+            this.ANO.Name = "ANO";
+            this.ANO.ReadOnly = true;
+            this.ANO.Width = 50;
+            // 
             // btnExcluir
             // 
             this.btnExcluir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -205,40 +239,6 @@
             this.txtMotor.Size = new System.Drawing.Size(138, 25);
             this.txtMotor.TabIndex = 5;
             // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 80;
-            // 
-            // FABRICANTE
-            // 
-            this.FABRICANTE.HeaderText = "FABRICANTE";
-            this.FABRICANTE.Name = "FABRICANTE";
-            this.FABRICANTE.ReadOnly = true;
-            this.FABRICANTE.Width = 190;
-            // 
-            // MODELO
-            // 
-            this.MODELO.HeaderText = "MODELO";
-            this.MODELO.Name = "MODELO";
-            this.MODELO.ReadOnly = true;
-            this.MODELO.Width = 200;
-            // 
-            // MOTOR
-            // 
-            this.MOTOR.HeaderText = "MOTOR";
-            this.MOTOR.Name = "MOTOR";
-            this.MOTOR.ReadOnly = true;
-            // 
-            // ANO
-            // 
-            this.ANO.HeaderText = "ANO";
-            this.ANO.Name = "ANO";
-            this.ANO.ReadOnly = true;
-            this.ANO.Width = 50;
-            // 
             // frmModelos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -265,6 +265,7 @@
             this.Name = "frmModelos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modelos";
+            this.TopMost = true;
             this.Activated += new System.EventHandler(this.frmModelo_Activated);
             this.Load += new System.EventHandler(this.frmModelo_Load);
             this.Resize += new System.EventHandler(this.frmModelo_Resize);

@@ -112,6 +112,7 @@
             this.btnBuscar.TabIndex = 15;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // gridClientes
             // 
@@ -127,6 +128,7 @@
             this.gridClientes.Name = "gridClientes";
             this.gridClientes.Size = new System.Drawing.Size(615, 187);
             this.gridClientes.TabIndex = 16;
+            this.gridClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridClientes_CellClick);
             // 
             // ID
             // 
@@ -158,6 +160,7 @@
             this.btnExcluir.TabIndex = 21;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnAlterar
             // 
@@ -168,6 +171,7 @@
             this.btnAlterar.TabIndex = 20;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnExibir
             // 
@@ -178,6 +182,7 @@
             this.btnExibir.TabIndex = 19;
             this.btnExibir.Text = "Exibir";
             this.btnExibir.UseVisualStyleBackColor = true;
+            this.btnExibir.Click += new System.EventHandler(this.btnExibir_Click);
             // 
             // btnIncluir
             // 
@@ -188,6 +193,7 @@
             this.btnIncluir.TabIndex = 18;
             this.btnIncluir.Text = "Incluir";
             this.btnIncluir.UseVisualStyleBackColor = true;
+            this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
             // 
             // lblQuantidade
             // 
@@ -222,7 +228,9 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmClientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmCliente";
+            this.Text = "Clientes";
+            this.TopMost = true;
+            this.Load += new System.EventHandler(this.frmClientes_Load);
             this.Resize += new System.EventHandler(this.frmClientes_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.gridClientes)).EndInit();
             this.ResumeLayout(false);

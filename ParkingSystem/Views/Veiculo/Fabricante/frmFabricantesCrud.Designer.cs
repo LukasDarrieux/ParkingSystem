@@ -91,6 +91,7 @@
             this.Name = "frmFabricantesCrud";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fabricante";
+            this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmFabricanteCrud_FormClosed);
             this.Load += new System.EventHandler(this.frmFabricanteCrud_Load);
             this.ResumeLayout(false);

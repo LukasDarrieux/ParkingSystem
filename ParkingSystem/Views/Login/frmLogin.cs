@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ParkingSystem.Views
+namespace ParkingSystem.Views.Login
 {
     public partial class frmLogin : Form
     {

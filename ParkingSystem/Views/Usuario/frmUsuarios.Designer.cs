@@ -206,6 +206,7 @@
             this.Name = "frmUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usuários";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmUsuarios_Load);
             this.Resize += new System.EventHandler(this.frmUsuarios_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.gridUsuario)).EndInit();

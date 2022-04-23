@@ -8,8 +8,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ParkingSystem.Views.Login;
 
-namespace ParkingSystem.Views
+namespace ParkingSystem.Views.Splash
 {
     public partial class frmSplash : Form
     {

@@ -1,4 +1,4 @@
-﻿namespace ParkingSystem.Views
+﻿namespace ParkingSystem.Views.Splash
 {
     partial class frmSplash
     {

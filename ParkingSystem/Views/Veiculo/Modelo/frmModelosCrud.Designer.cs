@@ -156,6 +156,7 @@
             this.Name = "frmModelosCrud";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmModelosCrud";
+            this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmModelosCrud_FormClosed);
             this.Load += new System.EventHandler(this.frmModelosCrud_Load);
             this.ResumeLayout(false);

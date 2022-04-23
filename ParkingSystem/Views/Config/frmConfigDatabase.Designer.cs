@@ -183,6 +183,7 @@
             this.Name = "frmConfigDatabase";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configuração do Banco de Dados";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmConfigDatabase_Load);
             this.groupDatabase.ResumeLayout(false);
             this.groupDatabase.PerformLayout();

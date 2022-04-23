@@ -40,19 +40,24 @@
             this.tabCliente = new System.Windows.Forms.TabControl();
             this.tabDadosPessoais = new System.Windows.Forms.TabPage();
             this.tabEndereco = new System.Windows.Forms.TabPage();
-            this.txtLogradouro = new System.Windows.Forms.TextBox();
-            this.lblLogradouro = new System.Windows.Forms.Label();
-            this.txtNumero = new System.Windows.Forms.TextBox();
-            this.lblNumero = new System.Windows.Forms.Label();
-            this.txtBairro = new System.Windows.Forms.TextBox();
-            this.lblBairro = new System.Windows.Forms.Label();
-            this.txtCidade = new System.Windows.Forms.TextBox();
-            this.lblCidade = new System.Windows.Forms.Label();
             this.txtUF = new System.Windows.Forms.TextBox();
             this.lblUF = new System.Windows.Forms.Label();
+            this.txtCidade = new System.Windows.Forms.TextBox();
+            this.lblCidade = new System.Windows.Forms.Label();
+            this.txtBairro = new System.Windows.Forms.TextBox();
+            this.lblBairro = new System.Windows.Forms.Label();
+            this.txtNumero = new System.Windows.Forms.TextBox();
+            this.lblNumero = new System.Windows.Forms.Label();
+            this.txtLogradouro = new System.Windows.Forms.TextBox();
+            this.lblLogradouro = new System.Windows.Forms.Label();
+            this.lblCEP = new System.Windows.Forms.Label();
+            this.txtCEP = new System.Windows.Forms.MaskedTextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.groupEndereco = new System.Windows.Forms.GroupBox();
             this.tabCliente.SuspendLayout();
             this.tabDadosPessoais.SuspendLayout();
             this.tabEndereco.SuspendLayout();
+            this.groupEndereco.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSalvar
@@ -60,18 +65,20 @@
             this.btnSalvar.Location = new System.Drawing.Point(184, 292);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(84, 35);
-            this.btnSalvar.TabIndex = 6;
+            this.btnSalvar.TabIndex = 11;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnCancelar
             // 
             this.btnCancelar.Location = new System.Drawing.Point(274, 293);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(84, 35);
-            this.btnCancelar.TabIndex = 7;
+            this.btnCancelar.TabIndex = 12;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // txtNome
             // 
@@ -81,7 +88,7 @@
             this.txtNome.MaxLength = 100;
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(457, 25);
-            this.txtNome.TabIndex = 5;
+            this.txtNome.TabIndex = 0;
             // 
             // lblNome
             // 
@@ -100,7 +107,7 @@
             this.txtEmail.MaxLength = 100;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(428, 25);
-            this.txtEmail.TabIndex = 9;
+            this.txtEmail.TabIndex = 2;
             // 
             // lblEmail
             // 
@@ -126,7 +133,7 @@
             this.txtCPF.Mask = "000.000.000-00";
             this.txtCPF.Name = "txtCPF";
             this.txtCPF.Size = new System.Drawing.Size(170, 25);
-            this.txtCPF.TabIndex = 12;
+            this.txtCPF.TabIndex = 3;
             // 
             // tabCliente
             // 
@@ -136,7 +143,7 @@
             this.tabCliente.Name = "tabCliente";
             this.tabCliente.SelectedIndex = 0;
             this.tabCliente.Size = new System.Drawing.Size(523, 244);
-            this.tabCliente.TabIndex = 13;
+            this.tabCliente.TabIndex = 1;
             // 
             // tabDadosPessoais
             // 
@@ -154,16 +161,10 @@
             // 
             // tabEndereco
             // 
-            this.tabEndereco.Controls.Add(this.txtUF);
-            this.tabEndereco.Controls.Add(this.lblUF);
-            this.tabEndereco.Controls.Add(this.txtCidade);
-            this.tabEndereco.Controls.Add(this.lblCidade);
-            this.tabEndereco.Controls.Add(this.txtBairro);
-            this.tabEndereco.Controls.Add(this.lblBairro);
-            this.tabEndereco.Controls.Add(this.txtNumero);
-            this.tabEndereco.Controls.Add(this.lblNumero);
-            this.tabEndereco.Controls.Add(this.txtLogradouro);
-            this.tabEndereco.Controls.Add(this.lblLogradouro);
+            this.tabEndereco.Controls.Add(this.groupEndereco);
+            this.tabEndereco.Controls.Add(this.btnBuscar);
+            this.tabEndereco.Controls.Add(this.txtCEP);
+            this.tabEndereco.Controls.Add(this.lblCEP);
             this.tabEndereco.Location = new System.Drawing.Point(4, 26);
             this.tabEndereco.Name = "tabEndereco";
             this.tabEndereco.Padding = new System.Windows.Forms.Padding(3);
@@ -172,102 +173,147 @@
             this.tabEndereco.Text = "Endereço";
             this.tabEndereco.UseVisualStyleBackColor = true;
             // 
-            // txtLogradouro
-            // 
-            this.txtLogradouro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLogradouro.Location = new System.Drawing.Point(91, 6);
-            this.txtLogradouro.MaxLength = 100;
-            this.txtLogradouro.Name = "txtLogradouro";
-            this.txtLogradouro.Size = new System.Drawing.Size(296, 25);
-            this.txtLogradouro.TabIndex = 15;
-            // 
-            // lblLogradouro
-            // 
-            this.lblLogradouro.AutoSize = true;
-            this.lblLogradouro.Location = new System.Drawing.Point(6, 9);
-            this.lblLogradouro.Name = "lblLogradouro";
-            this.lblLogradouro.Size = new System.Drawing.Size(82, 17);
-            this.lblLogradouro.TabIndex = 14;
-            this.lblLogradouro.Text = "Logradouro:";
-            // 
-            // txtNumero
-            // 
-            this.txtNumero.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNumero.Location = new System.Drawing.Point(428, 6);
-            this.txtNumero.MaxLength = 100;
-            this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(81, 25);
-            this.txtNumero.TabIndex = 17;
-            // 
-            // lblNumero
-            // 
-            this.lblNumero.AutoSize = true;
-            this.lblNumero.Location = new System.Drawing.Point(393, 9);
-            this.lblNumero.Name = "lblNumero";
-            this.lblNumero.Size = new System.Drawing.Size(30, 17);
-            this.lblNumero.TabIndex = 16;
-            this.lblNumero.Text = "Nº.:";
-            // 
-            // txtBairro
-            // 
-            this.txtBairro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBairro.Location = new System.Drawing.Point(91, 37);
-            this.txtBairro.MaxLength = 100;
-            this.txtBairro.Name = "txtBairro";
-            this.txtBairro.Size = new System.Drawing.Size(418, 25);
-            this.txtBairro.TabIndex = 19;
-            // 
-            // lblBairro
-            // 
-            this.lblBairro.AutoSize = true;
-            this.lblBairro.Location = new System.Drawing.Point(6, 40);
-            this.lblBairro.Name = "lblBairro";
-            this.lblBairro.Size = new System.Drawing.Size(47, 17);
-            this.lblBairro.TabIndex = 18;
-            this.lblBairro.Text = "Bairro:";
-            // 
-            // txtCidade
-            // 
-            this.txtCidade.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCidade.Location = new System.Drawing.Point(91, 68);
-            this.txtCidade.MaxLength = 100;
-            this.txtCidade.Name = "txtCidade";
-            this.txtCidade.Size = new System.Drawing.Size(296, 25);
-            this.txtCidade.TabIndex = 21;
-            // 
-            // lblCidade
-            // 
-            this.lblCidade.AutoSize = true;
-            this.lblCidade.Location = new System.Drawing.Point(6, 71);
-            this.lblCidade.Name = "lblCidade";
-            this.lblCidade.Size = new System.Drawing.Size(52, 17);
-            this.lblCidade.TabIndex = 20;
-            this.lblCidade.Text = "Cidade:";
-            // 
             // txtUF
             // 
             this.txtUF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtUF.Location = new System.Drawing.Point(425, 68);
-            this.txtUF.MaxLength = 100;
+            this.txtUF.Location = new System.Drawing.Point(410, 79);
+            this.txtUF.MaxLength = 2;
             this.txtUF.Name = "txtUF";
             this.txtUF.Size = new System.Drawing.Size(84, 25);
-            this.txtUF.TabIndex = 23;
+            this.txtUF.TabIndex = 10;
             // 
             // lblUF
             // 
             this.lblUF.AutoSize = true;
-            this.lblUF.Location = new System.Drawing.Point(393, 71);
+            this.lblUF.Location = new System.Drawing.Point(377, 82);
             this.lblUF.Name = "lblUF";
             this.lblUF.Size = new System.Drawing.Size(29, 17);
             this.lblUF.TabIndex = 22;
             this.lblUF.Text = "UF.:";
             // 
-            // frmClienteCrud
+            // txtCidade
+            // 
+            this.txtCidade.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCidade.Location = new System.Drawing.Point(91, 79);
+            this.txtCidade.MaxLength = 100;
+            this.txtCidade.Name = "txtCidade";
+            this.txtCidade.Size = new System.Drawing.Size(280, 25);
+            this.txtCidade.TabIndex = 9;
+            // 
+            // lblCidade
+            // 
+            this.lblCidade.AutoSize = true;
+            this.lblCidade.Location = new System.Drawing.Point(6, 82);
+            this.lblCidade.Name = "lblCidade";
+            this.lblCidade.Size = new System.Drawing.Size(52, 17);
+            this.lblCidade.TabIndex = 20;
+            this.lblCidade.Text = "Cidade:";
+            // 
+            // txtBairro
+            // 
+            this.txtBairro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBairro.Location = new System.Drawing.Point(91, 48);
+            this.txtBairro.MaxLength = 100;
+            this.txtBairro.Name = "txtBairro";
+            this.txtBairro.Size = new System.Drawing.Size(403, 25);
+            this.txtBairro.TabIndex = 8;
+            // 
+            // lblBairro
+            // 
+            this.lblBairro.AutoSize = true;
+            this.lblBairro.Location = new System.Drawing.Point(6, 51);
+            this.lblBairro.Name = "lblBairro";
+            this.lblBairro.Size = new System.Drawing.Size(47, 17);
+            this.lblBairro.TabIndex = 18;
+            this.lblBairro.Text = "Bairro:";
+            // 
+            // txtNumero
+            // 
+            this.txtNumero.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNumero.Location = new System.Drawing.Point(413, 17);
+            this.txtNumero.MaxLength = 100;
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(81, 25);
+            this.txtNumero.TabIndex = 7;
+            // 
+            // lblNumero
+            // 
+            this.lblNumero.AutoSize = true;
+            this.lblNumero.Location = new System.Drawing.Point(377, 20);
+            this.lblNumero.Name = "lblNumero";
+            this.lblNumero.Size = new System.Drawing.Size(30, 17);
+            this.lblNumero.TabIndex = 16;
+            this.lblNumero.Text = "Nº.:";
+            // 
+            // txtLogradouro
+            // 
+            this.txtLogradouro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLogradouro.Location = new System.Drawing.Point(91, 17);
+            this.txtLogradouro.MaxLength = 100;
+            this.txtLogradouro.Name = "txtLogradouro";
+            this.txtLogradouro.Size = new System.Drawing.Size(280, 25);
+            this.txtLogradouro.TabIndex = 6;
+            // 
+            // lblLogradouro
+            // 
+            this.lblLogradouro.AutoSize = true;
+            this.lblLogradouro.Location = new System.Drawing.Point(6, 20);
+            this.lblLogradouro.Name = "lblLogradouro";
+            this.lblLogradouro.Size = new System.Drawing.Size(82, 17);
+            this.lblLogradouro.TabIndex = 14;
+            this.lblLogradouro.Text = "Logradouro:";
+            // 
+            // lblCEP
+            // 
+            this.lblCEP.AutoSize = true;
+            this.lblCEP.Location = new System.Drawing.Point(9, 14);
+            this.lblCEP.Name = "lblCEP";
+            this.lblCEP.Size = new System.Drawing.Size(34, 17);
+            this.lblCEP.TabIndex = 24;
+            this.lblCEP.Text = "CEP:";
+            // 
+            // txtCEP
+            // 
+            this.txtCEP.Location = new System.Drawing.Point(94, 11);
+            this.txtCEP.Mask = "00000-000";
+            this.txtCEP.Name = "txtCEP";
+            this.txtCEP.Size = new System.Drawing.Size(93, 25);
+            this.txtCEP.TabIndex = 4;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(193, 11);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(82, 25);
+            this.btnBuscar.TabIndex = 5;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // groupEndereco
+            // 
+            this.groupEndereco.Controls.Add(this.txtLogradouro);
+            this.groupEndereco.Controls.Add(this.lblLogradouro);
+            this.groupEndereco.Controls.Add(this.lblNumero);
+            this.groupEndereco.Controls.Add(this.txtNumero);
+            this.groupEndereco.Controls.Add(this.txtUF);
+            this.groupEndereco.Controls.Add(this.lblBairro);
+            this.groupEndereco.Controls.Add(this.lblUF);
+            this.groupEndereco.Controls.Add(this.txtBairro);
+            this.groupEndereco.Controls.Add(this.txtCidade);
+            this.groupEndereco.Controls.Add(this.lblCidade);
+            this.groupEndereco.Location = new System.Drawing.Point(3, 37);
+            this.groupEndereco.Name = "groupEndereco";
+            this.groupEndereco.Size = new System.Drawing.Size(506, 171);
+            this.groupEndereco.TabIndex = 26;
+            this.groupEndereco.TabStop = false;
+            // 
+            // frmClientesCrud
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -280,16 +326,21 @@
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.Name = "frmClienteCrud";
+            this.Name = "frmClientesCrud";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmClienteCrud";
+            this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmClientesCrud_FormClosed);
+            this.Load += new System.EventHandler(this.frmClientesCrud_Load);
             this.tabCliente.ResumeLayout(false);
             this.tabDadosPessoais.ResumeLayout(false);
             this.tabDadosPessoais.PerformLayout();
             this.tabEndereco.ResumeLayout(false);
             this.tabEndereco.PerformLayout();
+            this.groupEndereco.ResumeLayout(false);
+            this.groupEndereco.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -318,5 +369,9 @@
         private System.Windows.Forms.Label lblNumero;
         private System.Windows.Forms.TextBox txtLogradouro;
         private System.Windows.Forms.Label lblLogradouro;
+        private System.Windows.Forms.GroupBox groupEndereco;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.MaskedTextBox txtCEP;
+        private System.Windows.Forms.Label lblCEP;
     }
 }

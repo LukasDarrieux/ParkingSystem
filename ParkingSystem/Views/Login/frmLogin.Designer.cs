@@ -1,4 +1,4 @@
-﻿namespace ParkingSystem.Views
+﻿namespace ParkingSystem.Views.Login
 {
     partial class frmLogin
     {

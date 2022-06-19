@@ -67,6 +67,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
                         gridModelos.Rows.Add(listaModelos.Count);
 
                         int row = 0;
+                        IdModeloSelecionado = listaModelos[0].Id;
                         foreach (Modelos model in listaModelos)
                         {
                             gridModelos[(int)ColsGrid.ID, row].Value = model.Id.ToString();

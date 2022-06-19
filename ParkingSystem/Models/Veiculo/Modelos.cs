@@ -47,5 +47,14 @@ namespace ParkingSystem.Models.Veiculo
             }
             
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Modelos)
+            {
+                return (((Modelos)obj).Id != this.Id && ((Modelos)obj).Nome == this.Nome && ((Modelos)obj).Fabricante.Id == this.Fabricante.Id);
+            }
+            return false;
+        }
     }
 }

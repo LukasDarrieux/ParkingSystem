@@ -110,6 +110,30 @@ namespace ParkingSystem.Controller.Implements
                     conditions += $"{Modelos.Campos.NOME} LIKE '{modelo.Nome}%'";
                 }
 
+                if (!String.IsNullOrEmpty(modelo.Motor))
+                {
+                    if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
+                    else conditions += $" AND ";
+                    conditions += $"{Modelos.Campos.MOTOR} LIKE '{modelo.Motor}%'";
+                }
+
+                if (!(modelo.Fabricante is null))
+                {
+                    if (modelo.Fabricante.Id > 0)
+                    {
+                        if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
+                        else conditions += $" AND ";
+                        conditions += $"{Modelos.Campos.IDFABRICANTE} = {modelo.Fabricante.Id.ToString()}";
+                    }
+                }
+
+                if (modelo.Ano > 0)
+                {
+                    if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
+                    else conditions += $" AND ";
+                    conditions += $"{Modelos.Campos.ANO} = {modelo.Ano.ToString()}";
+                }
+
                 sql += conditions;
             }
             return GetModelos(sql);
@@ -275,14 +299,7 @@ namespace ParkingSystem.Controller.Implements
 
                 if (listaModelos is null) return false;
 
-                foreach (Modelos models in listaModelos)
-                {
-                    if (models.Id != modelo.Id && models.Nome == modelo.Nome && models.Fabricante.Id == modelo.Fabricante.Id)
-                    {
-                        return true;
-                    }
-                }
-                return false;
+                return listaModelos.Contains(modelo);
             }
             finally
             {

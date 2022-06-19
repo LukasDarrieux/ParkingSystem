@@ -1,23 +1,17 @@
-﻿using System;
-using ParkingSystem.Models.Cliente;
+﻿using ParkingSystem.Models.Cliente;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ParkingSystem.Models.Veiculo
 {
-    class Carros : Veiculos, IDisposable
+    class Carros : Veiculos
     {
-        public int Id { get; private set; }
-        public int Tipo { get; private set; }
-
-        public Carros(int id, string placa, Modelos modelo, Clientes cliente) : base(placa, modelo, cliente)
+        public Carros(int id, string placa, Modelos modelo, Clientes cliente):base(id, placa, modelo, cliente, EnumVeiculos.tipo.Carro)
         {
-            this.Id = id;
-            this.Tipo = (int)EnumVeiculos.tipo.Carro;
-        }
 
-        public override void Dispose()
-        {
-            base.Dispose();
-            Id = 0;
         }
     }
 }

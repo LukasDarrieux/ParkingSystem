@@ -69,6 +69,7 @@ namespace ParkingSystem.Views.Cliente
                     if (ListaClientes.Count > 0)
                     {
                         int row = 0;
+                        IdClienteSelecionado = ListaClientes[0].Id;
                         foreach(Clientes client in ListaClientes)
                         {
                             gridClientes.Rows.Add();

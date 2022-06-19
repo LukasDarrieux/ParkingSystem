@@ -53,6 +53,7 @@ namespace ParkingSystem.Views.Usuario
                         gridUsuario.Rows.Add(listaUsuarios.Count);
                         
                         int row = 0;
+                        IdUsuarioSelecionado = listaUsuarios[0].Id;
                         foreach (Usuarios user in listaUsuarios)
                         {
                             gridUsuario[(int)ColsGrid.ID, row].Value = user.Id.ToString();
@@ -68,7 +69,7 @@ namespace ParkingSystem.Views.Usuario
                 {
                     lblQuantidade.Text = "Nenhum usuário encontrado";
                 }
-                
+                ValidateUserIsAdmin();
                 lblQuantidade.Refresh();
             }
             catch (Exception error)
@@ -153,12 +154,12 @@ namespace ParkingSystem.Views.Usuario
                         if (gridUsuario[(int)ColsGrid.ID, e.RowIndex].Value.ToString().Trim().Length > 0)
                         {
                             IdUsuarioSelecionado = Int16.Parse(gridUsuario[(int)ColsGrid.ID, e.RowIndex].Value.ToString());
-                            ValidateUserIsAdmin(gridUsuario[(int)ColsGrid.NOME, e.RowIndex].Value.ToString());
+                            ValidateUserIsAdmin();
                             return;
                         }
                     }
                 }
-                ValidateUserIsAdmin(String.Empty);
+                ValidateUserIsAdmin();
             }
             catch (Exception error)
             {
@@ -181,7 +182,7 @@ namespace ParkingSystem.Views.Usuario
 
         }
 
-        private void ValidateUserIsAdmin(string nome)
+        private void ValidateUserIsAdmin()
         {
             btnAlterar.Enabled = true;
             btnExcluir.Enabled = true;

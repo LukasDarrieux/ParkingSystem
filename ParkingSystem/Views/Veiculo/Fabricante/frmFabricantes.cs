@@ -113,6 +113,7 @@ namespace ParkingSystem.Views.Veiculo.Fabricante
                         gridFabricantes.Rows.Add(listaFabricantes.Count);
 
                         int row = 0;
+                        IdFabricanteSelecionado = listaFabricantes[0].Id;
                         foreach (Fabricantes maker in listaFabricantes)
                         {
                             gridFabricantes[(int)ColsGrid.ID, row].Value = maker.Id.ToString();

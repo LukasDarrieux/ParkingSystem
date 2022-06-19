@@ -118,6 +118,7 @@
     <Compile Include="Controller\Implements\FabricantesController.cs" />
     <Compile Include="Controller\Implements\ModelosController.cs" />
     <Compile Include="Controller\Implements\UsuariosController.cs" />
+    <Compile Include="Controller\Implements\VeiculosController.cs" />
     <Compile Include="Controller\Interfaces\IClientesController.cs" />
     <Compile Include="Controller\Interfaces\ICrud.cs" />
     <Compile Include="Controller\Interfaces\IFabricantesController.cs" />

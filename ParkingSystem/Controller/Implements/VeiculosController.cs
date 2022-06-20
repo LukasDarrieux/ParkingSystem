@@ -109,6 +109,26 @@ namespace ParkingSystem.Controller.Implements
                     conditions += $"{Veiculos.Campos.PLACA} LIKE '{veiculo.Placa}%'";
                 }
 
+                if (!(veiculo.Cliente is null))
+                {
+                    if (veiculo.Cliente.Id > 0)
+                    {
+                        if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
+                        else conditions += $" AND ";
+                        conditions += $"{Veiculos.Campos.IDCLIENTE} = '{veiculo.Cliente.Id.ToString()}'";
+                    }
+                }
+
+                if (!(veiculo.Modelo is null))
+                {
+                    if (veiculo.Modelo.Id > 0)
+                    {
+                        if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
+                        else conditions += $" AND ";
+                        conditions += $"{Veiculos.Campos.IDMODELO} = '{veiculo.Modelo.Id.ToString()}'";
+                    }
+                }
+
                 sql += conditions;
             }
             return GetVeiculos(sql);

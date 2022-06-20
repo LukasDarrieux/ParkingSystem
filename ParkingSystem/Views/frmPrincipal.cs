@@ -5,6 +5,7 @@ using ParkingSystem.Views.Cliente;
 using ParkingSystem.Views.Usuario;
 using ParkingSystem.Views.Veiculo.Fabricante;
 using ParkingSystem.Views.Veiculo.Modelo;
+using ParkingSystem.Views.Veiculo.Veiculo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -68,6 +69,11 @@ namespace ParkingSystem.Views
         private void mnuClientes_Click(object sender, EventArgs e)
         {
             new frmClientes().Show();
+        }
+
+        private void mnuVeiculos_Click(object sender, EventArgs e)
+        {
+            new frmVeiculos().Show();
         }
     }
 }

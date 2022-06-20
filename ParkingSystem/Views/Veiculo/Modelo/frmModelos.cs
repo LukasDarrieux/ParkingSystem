@@ -27,7 +27,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
             ID,
             FABRICANTE,
             MODELO,
-            POTENCIA,
+            MOTOR,
             ANO
         }
 
@@ -73,7 +73,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
                             gridModelos[(int)ColsGrid.ID, row].Value = model.Id.ToString();
                             gridModelos[(int)ColsGrid.FABRICANTE, row].Value = model.Fabricante.Nome;
                             gridModelos[(int)ColsGrid.MODELO, row].Value = model.Nome;
-                            gridModelos[(int)ColsGrid.POTENCIA, row].Value = model.Motor.ToString();
+                            gridModelos[(int)ColsGrid.MOTOR, row].Value = model.Motor.ToString();
                             gridModelos[(int)ColsGrid.ANO, row].Value = model.Ano.ToString();
 
                             row++;
@@ -127,7 +127,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
         {
             try
             {
-                int widthTotal = gridModelos.Width - gridModelos.Columns[(int)ColsGrid.ID].Width - gridModelos.Columns[(int)ColsGrid.ANO].Width - gridModelos.Columns[(int)ColsGrid.POTENCIA].Width -  General.scroolWidth;
+                int widthTotal = gridModelos.Width - gridModelos.Columns[(int)ColsGrid.ID].Width - gridModelos.Columns[(int)ColsGrid.ANO].Width - gridModelos.Columns[(int)ColsGrid.MOTOR].Width -  General.scroolWidth;
                 gridModelos.Columns[(int)ColsGrid.FABRICANTE].Width = widthTotal / 2;
                 gridModelos.Columns[(int)ColsGrid.MODELO].Width = widthTotal / 2;
             }

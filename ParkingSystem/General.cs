@@ -1,5 +1,6 @@
 ﻿using ParkingSystem.Controller.Implements;
 using ParkingSystem.Models.Veiculo;
+using ParkingSystem.Models.Cliente;
 using ParkingSystem.Shared;
 using ParkingSystem.Utils.Implements;
 using System;
@@ -137,6 +138,7 @@ namespace ParkingSystem
                 using (FabricantesController fabricanteController = new FabricantesController())
                 {
                     listaFabricantes = fabricanteController.GetAll();
+                    listaFabricantes = listaFabricantes.OrderBy(fabricante => fabricante.Nome).ToList();
                     if (!(listaFabricantes is null))
                     {
                         if (listaFabricantes.Count > 0)
@@ -158,6 +160,76 @@ namespace ParkingSystem
                 if (!(listaFabricantes is null))
                 {
                     listaFabricantes = null;
+                }
+            }
+        }
+
+        public static void CarregarComboModelos(ComboBox combo)
+        {
+            List<Modelos> listaModelos = null;
+            try
+            {
+                combo.Items.Clear();
+                using (ModelosController modeloController = new ModelosController())
+                {
+                    listaModelos = modeloController.GetAll();
+                    listaModelos = listaModelos.OrderBy(modelo => modelo.Nome).ToList();
+                    if (!(listaModelos is null))
+                    {
+                        if (listaModelos.Count > 0)
+                        {
+                            foreach (Modelos modelos in listaModelos)
+                            {
+                                combo.Items.Add(modelos);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+            finally
+            {
+                if (!(listaModelos is null))
+                {
+                    listaModelos = null;
+                }
+            }
+        }
+
+        public static void CarregarComboClientes(ComboBox combo)
+        {
+            List<Clientes> listaClientes = null;
+            try
+            {
+                combo.Items.Clear();
+                using (ClientesController clienteController = new ClientesController())
+                {
+                    listaClientes = clienteController.GetAll();
+                    if (!(listaClientes is null))
+                    {
+                        if (listaClientes.Count > 0)
+                        {
+                            listaClientes = listaClientes.OrderBy(cliente => cliente.Nome).ToList();
+                            foreach (Clientes cliente in listaClientes)
+                            {
+                                combo.Items.Add(cliente);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+            finally
+            {
+                if (!(listaClientes is null))
+                {
+                    listaClientes = null;
                 }
             }
         }

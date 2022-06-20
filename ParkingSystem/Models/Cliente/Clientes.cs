@@ -50,5 +50,22 @@ namespace ParkingSystem.Models.Cliente
         {
             return cpf.Replace(",", "").Replace(".", "").Replace("-", "").Trim();
         }
+
+        public override string ToString()
+        {
+            return this.Nome;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Clientes)
+            {
+                return (((Clientes)obj).Id != this.Id && 
+                    ((Clientes)obj).Nome == this.Nome && 
+                    ((Clientes)obj).Cpf == this.Cpf &&
+                    ((Clientes)obj).Email == this.Email);
+            }
+            return false;
+        }
     }
 }

@@ -263,6 +263,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Veiculos";
             this.TopMost = true;
+            this.Activated += new System.EventHandler(this.frmVeiculos_Activated);
             this.Load += new System.EventHandler(this.frmVeiculos_Load);
             this.Resize += new System.EventHandler(this.frmVeiculos_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.gridVeiculos)).EndInit();

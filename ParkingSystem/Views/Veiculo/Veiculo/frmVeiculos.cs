@@ -45,5 +45,12 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
         {
             this.OnResize(null);
         }
+
+        private void frmVeiculos_Activated(object sender, EventArgs e)
+        {
+            General.CarregarComboClientes(txtCliente);
+            General.CarregarComboFabricante(txtFabricante);
+            General.CarregarComboModelos(txtModelo);
+        }
     }
 }

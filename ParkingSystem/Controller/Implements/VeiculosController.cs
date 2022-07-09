@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ParkingSystem.Controller.Implements
 {
-    class VeiculosController
+    class VeiculosController : IDisposable
     {
         #region "Atributos"
 
@@ -119,14 +119,29 @@ namespace ParkingSystem.Controller.Implements
                     }
                 }
 
+
                 if (!(veiculo.Modelo is null))
                 {
-                    if (veiculo.Modelo.Id > 0)
+                    string filter = "";
+
+                    if (!(veiculo.Modelo.Fabricante is null))
                     {
                         if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
                         else conditions += $" AND ";
-                        conditions += $"{Veiculos.Campos.IDMODELO} = '{veiculo.Modelo.Id.ToString()}'";
+                        filter = $"{Veiculos.Campos.IDMODELO} IN (SELECT ID FROM MODELOS WHERE IDFABRICANTE = {veiculo.Modelo.Fabricante.Id})";
                     }
+
+                    if (veiculo.Modelo.Id > 0)
+                    {
+                        if (String.IsNullOrEmpty(filter))
+                        {
+                            if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
+                            else conditions += $" AND ";
+                        }
+                        filter = $"{Veiculos.Campos.IDMODELO} = '{veiculo.Modelo.Id.ToString()}'";
+                    }
+
+                    conditions += filter;
                 }
 
                 sql += conditions;

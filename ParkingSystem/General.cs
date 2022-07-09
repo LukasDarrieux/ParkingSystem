@@ -134,15 +134,16 @@ namespace ParkingSystem
             List<Fabricantes> listaFabricantes = null;
             try
             {
+                object itemSelected = combo.SelectedItem;
                 combo.Items.Clear();
                 using (FabricantesController fabricanteController = new FabricantesController())
                 {
                     listaFabricantes = fabricanteController.GetAll();
-                    listaFabricantes = listaFabricantes.OrderBy(fabricante => fabricante.Nome).ToList();
                     if (!(listaFabricantes is null))
                     {
                         if (listaFabricantes.Count > 0)
                         {
+                            listaFabricantes = listaFabricantes.OrderBy(fabricante => fabricante.Nome).ToList();
                             foreach (Fabricantes fabricante in listaFabricantes)
                             {
                                 combo.Items.Add(fabricante);
@@ -150,6 +151,7 @@ namespace ParkingSystem
                         }
                     }
                 }
+                combo.SelectedItem = itemSelected;
             }
             catch (Exception error)
             {
@@ -157,34 +159,41 @@ namespace ParkingSystem
             }
             finally
             {
-                if (!(listaFabricantes is null))
-                {
-                    listaFabricantes = null;
-                }
+                if (!(listaFabricantes is null)) listaFabricantes = null;
             }
         }
 
-        public static void CarregarComboModelos(ComboBox combo)
+        public static void CarregarComboModelos(int IdFabricante, ComboBox combo)
         {
+            if (IdFabricante == 0) return;
+
+            Modelos modelo = new Modelos();
             List<Modelos> listaModelos = null;
             try
             {
+                object itemSelected = combo.SelectedItem;
                 combo.Items.Clear();
-                using (ModelosController modeloController = new ModelosController())
+                using (FabricantesController fabricanteController = new FabricantesController())
                 {
-                    listaModelos = modeloController.GetAll();
-                    listaModelos = listaModelos.OrderBy(modelo => modelo.Nome).ToList();
-                    if (!(listaModelos is null))
+                    modelo.Fabricante = fabricanteController.Get(IdFabricante);
+
+                    using (ModelosController modeloController = new ModelosController())
                     {
-                        if (listaModelos.Count > 0)
+                        listaModelos = modeloController.GetAll(modelo);
+                        if (!(listaModelos is null))
                         {
-                            foreach (Modelos modelos in listaModelos)
+                            if (listaModelos.Count > 0)
                             {
-                                combo.Items.Add(modelos);
+                                listaModelos = listaModelos.OrderBy(modelos => modelos.Nome).ToList();
+                                foreach (Modelos modelos in listaModelos)
+                                {
+                                    combo.Items.Add(modelos);
+                                }
                             }
                         }
                     }
                 }
+                combo.SelectedItem = itemSelected;
             }
             catch (Exception error)
             {
@@ -192,10 +201,8 @@ namespace ParkingSystem
             }
             finally
             {
-                if (!(listaModelos is null))
-                {
-                    listaModelos = null;
-                }
+                if (!(listaModelos is null)) listaModelos = null;
+                modelo.Dispose();
             }
         }
 
@@ -204,6 +211,7 @@ namespace ParkingSystem
             List<Clientes> listaClientes = null;
             try
             {
+                object itemSelected = combo.SelectedItem;
                 combo.Items.Clear();
                 using (ClientesController clienteController = new ClientesController())
                 {
@@ -220,6 +228,7 @@ namespace ParkingSystem
                         }
                     }
                 }
+                combo.SelectedItem = itemSelected;
             }
             catch (Exception error)
             {
@@ -227,10 +236,8 @@ namespace ParkingSystem
             }
             finally
             {
-                if (!(listaClientes is null))
-                {
-                    listaClientes = null;
-                }
+                if (!(listaClientes is null)) listaClientes = null;
+                
             }
         }
 

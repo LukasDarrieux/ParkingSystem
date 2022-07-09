@@ -230,6 +230,12 @@
     <Compile Include="Views\Veiculo\Veiculo\frmVeiculos.Designer.cs">
       <DependentUpon>frmVeiculos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Veiculo\Veiculo\frmVeiculosCrud.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Veiculo\Veiculo\frmVeiculosCrud.Designer.cs">
+      <DependentUpon>frmVeiculosCrud.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -278,6 +284,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Veiculo\Veiculo\frmVeiculos.resx">
       <DependentUpon>frmVeiculos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Veiculo\Veiculo\frmVeiculosCrud.resx">
+      <DependentUpon>frmVeiculosCrud.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -11,7 +11,7 @@ namespace ParkingSystem.Models.Veiculo
         public enum tipo
         {
             Carro = 1,
-            Moto
+            Moto 
         }
 
     }

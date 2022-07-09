@@ -21,6 +21,11 @@ namespace ParkingSystem.Models.Veiculo
         public int Ano { get; set; }
         public Fabricantes Fabricante { get; set; }
 
+        public Modelos()
+        {
+
+        }
+
         public Modelos(int id, string nome, string motor, int ano, Fabricantes fabricante)
         {
             this.Id = id;
@@ -32,7 +37,7 @@ namespace ParkingSystem.Models.Veiculo
 
         public override string ToString()
         {
-            return Nome;
+            return $"{Nome} - {Motor}";
         }
 
         public void Dispose()

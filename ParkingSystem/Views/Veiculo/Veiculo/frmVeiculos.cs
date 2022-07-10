@@ -48,7 +48,9 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
 
         private void frmVeiculos_Load(object sender, EventArgs e)
         {
+            lblQuantidade.Text = String.Empty;
             this.OnResize(null);
+            btnBuscar.PerformClick();
         }
 
         private void frmVeiculos_Activated(object sender, EventArgs e)

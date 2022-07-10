@@ -179,15 +179,9 @@ namespace ParkingSystem.Controller.Implements
             Crud crud = new Crud(db, TABELA, GetFields(), GetValues(modelo));
             try
             {
-                if (ModeloExists(modelo))
-                {
-                    General.MessageShowAttention("Fabricante já cadastrado!");
-                    return false;
-                }
-
                 if (!crud.Update())
                 {
-                    General.MessageShowAttention("Não foi possível atualizar fabricante!");
+                    General.MessageShowAttention("Não foi possível atualizar modelo!");
                     return false;
                 }
                 return true;

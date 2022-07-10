@@ -118,14 +118,17 @@
     <Compile Include="Controller\Implements\FabricantesController.cs" />
     <Compile Include="Controller\Implements\ModelosController.cs" />
     <Compile Include="Controller\Implements\UsuariosController.cs" />
+    <Compile Include="Controller\Implements\VagasController.cs" />
     <Compile Include="Controller\Implements\VeiculosController.cs" />
     <Compile Include="Controller\Interfaces\IClientesController.cs" />
     <Compile Include="Controller\Interfaces\ICrud.cs" />
     <Compile Include="Controller\Interfaces\IFabricantesController.cs" />
     <Compile Include="Controller\Interfaces\IModelosController.cs" />
     <Compile Include="Controller\Interfaces\IUsuariosController.cs" />
+    <Compile Include="Controller\Interfaces\IVagasController.cs" />
     <Compile Include="Controller\Interfaces\IVeiculosController.cs" />
     <Compile Include="Models\Cliente\Clientes.cs" />
+    <Compile Include="Models\Estacionamento\Vagas.cs" />
     <Compile Include="Models\Pessoa\Enderecos.cs" />
     <Compile Include="Models\Pessoa\Pessoas.cs" />
     <Compile Include="Models\Usuarios\Usuarios.cs" />
@@ -169,6 +172,18 @@
     </Compile>
     <Compile Include="Views\Config\frmConfigDatabase.Designer.cs">
       <DependentUpon>frmConfigDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Estacionamento\frmVagas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Estacionamento\frmVagas.Designer.cs">
+      <DependentUpon>frmVagas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Estacionamento\frmVagasCrud.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Estacionamento\frmVagasCrud.Designer.cs">
+      <DependentUpon>frmVagasCrud.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Login\frmLogin.cs">
       <SubType>Form</SubType>
@@ -254,6 +269,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Config\frmConfigDatabase.resx">
       <DependentUpon>frmConfigDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Estacionamento\frmVagas.resx">
+      <DependentUpon>frmVagas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Estacionamento\frmVagasCrud.resx">
+      <DependentUpon>frmVagasCrud.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Login\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

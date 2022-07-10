@@ -189,11 +189,7 @@ namespace ParkingSystem.Controller.Implements
             Crud crud = new Crud(db, TABELA, GetFields(), GetValues(veiculo));
             try
             {
-                if (VeiculosExists(veiculo))
-                {
-                    General.MessageShowAttention("Veículo já cadastrado!");
-                    return false;
-                }
+                if (veiculo is null) return false;
 
                 if (!crud.Update())
                 {

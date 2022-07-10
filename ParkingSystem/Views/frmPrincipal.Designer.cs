@@ -44,6 +44,9 @@
             this.mnuFabricantes = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuModelos = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuVeiculos = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnusEstacionamento = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuVaga = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEstaciomento = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,7 +80,8 @@
             this.menu.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuSistema,
-            this.mnuCadastros});
+            this.mnuCadastros,
+            this.mnuEstaciomento});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(784, 24);
@@ -118,7 +122,8 @@
             // 
             this.mnuCadastros.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuClientes,
-            this.mnusVeiculos});
+            this.mnusVeiculos,
+            this.mnusEstacionamento});
             this.mnuCadastros.Name = "mnuCadastros";
             this.mnuCadastros.Size = new System.Drawing.Size(70, 20);
             this.mnuCadastros.Text = "Cadastros";
@@ -161,6 +166,27 @@
             this.mnuVeiculos.Text = "Veículos";
             this.mnuVeiculos.Click += new System.EventHandler(this.mnuVeiculos_Click);
             // 
+            // mnusEstacionamento
+            // 
+            this.mnusEstacionamento.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuVaga});
+            this.mnusEstacionamento.Name = "mnusEstacionamento";
+            this.mnusEstacionamento.Size = new System.Drawing.Size(180, 22);
+            this.mnusEstacionamento.Text = "Estacionamento";
+            // 
+            // mnuVaga
+            // 
+            this.mnuVaga.Name = "mnuVaga";
+            this.mnuVaga.Size = new System.Drawing.Size(180, 22);
+            this.mnuVaga.Text = "Vagas";
+            this.mnuVaga.Click += new System.EventHandler(this.mnuVaga_Click);
+            // 
+            // mnuEstaciomento
+            // 
+            this.mnuEstaciomento.Name = "mnuEstaciomento";
+            this.mnuEstaciomento.Size = new System.Drawing.Size(104, 20);
+            this.mnuEstaciomento.Text = "Estacionamento";
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -201,5 +227,8 @@
         private System.Windows.Forms.ToolStripMenuItem mnuFabricantes;
         private System.Windows.Forms.ToolStripMenuItem mnuModelos;
         private System.Windows.Forms.ToolStripMenuItem mnuVeiculos;
+        private System.Windows.Forms.ToolStripMenuItem mnusEstacionamento;
+        private System.Windows.Forms.ToolStripMenuItem mnuVaga;
+        private System.Windows.Forms.ToolStripMenuItem mnuEstaciomento;
     }
 }

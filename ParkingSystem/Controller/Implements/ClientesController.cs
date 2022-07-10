@@ -190,11 +190,10 @@ namespace ParkingSystem.Controller.Implements
 
         public bool Update(Clientes cliente)
         {
+            if (cliente is null) return false;
             Crud crud = new Crud(db, TABELA, GetFields(), GetValues(cliente));
             try
             {
-                if (cliente is null) return false;
-
                 if (!crud.Update()) return false;
                 return true;
             }

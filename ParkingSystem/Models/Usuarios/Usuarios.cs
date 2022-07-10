@@ -38,5 +38,14 @@ namespace ParkingSystem.Models.Usuario
         {
             return (this.Id == 1 && this.Nome == "ADMINISTRADOR" && this.Email == "adm@darrieuxinfo.com");
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Usuarios)
+            {
+                return (this.Id == ((Usuarios)obj).Id && this.Email == ((Usuarios)obj).Email);
+            }
+            return false;
+        }
     }
 }

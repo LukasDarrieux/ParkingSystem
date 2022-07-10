@@ -155,12 +155,6 @@ namespace ParkingSystem.Controller.Implements
             Crud crud = new Crud(db, TABELA, GetFields(), GetValues(fabricante));
             try
             {
-                if (FabricanteExists(fabricante))
-                {
-                    General.MessageShowAttention("Fabricante já cadastrado!");
-                    return false;
-                }
-
                 if (!crud.Update())
                 {
                     General.MessageShowAttention("Não foi possível atualizar fabricante!");
@@ -263,14 +257,7 @@ namespace ParkingSystem.Controller.Implements
 
                 if (listaFabricantes is null) return false;
 
-                foreach (Fabricantes maker in listaFabricantes)
-                {
-                    if (maker.Id != fabricante.Id && maker.Nome == fabricante.Nome)
-                    {
-                        return true;
-                    }
-                }
-                return false;
+                return listaFabricantes.Contains(fabricante);
             }
             finally
             {

@@ -129,9 +129,9 @@ namespace ParkingSystem.Views.Veiculo.Fabricante
         {
             using (FabricantesController fabricanteController = new FabricantesController())
             {
-                using (Fabricantes usuario = new Fabricantes(IdFabricante, txtFabricante.Text))
+                using (Fabricantes fabricante = new Fabricantes(IdFabricante, txtFabricante.Text))
                 {
-                    if (fabricanteController.Update(usuario))
+                    if (fabricanteController.Update(fabricante))
                     {
                         this.Close();
                     }
@@ -141,13 +141,13 @@ namespace ParkingSystem.Views.Veiculo.Fabricante
 
         private void DeleteFabricante()
         {
-            using (FabricantesController usuarioController = new FabricantesController())
+            using (FabricantesController fabricanteController = new FabricantesController())
             {
-                using (Fabricantes usuario = new Fabricantes(IdFabricante, txtFabricante.Text))
+                using (Fabricantes fabricante = new Fabricantes(IdFabricante, txtFabricante.Text))
                 {
                     if (General.MessageQuestion("Tem certeza que deseja excluir este fabricante?"))
                     {
-                        if (usuarioController.Delete(usuario))
+                        if (fabricanteController.Delete(fabricante))
                         {
                             this.Close();
                         }

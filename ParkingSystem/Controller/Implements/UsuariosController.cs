@@ -157,15 +157,11 @@ namespace ParkingSystem.Controller.Implements
             Crud crud = new Crud(db, TABELA, GetFields(true), GetValues(usuario, true));
             try
             {
+                if (usuario is null) return false;
+
                 if (usuario.IsAdmin())
                 {
                     General.MessageShowAttention("Não é possível alterar os dados do usuário administrador");
-                    return false;
-                }
-
-                if (UsuarioExists(usuario))
-                {
-                    General.MessageShowAttention("E-mail já cadastrado!");
                     return false;
                 }
 
@@ -371,14 +367,7 @@ namespace ParkingSystem.Controller.Implements
 
                 if (listaUsuarios is null) return false;
 
-                foreach (Usuarios user in listaUsuarios)
-                {
-                    if (user.Email == usuario.Email && user.Id != usuario.Id)
-                    {
-                        return true;
-                    }
-                }
-                return false;
+                return listaUsuarios.Contains(usuario);
             }
             finally
             {

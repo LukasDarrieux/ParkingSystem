@@ -95,7 +95,14 @@ namespace ParkingSystem.Utils.Implements
                     sql = "CREATE TABLE ENDERECOS(ID INT NOT NULL IDENTITY(1, 1), LOGRADOURO VARCHAR(255), NUMERO VARCHAR(20), BAIRRO VARCHAR(255), CIDADE VARCHAR(255), UF VARCHAR(2), PRIMARY KEY(ID))";
                     ExecuteSql(TableExistsSQL(sql, "ENDERECOS"));
                     versaoBanco++;
+                    ExecuteSql($"UPDATE CONFIGBANCO SET VERSAO = {versaoBanco}");
+                }
 
+                if (versaoBanco < 5)
+                {
+                    sql = "CREATE TABLE VAGAS(ID INT NOT NULL IDENTITY(1, 1), VAGA VARCHAR(100), PRIMARY KEY(ID))";
+                    ExecuteSql(TableExistsSQL(sql, "VAGAS"));
+                    versaoBanco++;
                     ExecuteSql($"UPDATE CONFIGBANCO SET VERSAO = {versaoBanco}");
                 }
             }

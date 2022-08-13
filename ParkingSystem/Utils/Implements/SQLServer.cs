@@ -29,10 +29,16 @@ namespace ParkingSystem.Utils.Implements
         public SQLServer(string server, string database) : base(server, database)
         {
             string strConn = $"Server={this._host};Database={this._database};Trusted_Connection=True;";
-            con.ConnectionString = strConn;
-            base._con = con;
-            this.OpenConnection();
+            settingConection(strConn);
         }
+
+        public SQLServer(string server, string database, string user, string password) : base(server, database, user, password)
+        {
+            string strConn = $"Server={this._host};Database={this._database};User Id={this._user};Password={this._password};";
+            settingConection(strConn);
+        }
+
+
 
         /// <summary>
         /// Fecha a conexão com a base de dados
@@ -131,5 +137,12 @@ namespace ParkingSystem.Utils.Implements
         }
 
         #endregion
+
+        private void settingConection(string stringConnection)
+        {
+            con.ConnectionString = stringConnection;
+            base._con = con;
+            this.OpenConnection();
+        }
     }
 }

@@ -12,11 +12,12 @@ namespace ParkingSystem.Shared
     class Configuracoes
     {
         public static Database.Tipo SGBD { get; private set; }
+        public static bool AutenticationWindows { get; private set; }
         public static string Server { get; private set; }
         public static string User { get; private set; }
         public static string Password { get; private set; }
 
-        public static void SetConfig(string sgbd, string server, string user, string password)
+        public static void SetConfig(string sgbd, string server, bool autenticationWindows, string user, string password)
         {
             if (sgbd.ToUpper() == Database.Tipo.MySQL.ToString().ToUpper())
                 SGBD = Database.Tipo.MySQL;
@@ -24,6 +25,7 @@ namespace ParkingSystem.Shared
                 SGBD = Database.Tipo.SQLServer;
 
             Server = server;
+            AutenticationWindows = autenticationWindows;
             User = user;
             Password = password;
         }
@@ -41,7 +43,10 @@ namespace ParkingSystem.Shared
                     return new MySQL(Server, Database.NAME_DB, User, Password);
 
                 case Database.Tipo.SQLServer:
-                    return new SQLServer(Server, Database.NAME_DB);
+                    if (AutenticationWindows)
+                        return new SQLServer(Server, Database.NAME_DB);
+                    else
+                        return new SQLServer(Server, Database.NAME_DB, User, Password);
 
                 default:
                     return null;

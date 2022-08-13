@@ -27,12 +27,14 @@ namespace ParkingSystem.Utils.Implements
         protected string Server;
         protected string User;
         protected string Password;
+        protected bool AutenticationWindows;
 
-        protected DatabaseCreator(string server, string user, string password)
+        protected DatabaseCreator(string server, string user, string password, bool autenticationWindows)
         {
             this.Server = server;
             this.User = user;
             this.Password = password;
+            this.AutenticationWindows = autenticationWindows;
         }
 
         public virtual void CreateDatabase()
@@ -44,7 +46,7 @@ namespace ParkingSystem.Utils.Implements
                     break;
 
                 case Database.Tipo.SQLServer:
-                    new SQLServerCreator(Server, User, Password).CreateDatabase();
+                    new SQLServerCreator(Server, User, Password, AutenticationWindows).CreateDatabase();
                     break;
             }
         }
@@ -58,13 +60,13 @@ namespace ParkingSystem.Utils.Implements
                     break;
 
                 case Database.Tipo.SQLServer:
-                    new SQLServerCreator(Server, User, Password).UpdateDatabase();
+                    new SQLServerCreator(Server, User, Password, AutenticationWindows).UpdateDatabase();
                     break;
             }
          
         }
 
-        public static DatabaseCreator GetDatabase(Database.Tipo tipo, string server, string user, string password)
+        public static DatabaseCreator GetDatabase(Database.Tipo tipo, string server, bool autenticationWindows, string user, string password)
         {
             Tipo = tipo;
 
@@ -74,7 +76,7 @@ namespace ParkingSystem.Utils.Implements
                     return new MySQLCreator(server, user, password);
                     
                 case Database.Tipo.SQLServer:
-                    return new SQLServerCreator(server, user, password);
+                    return new SQLServerCreator(server, user, password, autenticationWindows);
 
                 default:
                     return null;

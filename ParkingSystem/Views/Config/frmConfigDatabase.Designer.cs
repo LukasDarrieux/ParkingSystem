@@ -40,6 +40,7 @@
             this.lblUsuario = new System.Windows.Forms.Label();
             this.lblServidor = new System.Windows.Forms.Label();
             this.btnSalvar = new System.Windows.Forms.Button();
+            this.chkUsarAutenticacaoWindows = new System.Windows.Forms.CheckBox();
             this.groupDatabase.SuspendLayout();
             this.groupConfig.SuspendLayout();
             this.SuspendLayout();
@@ -88,6 +89,7 @@
             this.groupConfig.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupConfig.Controls.Add(this.chkUsarAutenticacaoWindows);
             this.groupConfig.Controls.Add(this.txtSenha);
             this.groupConfig.Controls.Add(this.txtUsuario);
             this.groupConfig.Controls.Add(this.txtServidor);
@@ -167,6 +169,17 @@
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
+            // chkUsarAutenticacaoWindows
+            // 
+            this.chkUsarAutenticacaoWindows.AutoSize = true;
+            this.chkUsarAutenticacaoWindows.Location = new System.Drawing.Point(150, 1);
+            this.chkUsarAutenticacaoWindows.Name = "chkUsarAutenticacaoWindows";
+            this.chkUsarAutenticacaoWindows.Size = new System.Drawing.Size(186, 21);
+            this.chkUsarAutenticacaoWindows.TabIndex = 6;
+            this.chkUsarAutenticacaoWindows.Text = "Autenticação do Windows";
+            this.chkUsarAutenticacaoWindows.UseVisualStyleBackColor = true;
+            this.chkUsarAutenticacaoWindows.CheckedChanged += new System.EventHandler(this.chkUsarAutenticacaoWindows_CheckedChanged);
+            // 
             // frmConfigDatabase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -206,5 +219,6 @@
         private System.Windows.Forms.TextBox txtSenha;
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.TextBox txtServidor;
+        private System.Windows.Forms.CheckBox chkUsarAutenticacaoWindows;
     }
 }

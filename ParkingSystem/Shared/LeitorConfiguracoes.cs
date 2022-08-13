@@ -54,7 +54,7 @@ namespace ParkingSystem.Shared
             try
             {
                 var config = JsonConvert.DeserializeObject<ConfigJson>(@"" + File.ReadAllText($"{General.DIRETORIO}\\{General.ARQUIVOCONFIG}".Trim()));
-                Configuracoes.SetConfig(config.Sgbd, config.Server.Replace("/", "\\"), config.User, config.Password);
+                Configuracoes.SetConfig(config.Sgbd, config.Server.Replace("/", "\\"), config.AutenticationWindows, config.User, config.Password);
             }
             catch (Exception error)
             {
@@ -62,7 +62,7 @@ namespace ParkingSystem.Shared
             }
         }
 
-        public static void WriteFileConfig(Database.Tipo tipo, string server, string user, string password)
+        public static void WriteFileConfig(Database.Tipo tipo, string server, bool autenticationWindows, string user, string password)
         {
             using (StreamWriter writer = new StreamWriter($"{General.DIRETORIO}\\{General.ARQUIVOCONFIG}"))
             {
@@ -72,7 +72,8 @@ namespace ParkingSystem.Shared
                 writer.WriteLine($"\"Sgbd\": \"{tipo.ToString()}\",");
                 writer.WriteLine($"\"Server\": \"{server}\",");
                 writer.WriteLine($"\"User\": \"{user}\",");
-                writer.WriteLine($"\"Password\": \"{password}\"");
+                writer.WriteLine($"\"Password\": \"{password}\",");
+                writer.WriteLine($"\"AutenticationWindows\": {autenticationWindows.ToString().ToLower()}");
                 writer.WriteLine("}");
 
                 writer.Close();

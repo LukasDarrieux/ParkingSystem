@@ -21,6 +21,11 @@ namespace ParkingSystem.Views
 
         private void rdMySQL_CheckedChanged(object sender, EventArgs e)
         {
+            if (rdMySQL.Checked)
+            {
+                chkUsarAutenticacaoWindows.Checked = false;
+                chkUsarAutenticacaoWindows.Visible = false;
+            }
             GroupConfigEnabled();
         }
 
@@ -28,15 +33,15 @@ namespace ParkingSystem.Views
         {
             groupConfig.Enabled = DatabaseChecked();
 
-            txtUsuario.Enabled = rdMySQL.Checked;
-            txtSenha.Enabled = rdMySQL.Checked;
+            txtUsuario.Enabled = !chkUsarAutenticacaoWindows.Checked;
+            txtSenha.Enabled = !chkUsarAutenticacaoWindows.Checked;
 
             ClearFields();
         }
 
         private void ClearFields()
         {
-            if (!rdMySQL.Checked)
+            if (chkUsarAutenticacaoWindows.Checked)
             {
                 txtUsuario.Clear();
                 txtSenha.Clear();
@@ -57,7 +62,6 @@ namespace ParkingSystem.Views
         {
             try
             {
-                GroupConfigEnabled();
                 LoadConfig();
             }
             catch (Exception error)
@@ -78,18 +82,17 @@ namespace ParkingSystem.Views
                 }
 
                 if (!General.ValidateField(txtServidor, lblServidor.Text)) return;
-                if (rdMySQL.Checked)
+                if (!chkUsarAutenticacaoWindows.Checked)
                 {
                     if (!General.ValidateField(txtUsuario, lblUsuario.Text)) return;
                 }
-                
 
                 bool resposta = General.MessageQuestion("Ao salvar as novas configurações de banco de dados, será necessário reiniciar o sistema.\n\nDeseja continuar?");
 
                 if (resposta)
                 {
-                    LeitorConfiguracoes.WriteFileConfig(GetTipoDatabase(), txtServidor.Text, txtUsuario.Text, txtSenha.Text);
-                    Configuracoes.SetConfig(GetTipoDatabase().ToString(), txtServidor.Text, txtUsuario.Text, txtSenha.Text);
+                    LeitorConfiguracoes.WriteFileConfig(GetTipoDatabase(), txtServidor.Text, chkUsarAutenticacaoWindows.Checked, txtUsuario.Text, txtSenha.Text);
+                    Configuracoes.SetConfig(GetTipoDatabase().ToString(), txtServidor.Text, chkUsarAutenticacaoWindows.Checked, txtUsuario.Text, txtSenha.Text);
                     Application.Exit();
                 }
                 else
@@ -117,7 +120,11 @@ namespace ParkingSystem.Views
             try
             {
                 if (Configuracoes.SGBD == Database.Tipo.MySQL) rdMySQL.Checked = true;
-                else rdSQLServer.Checked = true;
+                else
+                {
+                    rdSQLServer.Checked = true;
+                    chkUsarAutenticacaoWindows.Checked = Configuracoes.AutenticationWindows;
+                }
 
                 if (Configuracoes.Server.Trim().Length > uint.MinValue) txtServidor.Text = Configuracoes.Server;
                 if (Configuracoes.User.Trim().Length > uint.MinValue) txtUsuario.Text = Configuracoes.User;
@@ -127,6 +134,11 @@ namespace ParkingSystem.Views
             {
                 throw error;
             }
+        }
+
+        private void chkUsarAutenticacaoWindows_CheckedChanged(object sender, EventArgs e)
+        {
+            GroupConfigEnabled();
         }
     }
 }

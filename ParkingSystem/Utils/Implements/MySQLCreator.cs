@@ -13,7 +13,7 @@ namespace ParkingSystem.Utils.Implements
     {
         #region "Construtor"
 
-        public MySQLCreator(string server, string user, string password):base(server, user, password)
+        public MySQLCreator(string server, string user, string password):base(server, user, password, false)
         {
             this.conn = new MySqlConnection();
             this.CreateStringConnection();
@@ -93,6 +93,14 @@ namespace ParkingSystem.Utils.Implements
                     versaoBanco++;
                     ExecuteSql($"UPDATE CONFIGBANCO SET VERSAO = {versaoBanco}");
                 }
+
+                if (versaoBanco < 6)
+                {
+                    ExecuteSql("CREATE TABLE IF NOT EXISTS ESTACIONAMENTO(ID INT NOT NULL AUTO_INCREMENT, IDVAGA INT NOT NULL, IDVEICULO INT NOT NULL, ENTRADA DATETIME NOT NULL, SAIDA DATETIME, VALORTOTAL DECIMAL, PRIMARY KEY (ID))");
+                    versaoBanco++;
+                    ExecuteSql($"UPDATE CONFIGBANCO SET VERSAO = {versaoBanco}");
+                }
+
 
             }
             catch (Exception error)

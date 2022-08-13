@@ -14,7 +14,7 @@ namespace ParkingSystem.Utils.Implements
     {
         #region "Construtor"
 
-        public SQLServerCreator(string server, string user, string password) : base(server, user, password)
+        public SQLServerCreator(string server, string user, string password, bool autenticationWindows) : base(server, user, password, autenticationWindows)
         {
             this.conn = new SqlConnection();
             this.CreateStringConnection();
@@ -102,6 +102,14 @@ namespace ParkingSystem.Utils.Implements
                 {
                     sql = "CREATE TABLE VAGAS(ID INT NOT NULL IDENTITY(1, 1), VAGA VARCHAR(100), PRIMARY KEY(ID))";
                     ExecuteSql(TableExistsSQL(sql, "VAGAS"));
+                    versaoBanco++;
+                    ExecuteSql($"UPDATE CONFIGBANCO SET VERSAO = {versaoBanco}");
+                }
+
+                if (versaoBanco < 6)
+                {
+                    sql = "CREATE TABLE ESTACIONAMENTO(ID INT NOT NULL IDENTITY(1, 1), IDVAGA INT NOT NULL, IDVEICULO INT NOT NULL, ENTRADA DATETIME NOT NULL, SAIDA DATETIME, VALORTOTAL DECIMAL, PRIMARY KEY (ID))";
+                    ExecuteSql(TableExistsSQL(sql, "ESTACIONAMENTO"));
                     versaoBanco++;
                     ExecuteSql($"UPDATE CONFIGBANCO SET VERSAO = {versaoBanco}");
                 }
@@ -210,7 +218,10 @@ namespace ParkingSystem.Utils.Implements
 
         private void CreateStringConnection()
         {
-            strConn = $"Server={this.Server};Trusted_Connection=True;";
+            if (this.AutenticationWindows)
+                strConn = $"Server={this.Server};Trusted_Connection=True;";
+            else
+                strConn = $"Server={this.Server}; User Id={this.User};Password={this.Password}; ";
         }
 
         private string DatabaseExistsSQL(string sql)

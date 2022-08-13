@@ -34,5 +34,21 @@ namespace ParkingSystem.Models.Estacionamento
             this.Id = 0;
             this.Vaga = null;
         }
+
+        public override string ToString()
+        {
+            return $"{this.Vaga}";
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Vagas)) return false;
+            return  ((Vagas)obj).Vaga == this.Vaga;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

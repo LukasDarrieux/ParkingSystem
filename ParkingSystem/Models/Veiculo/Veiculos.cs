@@ -38,6 +38,11 @@ namespace ParkingSystem.Models.Veiculo
             Modelo.Dispose();
         }
 
+        public override string ToString()
+        {
+            return $"{this.Modelo} - {this.Placa}";
+        }
+
         public override bool Equals(object obj)
         {
             if (obj is Veiculos)

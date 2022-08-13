@@ -90,6 +90,7 @@
             this.Name = "frmVagasCrud";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmVagasCrud";
+            this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmVagasCrud_FormClosed);
             this.Load += new System.EventHandler(this.frmVagasCrud_Load);
             this.ResumeLayout(false);

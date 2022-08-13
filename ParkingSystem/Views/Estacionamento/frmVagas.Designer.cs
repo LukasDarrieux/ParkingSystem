@@ -154,7 +154,7 @@
             this.lblEmail.TabIndex = 11;
             this.lblEmail.Text = "Vaga:";
             // 
-            // frmVaga
+            // frmVagas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -171,9 +171,10 @@
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmVaga";
+            this.Name = "frmVagas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vagas";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmVaga_Load);
             this.Resize += new System.EventHandler(this.frmVaga_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.gridVagas)).EndInit();

@@ -47,5 +47,15 @@ namespace ParkingSystem.Models.Usuario
             }
             return false;
         }
+
+        public override string ToString()
+        {
+            return $"{this.Nome}";
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

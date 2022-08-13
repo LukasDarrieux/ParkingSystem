@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ParkingSystem.Models.Estacionamento;
 
 namespace ParkingSystem
 {
@@ -82,7 +83,7 @@ namespace ParkingSystem
 
         public static bool CriarBanco()
         {
-            DatabaseCreator DbCreator = DatabaseCreator.GetDatabase(Configuracoes.SGBD, Configuracoes.Server, Configuracoes.User, Configuracoes.Password);
+            DatabaseCreator DbCreator = DatabaseCreator.GetDatabase(Configuracoes.SGBD, Configuracoes.Server, Configuracoes.AutenticationWindows, Configuracoes.User, Configuracoes.Password);
             try
             {
                 DbCreator.CreateDatabase();
@@ -238,6 +239,81 @@ namespace ParkingSystem
             {
                 if (!(listaClientes is null)) listaClientes = null;
                 
+            }
+        }
+
+        public static void CarregarComboVaga(ComboBox combo)
+        {
+            List<Vagas> listaVagas = null;
+            try
+            {
+                object itemSelected = combo.SelectedItem;
+                combo.Items.Clear();
+                using (VagasController vagaController = new VagasController())
+                {
+                    listaVagas = vagaController.GetAll();
+                    if (!(listaVagas is null))
+                    {
+                        if (listaVagas.Count > 0)
+                        {
+                            listaVagas = listaVagas.OrderBy(vaga => vaga.Vaga).ToList();
+                            foreach (Vagas vaga in listaVagas)
+                            {
+                                combo.Items.Add(vaga);
+                            }
+                        }
+                    }
+                }
+                combo.SelectedItem = itemSelected;
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+            finally
+            {
+                if (!(listaVagas is null)) listaVagas = null;
+            }
+        }
+
+        public static void CarregarComboVeiculos(int IdCliente, ComboBox combo)
+        {
+            List<Veiculos> listaVeiculos = null;
+            Clientes cliente = null;
+            Veiculos veiculos = new Veiculos(0, String.Empty, null, null, EnumVeiculos.tipo.Carro);
+            try
+            {
+                object itemSelected = combo.SelectedItem;
+                combo.Items.Clear();
+                using (ClientesController clienteController = new ClientesController())
+                {
+                    cliente = clienteController.Get(IdCliente);
+                    veiculos.Cliente = cliente;
+                    using (VeiculosController veiculoController = new VeiculosController())
+                    {
+                        listaVeiculos = veiculoController.GetAll(veiculos);
+                        if (!(listaVeiculos is null))
+                        {
+                            if (listaVeiculos.Count > 0)
+                            {
+                                listaVeiculos = listaVeiculos.OrderBy(veiculo => veiculo.Modelo.ToString()).ToList();
+                                foreach (Veiculos vehicle in listaVeiculos)
+                                {
+                                    combo.Items.Add(vehicle);
+                                }
+                            }
+                        }
+                    }
+                }
+                combo.SelectedItem = itemSelected;
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+            finally
+            {
+                if (!(listaVeiculos is null)) listaVeiculos = null;
             }
         }
 

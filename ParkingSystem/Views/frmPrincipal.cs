@@ -81,5 +81,10 @@ namespace ParkingSystem.Views
         {
             new frmVagas().Show();
         }
+
+        private void mnuEstaciomento_Click(object sender, EventArgs e)
+        {
+            new frmEstacionamentos().Show();
+        }
     }
 }

@@ -74,7 +74,7 @@ namespace ParkingSystem.Controller.Implements
                     fields += ")";
                     values += ")";
 
-                    string sql = $"INSERT INTO {Tabela}{fields} VALUES{values}";
+                    string sql = $"INSERT INTO {Tabela}{fields} VALUES{replaceEmptyToNull(values)}";
 
                     db.ExecuteSql(sql);
 
@@ -139,6 +139,15 @@ namespace ParkingSystem.Controller.Implements
                 Campos.Contains<string>("id") || 
                 Campos.Contains<string>("Id") || 
                 Campos.Contains<string>("iD"));
+        }
+
+        private string replaceEmptyToNull(string values)
+        {
+            values = values.Replace("''", "null")
+                .Replace("'null'", "null")
+                .Replace("'NULL'", "null")
+                .Replace("'Null'", "null");
+            return values;
         }
     }
 }

@@ -257,14 +257,7 @@ namespace ParkingSystem.Controller.Implements
 
                 if (listaVagas is null) return false;
 
-                foreach (Vagas maker in listaVagas)
-                {
-                    if (maker.Id != vaga.Id && maker.Vaga == vaga.Vaga)
-                    {
-                        return true;
-                    }
-                }
-                return false;
+                return listaVagas.Contains(vaga);
             }
             finally
             {

@@ -115,6 +115,7 @@
   <ItemGroup>
     <Compile Include="Controller\Implements\ClientesController.cs" />
     <Compile Include="Controller\Implements\Crud.cs" />
+    <Compile Include="Controller\Implements\EstacionamentosController.cs" />
     <Compile Include="Controller\Implements\FabricantesController.cs" />
     <Compile Include="Controller\Implements\ModelosController.cs" />
     <Compile Include="Controller\Implements\UsuariosController.cs" />
@@ -122,12 +123,14 @@
     <Compile Include="Controller\Implements\VeiculosController.cs" />
     <Compile Include="Controller\Interfaces\IClientesController.cs" />
     <Compile Include="Controller\Interfaces\ICrud.cs" />
+    <Compile Include="Controller\Interfaces\IEstacionamentosController.cs" />
     <Compile Include="Controller\Interfaces\IFabricantesController.cs" />
     <Compile Include="Controller\Interfaces\IModelosController.cs" />
     <Compile Include="Controller\Interfaces\IUsuariosController.cs" />
     <Compile Include="Controller\Interfaces\IVagasController.cs" />
     <Compile Include="Controller\Interfaces\IVeiculosController.cs" />
     <Compile Include="Models\Cliente\Clientes.cs" />
+    <Compile Include="Models\Estacionamento\Estacionamentos.cs" />
     <Compile Include="Models\Estacionamento\Vagas.cs" />
     <Compile Include="Models\Pessoa\Enderecos.cs" />
     <Compile Include="Models\Pessoa\Pessoas.cs" />
@@ -172,6 +175,18 @@
     </Compile>
     <Compile Include="Views\Config\frmConfigDatabase.Designer.cs">
       <DependentUpon>frmConfigDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Estacionamento\frmEntrada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Estacionamento\frmEntrada.Designer.cs">
+      <DependentUpon>frmEntrada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Estacionamento\frmEstacionamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Estacionamento\frmEstacionamentos.Designer.cs">
+      <DependentUpon>frmEstacionamentos.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Estacionamento\frmVagas.cs">
       <SubType>Form</SubType>
@@ -269,6 +284,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Config\frmConfigDatabase.resx">
       <DependentUpon>frmConfigDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Estacionamento\frmEntrada.resx">
+      <DependentUpon>frmEntrada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Estacionamento\frmEstacionamentos.resx">
+      <DependentUpon>frmEstacionamentos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Estacionamento\frmVagas.resx">
       <DependentUpon>frmVagas.cs</DependentUpon>

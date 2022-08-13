@@ -67,5 +67,10 @@ namespace ParkingSystem.Models.Cliente
             }
             return false;
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

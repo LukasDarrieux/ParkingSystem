@@ -43,6 +43,10 @@
             this.txtVeiculo = new System.Windows.Forms.ComboBox();
             this.btnEntrada = new System.Windows.Forms.Button();
             this.btnSaida = new System.Windows.Forms.Button();
+            this.lblPeriodo = new System.Windows.Forms.Label();
+            this.txtDataInicio = new System.Windows.Forms.MaskedTextBox();
+            this.lblAte = new System.Windows.Forms.Label();
+            this.txtDataFim = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridEstacionamento)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,7 +66,7 @@
             this.gridEstacionamento.Location = new System.Drawing.Point(15, 111);
             this.gridEstacionamento.Name = "gridEstacionamento";
             this.gridEstacionamento.Size = new System.Drawing.Size(971, 334);
-            this.gridEstacionamento.TabIndex = 18;
+            this.gridEstacionamento.TabIndex = 9;
             // 
             // ID
             // 
@@ -110,7 +114,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(879, 74);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(107, 31);
-            this.btnBuscar.TabIndex = 17;
+            this.btnBuscar.TabIndex = 8;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -121,7 +125,7 @@
             this.lblCliente.Location = new System.Drawing.Point(12, 15);
             this.lblCliente.Name = "lblCliente";
             this.lblCliente.Size = new System.Drawing.Size(52, 17);
-            this.lblCliente.TabIndex = 19;
+            this.lblCliente.TabIndex = 0;
             this.lblCliente.Text = "Cliente:";
             // 
             // txtCliente
@@ -129,10 +133,10 @@
             this.txtCliente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCliente.FormattingEnabled = true;
-            this.txtCliente.Location = new System.Drawing.Point(71, 12);
+            this.txtCliente.Location = new System.Drawing.Point(76, 12);
             this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Size = new System.Drawing.Size(915, 25);
-            this.txtCliente.TabIndex = 20;
+            this.txtCliente.Size = new System.Drawing.Size(910, 25);
+            this.txtCliente.TabIndex = 1;
             this.txtCliente.SelectedIndexChanged += new System.EventHandler(this.txtCliente_SelectedIndexChanged);
             this.txtCliente.TextChanged += new System.EventHandler(this.txtCliente_TextChanged);
             // 
@@ -142,7 +146,7 @@
             this.lblVeiculo.Location = new System.Drawing.Point(12, 46);
             this.lblVeiculo.Name = "lblVeiculo";
             this.lblVeiculo.Size = new System.Drawing.Size(53, 17);
-            this.lblVeiculo.TabIndex = 23;
+            this.lblVeiculo.TabIndex = 2;
             this.lblVeiculo.Text = "Veiculo:";
             // 
             // txtVeiculo
@@ -150,10 +154,10 @@
             this.txtVeiculo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtVeiculo.FormattingEnabled = true;
-            this.txtVeiculo.Location = new System.Drawing.Point(71, 43);
+            this.txtVeiculo.Location = new System.Drawing.Point(76, 43);
             this.txtVeiculo.Name = "txtVeiculo";
-            this.txtVeiculo.Size = new System.Drawing.Size(915, 25);
-            this.txtVeiculo.TabIndex = 24;
+            this.txtVeiculo.Size = new System.Drawing.Size(910, 25);
+            this.txtVeiculo.TabIndex = 3;
             // 
             // btnEntrada
             // 
@@ -162,7 +166,7 @@
             this.btnEntrada.Location = new System.Drawing.Point(401, 457);
             this.btnEntrada.Name = "btnEntrada";
             this.btnEntrada.Size = new System.Drawing.Size(107, 31);
-            this.btnEntrada.TabIndex = 25;
+            this.btnEntrada.TabIndex = 10;
             this.btnEntrada.Text = "Entrada";
             this.btnEntrada.UseVisualStyleBackColor = true;
             this.btnEntrada.Click += new System.EventHandler(this.btnEntrada_Click);
@@ -174,16 +178,54 @@
             this.btnSaida.Location = new System.Drawing.Point(514, 457);
             this.btnSaida.Name = "btnSaida";
             this.btnSaida.Size = new System.Drawing.Size(107, 31);
-            this.btnSaida.TabIndex = 26;
+            this.btnSaida.TabIndex = 11;
             this.btnSaida.Text = "Saída";
             this.btnSaida.UseVisualStyleBackColor = true;
             this.btnSaida.Click += new System.EventHandler(this.btnSaida_Click);
+            // 
+            // lblPeriodo
+            // 
+            this.lblPeriodo.AutoSize = true;
+            this.lblPeriodo.Location = new System.Drawing.Point(12, 77);
+            this.lblPeriodo.Name = "lblPeriodo";
+            this.lblPeriodo.Size = new System.Drawing.Size(58, 17);
+            this.lblPeriodo.TabIndex = 4;
+            this.lblPeriodo.Text = "Periodo:";
+            // 
+            // txtDataInicio
+            // 
+            this.txtDataInicio.Location = new System.Drawing.Point(76, 74);
+            this.txtDataInicio.Mask = "00/00/0000";
+            this.txtDataInicio.Name = "txtDataInicio";
+            this.txtDataInicio.Size = new System.Drawing.Size(100, 25);
+            this.txtDataInicio.TabIndex = 5;
+            // 
+            // lblAte
+            // 
+            this.lblAte.AutoSize = true;
+            this.lblAte.Location = new System.Drawing.Point(182, 77);
+            this.lblAte.Name = "lblAte";
+            this.lblAte.Size = new System.Drawing.Size(27, 17);
+            this.lblAte.TabIndex = 6;
+            this.lblAte.Text = "até";
+            // 
+            // txtDataFim
+            // 
+            this.txtDataFim.Location = new System.Drawing.Point(215, 74);
+            this.txtDataFim.Mask = "00/00/0000";
+            this.txtDataFim.Name = "txtDataFim";
+            this.txtDataFim.Size = new System.Drawing.Size(100, 25);
+            this.txtDataFim.TabIndex = 7;
             // 
             // frmEstacionamentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 500);
+            this.Controls.Add(this.txtDataFim);
+            this.Controls.Add(this.lblAte);
+            this.Controls.Add(this.txtDataInicio);
+            this.Controls.Add(this.lblPeriodo);
             this.Controls.Add(this.btnSaida);
             this.Controls.Add(this.btnEntrada);
             this.Controls.Add(this.lblVeiculo);
@@ -224,5 +266,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CLIENTE;
         private System.Windows.Forms.DataGridViewTextBoxColumn ENTRADA;
         private System.Windows.Forms.DataGridViewTextBoxColumn STATUS;
+        private System.Windows.Forms.Label lblPeriodo;
+        private System.Windows.Forms.MaskedTextBox txtDataInicio;
+        private System.Windows.Forms.Label lblAte;
+        private System.Windows.Forms.MaskedTextBox txtDataFim;
     }
 }

@@ -199,6 +199,12 @@
     <Compile Include="Views\Estacionamento\frmEstacionamentos.Designer.cs">
       <DependentUpon>frmEstacionamentos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Estacionamento\frmSaida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Estacionamento\frmSaida.Designer.cs">
+      <DependentUpon>frmSaida.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Estacionamento\frmVagas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -304,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Estacionamento\frmEstacionamentos.resx">
       <DependentUpon>frmEstacionamentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Estacionamento\frmSaida.resx">
+      <DependentUpon>frmSaida.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Estacionamento\frmVagas.resx">
       <DependentUpon>frmVagas.cs</DependentUpon>

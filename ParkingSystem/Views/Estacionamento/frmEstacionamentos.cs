@@ -83,6 +83,8 @@ namespace ParkingSystem.Views.Estacionamento
         private void frmEstacionamentos_Load(object sender, EventArgs e)
         {
             frmEstacionamentos_Resize(null, null);
+            txtDataInicio.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            txtDataFim.Text = DateTime.Now.ToString("dd/MM/yyyy");
             btnBuscar_Click(null, null);
         }
 
@@ -105,7 +107,13 @@ namespace ParkingSystem.Views.Estacionamento
             try
             {
                 if (txtVeiculo.SelectedIndex > -1 && txtVeiculo.Text.Trim().Length > 0) veiculo = (Veiculos)txtVeiculo.SelectedItem;
-                estacionamento = new Estacionamentos(0, null, veiculo, DateTime.MinValue, null, 0);
+                if (!General.ValidateDateField(txtDataInicio, "Data Inicial", false)) return;
+                if (!General.ValidateDateField(txtDataFim, "Data Final", false)) return;
+
+                DateTime dataInicial = Convert.ToDateTime(txtDataInicio.Text.Replace("/", "-"));
+                DateTime dataFinal = Convert.ToDateTime(txtDataFim.Text.Replace("/", "-"));
+
+                estacionamento = new Estacionamentos(0, null, veiculo, dataInicial, dataFinal, 0);
 
                 using (EstacionamentosController estacionamentoController = new EstacionamentosController())
                 {
@@ -153,7 +161,8 @@ namespace ParkingSystem.Views.Estacionamento
         {
             try
             {
-
+                new frmSaida().Show();
+                this.Close();
             }
             catch (Exception error)
             {

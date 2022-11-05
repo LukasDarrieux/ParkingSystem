@@ -49,7 +49,8 @@ namespace ParkingSystem.Views.Config
                 Configuracoes.AtualizarConfiguracaoPersonalizacao(txtTitulo.Text);
                 Configuracoes.AtualizaConfiguracaoEstacionamento(valorCarro, valorMoto, valorPerNoite);
 
-
+                General.MessageShow("Configurações Salvas com Sucesso!");
+                this.Close();
                 return;
             }
             catch(Exception error)

@@ -72,6 +72,29 @@ namespace ParkingSystem
             }
         }
 
+        public static bool ValidateDateField(MaskedTextBox txtDateTime, string nameField, bool canEmpty)
+        {
+            if (txtDateTime.Text.Trim().Replace("/", "").Length < 1)
+            {
+                if (canEmpty) return true;
+                
+                MessageShowAttention($"Informe {nameField}");
+                txtDateTime.Focus();
+                return false;
+            }
+            else
+            {
+                if (!IsDate(txtDateTime.Text))
+                {
+                    MessageShowAttention($"Informe uma data válida para {nameField}");
+                    txtDateTime.Focus();
+                    return false;
+                }
+
+                return true;
+            }
+        }
+
         public static bool ValidateField(ComboBox comboBox, string nameField)
         {
             if (comboBox.SelectedIndex > -1 && comboBox.Text.Trim().Length > 0) return true;
@@ -427,6 +450,32 @@ namespace ParkingSystem
             {
                 throw error;
             }
+        }
+
+        public static bool IsDate(string date)
+        {
+            if (date.Trim().Length < 10) return false;
+            if (!IsNumeric(date.Trim().Replace("/", "").Replace("-", "").Replace(".", ""))) return false;
+            int dia, mes, ano, maiorDiaMes = 0;
+            dia = Convert.ToInt16(date.Substring(0, 2));
+            mes = Convert.ToInt16(date.Substring(3, 2));
+            ano = Convert.ToInt16(date.Substring(6, 4));
+            if (dia < 1 || dia > 31) return false; //Validando dia
+            if (mes < 1 || mes > 12) return false; //Validando mes
+            switch (mes)
+            {
+                case 2: maiorDiaMes = 28; if (ano % 4 == 0) { maiorDiaMes = 29; } break;
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12: maiorDiaMes = 31; break;
+                default: maiorDiaMes = 30; break;
+            }
+            if (dia > maiorDiaMes) return false;
+            return true;
         }
 
         public static string FormatValue(double value)

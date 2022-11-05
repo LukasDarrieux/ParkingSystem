@@ -72,7 +72,21 @@ namespace ParkingSystem.Controller.Implements
                 {
                     if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
                     else conditions += $" AND ";
-                    conditions += $"{Estacionamentos.Campos.IDVAGA} LIKE '{estacionamento.Vaga.Id}%'";
+                    conditions += $"{Estacionamentos.Campos.IDVAGA} LIKE {estacionamento.Vaga.Id}";
+                }
+
+                if (General.IsDate(estacionamento.Entrada.ToString("dd-MM-yyyy")))
+                {
+                    if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
+                    else conditions += $" AND ";
+                    conditions += $"{Estacionamentos.Campos.ENTRADA} >= '{estacionamento.Entrada.ToString("dd-MM-yyyy 00:00:00")}'";
+                }
+
+                if (General.IsDate(estacionamento.Saida.ToString().Replace(" 00:00:00", "")))
+                {
+                    if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
+                    else conditions += $" AND ";
+                    conditions += $"({Estacionamentos.Campos.SAIDA} <= '{Convert.ToDateTime(estacionamento.Saida).ToString("dd-MM-yyyy 23:59:59")}' OR SAIDA IS NULL)";
                 }
 
                 sql += conditions;
@@ -86,6 +100,13 @@ namespace ParkingSystem.Controller.Implements
             Crud crud = new Crud(db, TABELA, GetFields(), GetValues(estacionamento));
             try
             {
+
+                if (VagaOcupada(estacionamento))
+                {
+                    General.MessageShowAttention("A vaga informada está ocupada!");
+                    return false;
+                }
+
                 if (!crud.Insert())
                 {
                     General.MessageShowAttention("Não foi possível salvar o registro!");
@@ -268,6 +289,19 @@ namespace ParkingSystem.Controller.Implements
             {
                 reader.Close();
                 reader.Dispose();
+            }
+        }
+
+        private bool VagaOcupada(Estacionamentos estacionamentos)
+        {
+            try
+            {
+                string sqlComando = $"SELECT * FROM ESTACIONAMENTO WHERE {Estacionamentos.Campos.IDVAGA} = {estacionamentos.Vaga.Id} AND SAIDA IS NULL";
+                return (!(GetEstacionamentos(sqlComando) is null));
+            }
+            catch(Exception error)
+            {
+                throw error;
             }
         }
 

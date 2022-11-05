@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ParkingSystem.Shared;
 using ParkingSystem.Utils.Implements;
@@ -55,6 +48,11 @@ namespace ParkingSystem.Views
 
         private void rdSQLServer_CheckedChanged(object sender, EventArgs e)
         {
+            if (rdSQLServer.Checked)
+            {
+                chkUsarAutenticacaoWindows.Checked = false;
+                chkUsarAutenticacaoWindows.Visible = true;
+            }
             GroupConfigEnabled();
         }
 
@@ -92,7 +90,7 @@ namespace ParkingSystem.Views
                 if (resposta)
                 {
                     LeitorConfiguracoes.WriteFileConfig(GetTipoDatabase(), txtServidor.Text, chkUsarAutenticacaoWindows.Checked, txtUsuario.Text, txtSenha.Text);
-                    Configuracoes.SetConfig(GetTipoDatabase().ToString(), txtServidor.Text, chkUsarAutenticacaoWindows.Checked, txtUsuario.Text, txtSenha.Text);
+                    ConfiguracaoDatabase.SetConfig(GetTipoDatabase().ToString(), txtServidor.Text, chkUsarAutenticacaoWindows.Checked, txtUsuario.Text, txtSenha.Text);
                     Application.Exit();
                 }
                 else
@@ -119,16 +117,16 @@ namespace ParkingSystem.Views
         {
             try
             {
-                if (Configuracoes.SGBD == Database.Tipo.MySQL) rdMySQL.Checked = true;
+                if (ConfiguracaoDatabase.SGBD == Database.Tipo.MySQL) rdMySQL.Checked = true;
                 else
                 {
                     rdSQLServer.Checked = true;
-                    chkUsarAutenticacaoWindows.Checked = Configuracoes.AutenticationWindows;
+                    chkUsarAutenticacaoWindows.Checked = ConfiguracaoDatabase.AutenticationWindows;
                 }
 
-                if (Configuracoes.Server.Trim().Length > uint.MinValue) txtServidor.Text = Configuracoes.Server;
-                if (Configuracoes.User.Trim().Length > uint.MinValue) txtUsuario.Text = Configuracoes.User;
-                if (Configuracoes.Password.Trim().Length > uint.MinValue) txtSenha.Text = Configuracoes.Password;
+                if (ConfiguracaoDatabase.Server.Trim().Length > uint.MinValue) txtServidor.Text = ConfiguracaoDatabase.Server;
+                if (ConfiguracaoDatabase.User.Trim().Length > uint.MinValue) txtUsuario.Text = ConfiguracaoDatabase.User;
+                if (ConfiguracaoDatabase.Password.Trim().Length > uint.MinValue) txtSenha.Text = ConfiguracaoDatabase.Password;
             }
             catch (Exception error)
             {

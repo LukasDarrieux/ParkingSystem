@@ -82,7 +82,7 @@
             this.VEICULO.HeaderText = "VEICULO";
             this.VEICULO.Name = "VEICULO";
             this.VEICULO.ReadOnly = true;
-            this.VEICULO.Width = 300;
+            this.VEICULO.Width = 260;
             // 
             // CLIENTE
             // 
@@ -96,6 +96,7 @@
             this.ENTRADA.HeaderText = "ENTRADA";
             this.ENTRADA.Name = "ENTRADA";
             this.ENTRADA.ReadOnly = true;
+            this.ENTRADA.Width = 140;
             // 
             // STATUS
             // 
@@ -176,6 +177,7 @@
             this.btnSaida.TabIndex = 26;
             this.btnSaida.Text = "Saída";
             this.btnSaida.UseVisualStyleBackColor = true;
+            this.btnSaida.Click += new System.EventHandler(this.btnSaida_Click);
             // 
             // frmEstacionamentos
             // 
@@ -209,12 +211,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView gridEstacionamento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VAGA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VEICULO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CLIENTE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ENTRADA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn STATUS;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Label lblCliente;
         private System.Windows.Forms.ComboBox txtCliente;
@@ -222,5 +218,11 @@
         private System.Windows.Forms.ComboBox txtVeiculo;
         private System.Windows.Forms.Button btnEntrada;
         private System.Windows.Forms.Button btnSaida;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VAGA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VEICULO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CLIENTE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ENTRADA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STATUS;
     }
 }

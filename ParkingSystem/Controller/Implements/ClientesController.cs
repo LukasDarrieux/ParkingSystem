@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data;
 using ParkingSystem.Controller.Interfaces;
 using ParkingSystem.Models.Cliente;
 using ParkingSystem.Utils.Interfaces;
 using ParkingSystem.Shared;
 using ParkingSystem.Models.Pessoa;
-using ParkingSystem.Utils.Implements;
 using System.Data.Common;
 
 namespace ParkingSystem.Controller.Implements

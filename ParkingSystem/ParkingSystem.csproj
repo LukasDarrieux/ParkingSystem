@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>ParkingSystem</RootNamespace>
     <AssemblyName>ParkingSystem</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -146,6 +146,11 @@
     <Compile Include="Services\ViaCEP\CEP.cs" />
     <Compile Include="Services\ViaCEP\ViaCEP.cs" />
     <Compile Include="Shared\ConfigJson.cs" />
+    <Compile Include="Shared\ConfiguracaoDatabase.cs" />
+    <Compile Include="Shared\ConfiguracaoEstacionamento.cs" />
+    <Compile Include="Shared\ConfiguracaoEstacionamentoDAO.cs" />
+    <Compile Include="Shared\ConfiguracaoPersonalizacao.cs" />
+    <Compile Include="Shared\ConfiguracaoPersonalizacaoDAO.cs" />
     <Compile Include="Shared\Configuracoes.cs" />
     <Compile Include="Shared\LeitorConfiguracoes.cs" />
     <Compile Include="General.cs" />
@@ -175,6 +180,12 @@
     </Compile>
     <Compile Include="Views\Config\frmConfigDatabase.Designer.cs">
       <DependentUpon>frmConfigDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Config\frmConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Config\frmConfig.Designer.cs">
+      <DependentUpon>frmConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Estacionamento\frmEntrada.cs">
       <SubType>Form</SubType>
@@ -284,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Config\frmConfigDatabase.resx">
       <DependentUpon>frmConfigDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Config\frmConfig.resx">
+      <DependentUpon>frmConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Estacionamento\frmEntrada.resx">
       <DependentUpon>frmEntrada.cs</DependentUpon>

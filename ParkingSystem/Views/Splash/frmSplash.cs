@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ParkingSystem.Shared;
 using ParkingSystem.Views.Login;
 
 namespace ParkingSystem.Views.Splash
@@ -42,15 +43,18 @@ namespace ParkingSystem.Views.Splash
             UpdateProgress(10, "Iniciando sistema...");
             Thread.Sleep(1000);
 
-
-            UpdateProgress(50, "Carregando configurações...");
+            UpdateProgress(30, "Carregando configurações da base de dados...");
             General.CarregarConfiguracoes();
             Thread.Sleep(1000);
 
-            UpdateProgress(100, "Conectando com a base de dados...");
+            UpdateProgress(60, "Conectando com a base de dados...");
             Thread.Sleep(1000);
             if (General.CriarBanco())
             {
+                UpdateProgress(90, "Carregando configurações...");
+                Configuracoes.LoadConfiguracaoEstacionamento();
+                Thread.Sleep(1000);
+
                 UpdateProgress(100, "Iniciando...");
                 Thread.Sleep(500);
                 new frmLogin(true).Show();

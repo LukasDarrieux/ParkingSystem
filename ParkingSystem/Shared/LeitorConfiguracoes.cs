@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net.Http;
 using Newtonsoft.Json;
 using System.IO;
 using ParkingSystem.Views;
@@ -13,7 +8,6 @@ namespace ParkingSystem.Shared
 {
     class LeitorConfiguracoes
     {
-
         public static void LoadConfig()
         {
             CheckFile();
@@ -54,7 +48,7 @@ namespace ParkingSystem.Shared
             try
             {
                 var config = JsonConvert.DeserializeObject<ConfigJson>(@"" + File.ReadAllText($"{General.DIRETORIO}\\{General.ARQUIVOCONFIG}".Trim()));
-                Configuracoes.SetConfig(config.Sgbd, config.Server.Replace("/", "\\"), config.AutenticationWindows, config.User, config.Password);
+                ConfiguracaoDatabase.SetConfig(config.Sgbd, config.Server.Replace("/", "\\"), config.AutenticationWindows, config.User, config.Password);
             }
             catch (Exception error)
             {

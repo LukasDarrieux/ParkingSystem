@@ -47,6 +47,7 @@
             this.mnusEstacionamento = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuVaga = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEstaciomento = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblDatabase = new System.Windows.Forms.Label();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,7 +73,6 @@
             // 
             // timer
             // 
-            this.timer.Enabled = true;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // menu
@@ -110,6 +110,7 @@
             this.mnuConfiguracoes.Name = "mnuConfiguracoes";
             this.mnuConfiguracoes.Size = new System.Drawing.Size(246, 22);
             this.mnuConfiguracoes.Text = "Configurações";
+            this.mnuConfiguracoes.Click += new System.EventHandler(this.mnuConfiguracoes_Click);
             // 
             // mnuConfiguracoesBancoDados
             // 
@@ -188,11 +189,22 @@
             this.mnuEstaciomento.Text = "Estacionamento";
             this.mnuEstaciomento.Click += new System.EventHandler(this.mnuEstaciomento_Click);
             // 
+            // lblDatabase
+            // 
+            this.lblDatabase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDatabase.AutoSize = true;
+            this.lblDatabase.Location = new System.Drawing.Point(418, 535);
+            this.lblDatabase.Name = "lblDatabase";
+            this.lblDatabase.Size = new System.Drawing.Size(154, 17);
+            this.lblDatabase.TabIndex = 3;
+            this.lblDatabase.Text = "Banco de dados: MySQL";
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.lblDatabase);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.lblHoraData);
             this.Controls.Add(this.menu);
@@ -231,5 +243,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnusEstacionamento;
         private System.Windows.Forms.ToolStripMenuItem mnuVaga;
         private System.Windows.Forms.ToolStripMenuItem mnuEstaciomento;
+        private System.Windows.Forms.Label lblDatabase;
     }
 }

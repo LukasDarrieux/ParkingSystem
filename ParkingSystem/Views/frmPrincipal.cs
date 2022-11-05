@@ -2,6 +2,7 @@
 using ParkingSystem.Models.Usuario;
 using ParkingSystem.Shared;
 using ParkingSystem.Views.Cliente;
+using ParkingSystem.Views.Config;
 using ParkingSystem.Views.Estacionamento;
 using ParkingSystem.Views.Usuario;
 using ParkingSystem.Views.Veiculo.Fabricante;
@@ -32,8 +33,10 @@ namespace ParkingSystem.Views
             usuario = new UsuariosController().Get(IdUsuario);
             SessionLogin.SetUsuarioSession(usuario);
 
-            lblUsuario.Text = $"Usuário: {usuario.Nome}"; 
-            timer_Tick(null, null);
+            lblUsuario.Text = $"Usuário: {usuario.Nome}";
+            lblDatabase.Text = $"Banco de Dados: {ConfiguracaoDatabase.SGBD}";
+            timer.Enabled = true;
+            this.Text = Configuracoes.GetConfiguracaoPersonalizacao().Titulo + " - DARRIEUX INFO";
         }
 
         private void frmPrincipal_FormClosed(object sender, FormClosedEventArgs e)
@@ -85,6 +88,11 @@ namespace ParkingSystem.Views
         private void mnuEstaciomento_Click(object sender, EventArgs e)
         {
             new frmEstacionamentos().Show();
+        }
+
+        private void mnuConfiguracoes_Click(object sender, EventArgs e)
+        {
+            new frmConfig().Show();
         }
     }
 }

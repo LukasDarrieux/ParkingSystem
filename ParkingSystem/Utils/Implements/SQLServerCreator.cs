@@ -62,7 +62,7 @@ namespace ParkingSystem.Utils.Implements
                 {
                     sql = "CREATE TABLE USUARIOS(ID INT NOT NULL IDENTITY(1,1), NOME VARCHAR(100) NOT NULL, EMAIL VARCHAR(255) NOT NULL, SENHA VARCHAR(50) NOT NULL, PRIMARY KEY(ID))";
                     ExecuteSql(TableExistsSQL(sql, "USUARIOS"));
-                    ExecuteSql("INSERT INTO USUARIOS(NOME, EMAIL, SENHA) VALUES('ADMINISTRADOR', 'adm@darrieuxinfo.com', '')");
+                    ExecuteSql("INSERT INTO USUARIOS(NOME, EMAIL, SENHA) VALUES('ADMINISTRADOR', 'adm@darrieuxinfo.com', '12345678')");
                     versaoBanco++;
                     ExecuteSql($"UPDATE CONFIGBANCO SET VERSAO = {versaoBanco}");
                 }
@@ -108,11 +108,27 @@ namespace ParkingSystem.Utils.Implements
 
                 if (versaoBanco < 6)
                 {
-                    sql = "CREATE TABLE ESTACIONAMENTO(ID INT NOT NULL IDENTITY(1, 1), IDVAGA INT NOT NULL, IDVEICULO INT NOT NULL, ENTRADA DATETIME NOT NULL, SAIDA DATETIME, VALORTOTAL DECIMAL, PRIMARY KEY (ID))";
+                    sql = "CREATE TABLE ESTACIONAMENTO(ID INT NOT NULL IDENTITY(1, 1), IDVAGA INT NOT NULL, IDVEICULO INT NOT NULL, ENTRADA DATETIME NOT NULL, SAIDA DATETIME, VALORTOTAL DECIMAL(10, 2), PRIMARY KEY (ID))";
                     ExecuteSql(TableExistsSQL(sql, "ESTACIONAMENTO"));
                     versaoBanco++;
                     ExecuteSql($"UPDATE CONFIGBANCO SET VERSAO = {versaoBanco}");
                 }
+
+                if (versaoBanco < 7)
+                {
+                    sql = "CREATE TABLE CONFIGURACOES(ID INT NOT NULL IDENTITY(1, 1), TITULO VARCHAR(100), CARRO DECIMAL(10, 2) NOT NULL DEFAULT(0), MOTO DECIMAL(10, 2) NOT NULL DEFAULT(0), PERNOITE DECIMAL(10, 2) NOT NULL DEFAULT(0), PRIMARY KEY(ID))";
+                    ExecuteSql(TableExistsSQL(sql, "CONFIGURACOES"));
+                    versaoBanco++;
+                    ExecuteSql($"UPDATE CONFIGBANCO SET VERSAO = {versaoBanco}");
+                }
+
+                if (versaoBanco < 8)
+                {
+                    ExecuteSql("INSERT INTO CONFIGURACOES(TITULO, CARRO, MOTO, PERNOITE) VALUES('', 0, 0, 0)");
+                    versaoBanco++;
+                    ExecuteSql($"UPDATE CONFIGBANCO SET VERSAO = {versaoBanco}");
+                }
+
             }
             catch (Exception error)
             {

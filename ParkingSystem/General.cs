@@ -59,6 +59,19 @@ namespace ParkingSystem
             }
         }
 
+        public static bool ValidateDecimalField(TextBox textBox, string nameField)
+        {
+            if (!ValidateField(textBox, nameField)) return false;
+
+            if (ValidateDecimal(textBox.Text.Trim())) return true;
+            else
+            {
+                MessageShowAttention($"Informe um valor válido para {nameField}");
+                textBox.Focus();
+                return false;
+            }
+        }
+
         public static bool ValidateField(ComboBox comboBox, string nameField)
         {
             if (comboBox.SelectedIndex > -1 && comboBox.Text.Trim().Length > 0) return true;
@@ -83,7 +96,7 @@ namespace ParkingSystem
 
         public static bool CriarBanco()
         {
-            DatabaseCreator DbCreator = DatabaseCreator.GetDatabase(Configuracoes.SGBD, Configuracoes.Server, Configuracoes.AutenticationWindows, Configuracoes.User, Configuracoes.Password);
+            DatabaseCreator DbCreator = DatabaseCreator.GetDatabase(ConfiguracaoDatabase.SGBD, ConfiguracaoDatabase.Server, ConfiguracaoDatabase.AutenticationWindows, ConfiguracaoDatabase.User, ConfiguracaoDatabase.Password);
             try
             {
                 DbCreator.CreateDatabase();
@@ -360,6 +373,65 @@ namespace ParkingSystem
 
             if (CPF != auxCPF) return false;
             return true;
+        }
+
+        public static bool ValidateDecimal(string value)
+        {
+            try
+            {
+                bool hasPointFloat = false;
+                for (int contador = 0; contador < value.Length; contador++)
+                {
+                    if (hasPointFloat && value.Substring(contador, 1) == ",") return false;
+                    if (!hasPointFloat && value.Substring(contador, 1) == ",") hasPointFloat = true;
+                    if (value.Substring(contador, 1) != "0" &&
+                        value.Substring(contador, 1) != "1" &&
+                        value.Substring(contador, 1) != "2" &&
+                        value.Substring(contador, 1) != "3" &&
+                        value.Substring(contador, 1) != "4" &&
+                        value.Substring(contador, 1) != "5" &&
+                        value.Substring(contador, 1) != "6" &&
+                        value.Substring(contador, 1) != "7" &&
+                        value.Substring(contador, 1) != "8" &&
+                        value.Substring(contador, 1) != "9" &&
+                        value.Substring(contador, 1) != ",") return false;
+                }
+                return true;
+            }
+            catch(Exception error)
+            {
+                throw error;
+            }
+        }
+
+        public static bool IsNumeric(string value)
+        {
+            try
+            {
+                for (int contador = 0; contador < value.Length; contador++)
+                {
+                    if (value.Substring(contador, 1) != "0" &&
+                        value.Substring(contador, 1) != "1" &&
+                        value.Substring(contador, 1) != "2" &&
+                        value.Substring(contador, 1) != "3" &&
+                        value.Substring(contador, 1) != "4" &&
+                        value.Substring(contador, 1) != "5" &&
+                        value.Substring(contador, 1) != "6" &&
+                        value.Substring(contador, 1) != "7" &&
+                        value.Substring(contador, 1) != "8" &&
+                        value.Substring(contador, 1) != "9") return false;
+                }
+                return true;
+            }
+            catch(Exception error)
+            {
+                throw error;
+            }
+        }
+
+        public static string FormatValue(double value)
+        {
+            return value.ToString("F2").Replace(",", ".").Trim();
         }
     }
 }

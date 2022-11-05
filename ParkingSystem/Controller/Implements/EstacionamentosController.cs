@@ -244,8 +244,13 @@ namespace ParkingSystem.Controller.Implements
                                 Vagas vaga = vagasController.Get(reader.GetFieldValue<int>((int)Estacionamentos.Campos.IDVAGA));
                                 Veiculos veiculo = veiculosController.Get(reader.GetFieldValue<int>((int)Estacionamentos.Campos.IDVEICULO));
                                 DateTime entrada = reader.GetFieldValue<DateTime>((int)Estacionamentos.Campos.ENTRADA);
-                                DateTime saida = reader.GetFieldValue<DateTime>((int)Estacionamentos.Campos.SAIDA);
-                                double valor = reader.GetFieldValue<double>((int)Estacionamentos.Campos.VALORTOTAL);
+
+                                object obj = reader.GetFieldValue<object>((int)Estacionamentos.Campos.SAIDA);
+                                DateTime? saida = null;
+
+                                if (!(obj is null) && obj != DBNull.Value) saida = Convert.ToDateTime(obj);
+
+                                double valor = Convert.ToDouble(reader.GetFieldValue<decimal>((int)Estacionamentos.Campos.VALORTOTAL));
 
                                 listaEstacionamentos.Add(new Estacionamentos(id, vaga, veiculo, entrada, saida, valor));
 

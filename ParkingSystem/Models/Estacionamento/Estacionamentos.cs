@@ -1,9 +1,5 @@
 ﻿using ParkingSystem.Models.Veiculo;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ParkingSystem.Models.Estacionamento
 {
@@ -45,8 +41,8 @@ namespace ParkingSystem.Models.Estacionamento
         public void Dispose()
         {
             this.Id = 0;
-            this.Vaga.Dispose();
-            this.Veiculo.Dispose();
+            if (!(this.Vaga is null)) this.Vaga.Dispose();
+            if (!(this.Veiculo is null)) this.Veiculo.Dispose();
             this.ValorTotal = 0;
         }
     }

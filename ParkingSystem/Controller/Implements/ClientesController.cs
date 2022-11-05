@@ -14,8 +14,8 @@ namespace ParkingSystem.Controller.Implements
 
         #region "Atributos"
 
-        private Clientes _cliente;
-        private IDatabase db;
+        private readonly Clientes _cliente;
+        private readonly IDatabase db;
         private const string TABELA = "CLIENTES";
 
         #endregion
@@ -66,7 +66,7 @@ namespace ParkingSystem.Controller.Implements
 
         public Clientes Get(int id)
         {
-            string sql = $"SELECT * FROM {TABELA} WHERE {Clientes.Campos.ID.ToString()}={id.ToString()}";
+            string sql = $"SELECT * FROM {TABELA} WHERE {Clientes.Campos.ID}={id}";
             List<Clientes> ListaClientes = GetClientes(sql);
             if (ListaClientes.Count > 0)
             {
@@ -88,7 +88,7 @@ namespace ParkingSystem.Controller.Implements
             {
                 string conditions = string.Empty;
 
-                if (cliente.Id > 0) conditions = $" WHERE ID={cliente.Id.ToString()}";
+                if (cliente.Id > 0) conditions = $" WHERE ID={cliente.Id}";
 
                 if (!String.IsNullOrEmpty(cliente.Nome))
                 {

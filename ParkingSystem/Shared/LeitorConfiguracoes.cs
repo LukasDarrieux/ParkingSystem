@@ -63,7 +63,7 @@ namespace ParkingSystem.Shared
                 server = server.Replace(@"\", @"\\");
 
                 writer.WriteLine("{");
-                writer.WriteLine($"\"Sgbd\": \"{tipo.ToString()}\",");
+                writer.WriteLine($"\"Sgbd\": \"{tipo}\",");
                 writer.WriteLine($"\"Server\": \"{server}\",");
                 writer.WriteLine($"\"User\": \"{user}\",");
                 writer.WriteLine($"\"Password\": \"{password}\",");

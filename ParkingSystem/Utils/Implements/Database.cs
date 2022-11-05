@@ -20,11 +20,11 @@ namespace ParkingSystem.Utils.Implements
 
         #region "Atributos"
 
-        protected string _host { get; set; }
-        protected string _database { get; set; }
-        protected string _user { get; set; }
-        protected string _password { get; set; }
-        protected int _port { get; set; }
+        protected string Host { get; set; }
+        protected string DataBase { get; set; }
+        protected string User { get; set; }
+        protected string Password { get; set; }
+        protected int Port { get; set; }
                        
         protected DbCommand _cmd;
         protected DbConnection _con;
@@ -35,16 +35,16 @@ namespace ParkingSystem.Utils.Implements
         #region "Métodos públicos"
         public Database(string server, string database, string user, string password)
         {
-            this._host = server;
-            this._database = database;
-            this._user = user;
-            this._password = password;
+            Host = server;
+            DataBase = database;
+            User = user;
+            Password = password;
         }
 
         public Database(string server, string database)
         {
-            this._host = server;
-            this._database = database;
+            Host = server;
+            DataBase = database;
         }
 
         public virtual void OpenConnection()

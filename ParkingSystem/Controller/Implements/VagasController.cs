@@ -13,8 +13,8 @@ namespace ParkingSystem.Controller.Implements
     {
         #region "Atributos"
 
-        private Vagas _vaga;
-        private Database db;
+        private readonly Vagas _vaga;
+        private readonly Database db;
         private const string TABELA = "VAGAS";
 
         #endregion
@@ -38,7 +38,7 @@ namespace ParkingSystem.Controller.Implements
 
         public Vagas Get(int id)
         {
-            string sql = $"SELECT * FROM {TABELA} WHERE {Vagas.Campos.ID.ToString()}={id.ToString()}";
+            string sql = $"SELECT * FROM {TABELA} WHERE {Vagas.Campos.ID}={id}";
             List<Vagas> listaVagas = GetVagas(sql);
 
             if (listaVagas is null) return null;
@@ -63,7 +63,7 @@ namespace ParkingSystem.Controller.Implements
             {
                 string conditions = string.Empty;
 
-                if (vaga.Id > 0) conditions = $" WHERE ID={vaga.Id.ToString()}";
+                if (vaga.Id > 0) conditions = $" WHERE ID={vaga.Id}";
 
                 if (!String.IsNullOrEmpty(vaga.Vaga))
                 {
@@ -262,7 +262,6 @@ namespace ParkingSystem.Controller.Implements
                 if (!(listaVagas is null))
                 {
                     listaVagas.Clear();
-                    listaVagas = null;
                 }
 
             }

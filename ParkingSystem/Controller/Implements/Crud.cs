@@ -7,7 +7,7 @@ namespace ParkingSystem.Controller.Implements
 {
     class Crud : ICrud, IDisposable
     {
-        private IDatabase db;
+        private readonly IDatabase db;
         private string Tabela;
         private string[] Campos;
         private string[] Valores;
@@ -70,7 +70,7 @@ namespace ParkingSystem.Controller.Implements
                     fields += ")";
                     values += ")";
 
-                    string sql = $"INSERT INTO {Tabela}{fields} VALUES{replaceEmptyToNull(values)}";
+                    string sql = $"INSERT INTO {Tabela}{fields} VALUES{ReplaceEmptyToNull(values)}";
 
                     db.ExecuteSql(sql);
 
@@ -137,7 +137,7 @@ namespace ParkingSystem.Controller.Implements
                 Campos.Contains<string>("iD"));
         }
 
-        private string replaceEmptyToNull(string values)
+        private string ReplaceEmptyToNull(string values)
         {
             values = values.Replace("''", "null")
                 .Replace("'null'", "null")

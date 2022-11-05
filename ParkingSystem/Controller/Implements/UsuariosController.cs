@@ -14,7 +14,7 @@ namespace ParkingSystem.Controller.Implements
         #region "Atributos"
 
         private Usuarios _usuario;
-        private Database db;
+        private readonly Database db;
         private const string TABELA = "USUARIOS";
 
         #endregion
@@ -65,7 +65,7 @@ namespace ParkingSystem.Controller.Implements
 
         public Usuarios Get(int id)
         {
-            string sql = $"SELECT * FROM {TABELA} WHERE {Usuarios.Campos.ID.ToString()}={id.ToString()}";
+            string sql = $"SELECT * FROM {TABELA} WHERE {Usuarios.Campos.ID}={id}";
             List<Usuarios> listaUsuarios = GetUsuarios(sql);
 
             if (listaUsuarios is null) return null;
@@ -90,7 +90,7 @@ namespace ParkingSystem.Controller.Implements
             {
                 string conditions = string.Empty;
 
-                if (usuario.Id > 0) conditions = $" WHERE ID={usuario.Id.ToString()}";
+                if (usuario.Id > 0) conditions = $" WHERE ID={usuario.Id}";
 
                 if (!String.IsNullOrEmpty(usuario.Nome))
                 {
@@ -152,7 +152,7 @@ namespace ParkingSystem.Controller.Implements
         public bool Update(Usuarios usuario)
         {
             if (usuario is null) return false;
-            Crud crud = new Crud(db, TABELA, GetFields(true), GetValues(usuario, true));
+            Crud crud = new Crud(db, TABELA, GetFieldsUpdate(), GetValuesUpdate(usuario));
             try
             {
                 if (usuario is null) return false;
@@ -271,7 +271,7 @@ namespace ParkingSystem.Controller.Implements
             return campos;
         }
 
-        private string[] GetFields(bool IsUpdate)
+        private string[] GetFieldsUpdate()
         {
             string[] campos =
             {
@@ -298,7 +298,7 @@ namespace ParkingSystem.Controller.Implements
             return valores;
         }
 
-        private string[] GetValues(Usuarios usuario, bool IsUpdate)
+        private string[] GetValuesUpdate(Usuarios usuario)
         {
             if (usuario is null) return null;
 
@@ -372,7 +372,6 @@ namespace ParkingSystem.Controller.Implements
                 if (!(listaUsuarios is null))
                 {
                     listaUsuarios.Clear();
-                    listaUsuarios = null;
                 }
                 
             }

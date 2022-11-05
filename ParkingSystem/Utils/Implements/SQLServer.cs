@@ -28,14 +28,14 @@ namespace ParkingSystem.Utils.Implements
         /// <param name="database">banco de dados</param>
         public SQLServer(string server, string database) : base(server, database)
         {
-            string strConn = $"Server={this._host};Database={this._database};Trusted_Connection=True;";
-            settingConection(strConn);
+            string strConn = $"Server={this.Host};Database={this.DataBase};Trusted_Connection=True;";
+            SettingConection(strConn);
         }
 
         public SQLServer(string server, string database, string user, string password) : base(server, database, user, password)
         {
-            string strConn = $"Server={this._host};Database={this._database};User Id={this._user};Password={this._password};";
-            settingConection(strConn);
+            string strConn = $"Server={this.Host};Database={this.DataBase};User Id={this.User};Password={this.Password};";
+            SettingConection(strConn);
         }
 
 
@@ -65,7 +65,7 @@ namespace ParkingSystem.Utils.Implements
             SqlCommand cmd = new SqlCommand();
             try
             {
-                base._cmd = cmd;
+                _cmd = cmd;
                 return base.ExecuteQuery(sqlQuery);
             }
             catch (Exception error)
@@ -87,7 +87,7 @@ namespace ParkingSystem.Utils.Implements
             SqlCommand cmd = new SqlCommand();
             try
             {
-                base._cmd = cmd;
+                _cmd = cmd;
                 base.ExecuteSql(sql);
             }
             catch (Exception error)
@@ -128,21 +128,21 @@ namespace ParkingSystem.Utils.Implements
         public override void Dispose()
         {
             base.Dispose();
-            if (!(this.con is null))
+            if (!(con is null))
             {
-                this.CloseConnection();
-                this.con.Dispose();
+                CloseConnection();
+                con.Dispose();
             }
             
         }
 
         #endregion
 
-        private void settingConection(string stringConnection)
+        private void SettingConection(string stringConnection)
         {
             con.ConnectionString = stringConnection;
-            base._con = con;
-            this.OpenConnection();
+            _con = con;
+            OpenConnection();
         }
     }
 }

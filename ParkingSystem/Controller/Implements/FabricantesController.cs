@@ -13,8 +13,8 @@ namespace ParkingSystem.Controller.Implements
     {
         #region "Atributos"
 
-        private Fabricantes _fabricante;
-        private Database db;
+        private readonly Fabricantes _fabricante;
+        private readonly Database db;
         private const string TABELA = "FABRICANTES";
 
         #endregion
@@ -74,7 +74,7 @@ namespace ParkingSystem.Controller.Implements
 
         public Fabricantes Get(int id)
         {
-            string sql = $"SELECT * FROM {TABELA} WHERE {Fabricantes.Campos.ID.ToString()}={id.ToString()}";
+            string sql = $"SELECT * FROM {TABELA} WHERE {Fabricantes.Campos.ID}={id}";
             List<Fabricantes> listaFabricantes = GetFabricantes(sql);
 
             if (listaFabricantes is null) return null;
@@ -99,7 +99,7 @@ namespace ParkingSystem.Controller.Implements
             {
                 string conditions = string.Empty;
 
-                if (fabricante.Id > 0) conditions = $" WHERE ID={fabricante.Id.ToString()}";
+                if (fabricante.Id > 0) conditions = $" WHERE ID={fabricante.Id}";
 
                 if (!String.IsNullOrEmpty(fabricante.Nome))
                 {
@@ -262,7 +262,6 @@ namespace ParkingSystem.Controller.Implements
                 if (!(listaFabricantes is null))
                 {
                     listaFabricantes.Clear();
-                    listaFabricantes = null;
                 }
 
             }

@@ -31,10 +31,10 @@ namespace ParkingSystem.Utils.Implements
 
         protected DatabaseCreator(string server, string user, string password, bool autenticationWindows)
         {
-            this.Server = server;
-            this.User = user;
-            this.Password = password;
-            this.AutenticationWindows = autenticationWindows;
+            Server = server;
+            User = user;
+            Password = password;
+            AutenticationWindows = autenticationWindows;
         }
 
         public virtual void CreateDatabase()
@@ -118,15 +118,15 @@ namespace ParkingSystem.Utils.Implements
             }
         }
 
-        protected virtual void configConn()
+        protected virtual void ConfigConn()
         {
-            conn.ConnectionString = this.strConn;
+            conn.ConnectionString = strConn;
             OpenConn();
         }
 
         public virtual void Dispose()
         {
-            this.CloseConn();
+            CloseConn();
             conn.Dispose();
             return;
         }

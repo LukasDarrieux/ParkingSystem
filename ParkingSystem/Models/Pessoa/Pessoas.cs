@@ -9,8 +9,8 @@ namespace ParkingSystem.Models.Pessoa
         
         public Pessoas(string nome, string email)
         {
-            this.Nome = nome;
-            this.Email = email;
+            Nome = nome;
+            Email = email;
         }
 
         public virtual void Dispose()

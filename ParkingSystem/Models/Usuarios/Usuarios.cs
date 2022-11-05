@@ -23,15 +23,15 @@ namespace ParkingSystem.Models.Usuario
 
         public Usuarios(int id, string nome, string email, string senha) : base(nome, email)
         {
-            this.Id = id;
-            this.Senha = senha;
+            Id = id;
+            Senha = senha;
         }
 
         public override void Dispose()
         {
             base.Dispose();
-            this.Id = 0;
-            this.Senha = null;
+            Id = 0;
+            Senha = null;
         }
 
         public bool IsAdmin()

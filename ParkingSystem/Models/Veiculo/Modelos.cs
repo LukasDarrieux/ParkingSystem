@@ -28,11 +28,11 @@ namespace ParkingSystem.Models.Veiculo
 
         public Modelos(int id, string nome, string motor, int ano, Fabricantes fabricante)
         {
-            this.Id = id;
-            this.Nome = nome;
-            this.Motor = motor;
-            this.Ano = ano;
-            this.Fabricante = fabricante;
+            Id = id;
+            Nome = nome;
+            Motor = motor;
+            Ano = ano;
+            Fabricante = fabricante;
         }
 
         public override string ToString()
@@ -57,7 +57,7 @@ namespace ParkingSystem.Models.Veiculo
         {
             if (obj is Modelos)
             {
-                return (((Modelos)obj).Id != this.Id && ((Modelos)obj).Nome == this.Nome && ((Modelos)obj).Fabricante.Id == this.Fabricante.Id);
+                return (((Modelos)obj).Id != Id && ((Modelos)obj).Nome == Nome && ((Modelos)obj).Fabricante.Id == Fabricante.Id);
             }
             return false;
         }

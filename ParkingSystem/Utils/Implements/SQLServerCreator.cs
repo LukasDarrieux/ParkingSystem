@@ -31,9 +31,9 @@ namespace ParkingSystem.Utils.Implements
         {
             try
             {
-                configConn();
+                ConfigConn();
                 string sql = "CREATE DATABASE PARKING;";
-                this.ExecuteSql(DatabaseExistsSQL(sql));
+                ExecuteSql(DatabaseExistsSQL(sql));
 
                 conn.ChangeDatabase(NAME_DB);
 
@@ -54,7 +54,7 @@ namespace ParkingSystem.Utils.Implements
                 //Rotina para criar a tabela de config e de controle de versao do banco de dados
                 CreateTableConfigDatabase();
 
-                int versaoBanco = getVersaoBanco();
+                int versaoBanco = GetVersaoBanco();
 
                 string sql = string.Empty;
 
@@ -187,7 +187,7 @@ namespace ParkingSystem.Utils.Implements
             }
         }
 
-        private int getVersaoBanco()
+        private int GetVersaoBanco()
         {
             DbDataReader reader = ExecuteQuery("SELECT * FROM CONFIGBANCO") as DbDataReader;
             try

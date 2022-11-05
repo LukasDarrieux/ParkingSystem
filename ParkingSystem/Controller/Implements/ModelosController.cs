@@ -13,8 +13,8 @@ namespace ParkingSystem.Controller.Implements
     {
         #region "Atributos"
 
-        private Modelos _modelo;
-        private Database db;
+        private readonly Modelos _modelo;
+        private readonly Database db;
         private const string TABELA = "MODELOS";
 
         #endregion
@@ -74,7 +74,7 @@ namespace ParkingSystem.Controller.Implements
 
         public Modelos Get(int id)
         {
-            string sql = $"SELECT * FROM {TABELA} WHERE {Modelos.Campos.ID.ToString()}={id.ToString()}";
+            string sql = $"SELECT * FROM {TABELA} WHERE {Modelos.Campos.ID}={id}";
             List<Modelos> listaModelos = GetModelos(sql);
 
             if (listaModelos is null) return null;
@@ -99,7 +99,7 @@ namespace ParkingSystem.Controller.Implements
             {
                 string conditions = string.Empty;
 
-                if (modelo.Id > 0) conditions = $" WHERE ID={modelo.Id.ToString()}";
+                if (modelo.Id > 0) conditions = $" WHERE ID={modelo.Id}";
 
                 if (!String.IsNullOrEmpty(modelo.Nome))
                 {
@@ -121,7 +121,7 @@ namespace ParkingSystem.Controller.Implements
                     {
                         if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
                         else conditions += $" AND ";
-                        conditions += $"{Modelos.Campos.IDFABRICANTE} = {modelo.Fabricante.Id.ToString()}";
+                        conditions += $"{Modelos.Campos.IDFABRICANTE} = {modelo.Fabricante.Id}";
                     }
                 }
 
@@ -129,7 +129,7 @@ namespace ParkingSystem.Controller.Implements
                 {
                     if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
                     else conditions += $" AND ";
-                    conditions += $"{Modelos.Campos.ANO} = {modelo.Ano.ToString()}";
+                    conditions += $"{Modelos.Campos.ANO} = {modelo.Ano}";
                 }
 
                 sql += conditions;
@@ -298,7 +298,6 @@ namespace ParkingSystem.Controller.Implements
                 if (!(listaModelos is null))
                 {
                     listaModelos.Clear();
-                    listaModelos = null;
                 }
 
             }

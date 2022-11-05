@@ -16,8 +16,8 @@ namespace ParkingSystem.Controller.Implements
     {
         #region "Atributos"
 
-        private Estacionamentos _estacionamento;
-        private Database db;
+        private readonly Estacionamentos _estacionamento;
+        private readonly Database db;
         private const string TABELA = "ESTACIONAMENTO";
 
         #endregion
@@ -41,7 +41,7 @@ namespace ParkingSystem.Controller.Implements
 
         public Estacionamentos Get(int id)
         {
-            string sql = $"SELECT * FROM {TABELA} WHERE {Estacionamentos.Campos.ID.ToString()}={id.ToString()}";
+            string sql = $"SELECT * FROM {TABELA} WHERE {Estacionamentos.Campos.ID}={id}";
             List<Estacionamentos> listaEstacionamentos = GetEstacionamentos(sql);
 
             if (listaEstacionamentos is null) return null;
@@ -66,7 +66,7 @@ namespace ParkingSystem.Controller.Implements
             {
                 string conditions = string.Empty;
 
-                if (estacionamento.Id > 0) conditions = $" WHERE {Estacionamentos.Campos.ID}={estacionamento.Id.ToString()}";
+                if (estacionamento.Id > 0) conditions = $" WHERE {Estacionamentos.Campos.ID}={estacionamento.Id}";
 
                 if (!(estacionamento.Vaga is null))
                 {
@@ -79,14 +79,14 @@ namespace ParkingSystem.Controller.Implements
                 {
                     if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
                     else conditions += $" AND ";
-                    conditions += $"{Estacionamentos.Campos.ENTRADA} >= '{estacionamento.Entrada.ToString("dd-MM-yyyy 00:00:00")}'";
+                    conditions += $"{Estacionamentos.Campos.ENTRADA} >= '{estacionamento.Entrada:dd-MM-yyyy 00:00:00}'";
                 }
 
                 if (General.IsDate(estacionamento.Saida.ToString().Replace(" 00:00:00", "")))
                 {
                     if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
                     else conditions += $" AND ";
-                    conditions += $"({Estacionamentos.Campos.SAIDA} <= '{Convert.ToDateTime(estacionamento.Saida).ToString("dd-MM-yyyy 23:59:59")}' OR SAIDA IS NULL)";
+                    conditions += $"({Estacionamentos.Campos.SAIDA} <= '{Convert.ToDateTime(estacionamento.Saida):dd-MM-yyyy 23:59:59}' OR SAIDA IS NULL)";
                 }
 
                 sql += conditions;

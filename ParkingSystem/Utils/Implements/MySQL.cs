@@ -28,7 +28,7 @@ namespace ParkingSystem.Utils.Implements
         /// <param name="password">senha</param>
         public MySQL(string server, string database, string user, string password) : base(server, database, user, password)
         {
-            string strConn = $"Server={this._host};Database={this._database};Uid={this._user};Pwd={this._password};";
+            string strConn = $"Server={this.Host};Database={this.DataBase};Uid={this.User};Pwd={this.Password};";
             con.ConnectionString = strConn;
             base._con = con;
             this.OpenConnection();

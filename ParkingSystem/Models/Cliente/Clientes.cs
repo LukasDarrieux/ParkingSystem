@@ -27,16 +27,16 @@ namespace ParkingSystem.Models.Cliente
         public string Cpf
         {
             get => _cpf;
-            set => _cpf = removeMaskCPF(value);
+            set => _cpf = RemoveMaskCPF(value);
             
         }
         public Enderecos Endereco { get; set; }
 
         public Clientes(int id, string nome, string email, string cpf, Enderecos endereco) : base(nome, email)
         {
-            this.Id = id;
-            this._cpf = removeMaskCPF(cpf);
-            this.Endereco = endereco;
+            Id = id;
+            _cpf = RemoveMaskCPF(cpf);
+            Endereco = endereco;
         }
 
         public override void Dispose()
@@ -46,24 +46,24 @@ namespace ParkingSystem.Models.Cliente
             if (!(Endereco is null)) Endereco.Dispose();
         }
 
-        private string removeMaskCPF(string cpf)
+        private string RemoveMaskCPF(string cpf)
         {
             return cpf.Replace(",", "").Replace(".", "").Replace("-", "").Trim();
         }
 
         public override string ToString()
         {
-            return this.Nome;
+            return Nome;
         }
 
         public override bool Equals(object obj)
         {
             if (obj is Clientes)
             {
-                return (((Clientes)obj).Id != this.Id && 
-                    ((Clientes)obj).Nome == this.Nome && 
-                    ((Clientes)obj).Cpf == this.Cpf &&
-                    ((Clientes)obj).Email == this.Email);
+                return (((Clientes)obj).Id != Id && 
+                    ((Clientes)obj).Nome == Nome && 
+                    ((Clientes)obj).Cpf == Cpf &&
+                    ((Clientes)obj).Email == Email);
             }
             return false;
         }

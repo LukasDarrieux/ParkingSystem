@@ -15,21 +15,21 @@ namespace ParkingSystem.Models.Pessoa
 
         public Enderecos(string logradouro, string numero, string bairro, string cidade, string uf)
         {
-            this.Logradouro = logradouro;
-            this.Numero = numero;
-            this.Bairro = bairro;
-            this.Cidade = cidade;
-            this.UF = uf;
+            Logradouro = logradouro;
+            Numero = numero;
+            Bairro = bairro;
+            Cidade = cidade;
+            UF = uf;
         }
 
         public Enderecos(string cep, string logradouro, string numero, string bairro, string cidade, string uf)
         {
-            this.CEP = cep.Replace("-", "").Trim();
-            this.Logradouro = logradouro;
-            this.Numero = numero;
-            this.Bairro = bairro;
-            this.Cidade = cidade;
-            this.UF = uf;
+            CEP = cep.Replace("-", "").Trim();
+            Logradouro = logradouro;
+            Numero = numero;
+            Bairro = bairro;
+            Cidade = cidade;
+            UF = uf;
         }
 
         public void Dispose()

@@ -12,8 +12,8 @@ namespace ParkingSystem.Controller.Implements
     {
         #region "Atributos"
 
-        private Veiculos _veiculo;
-        private Database db;
+        private readonly Veiculos _veiculo;
+        private readonly Database db;
         private const string TABELA = "VEICULOS";
 
         #endregion
@@ -73,7 +73,7 @@ namespace ParkingSystem.Controller.Implements
 
         public Veiculos Get(int id)
         {
-            string sql = $"SELECT * FROM {TABELA} WHERE {Veiculos.Campos.ID.ToString()}={id.ToString()}";
+            string sql = $"SELECT * FROM {TABELA} WHERE {Veiculos.Campos.ID}={id}";
             List<Veiculos> listaVeiculos = GetVeiculos(sql);
 
             if (listaVeiculos is null) return null;
@@ -98,7 +98,7 @@ namespace ParkingSystem.Controller.Implements
             {
                 string conditions = string.Empty;
 
-                if (veiculo.Id > 0) conditions = $" WHERE ID={veiculo.Id.ToString()}";
+                if (veiculo.Id > 0) conditions = $" WHERE ID={veiculo.Id}";
 
                 if (!String.IsNullOrEmpty(veiculo.Placa))
                 {
@@ -113,7 +113,7 @@ namespace ParkingSystem.Controller.Implements
                     {
                         if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
                         else conditions += $" AND ";
-                        conditions += $"{Veiculos.Campos.IDCLIENTE} = '{veiculo.Cliente.Id.ToString()}'";
+                        conditions += $"{Veiculos.Campos.IDCLIENTE} = '{veiculo.Cliente.Id}'";
                     }
                 }
 
@@ -136,7 +136,7 @@ namespace ParkingSystem.Controller.Implements
                             if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
                             else conditions += $" AND ";
                         }
-                        filter = $"{Veiculos.Campos.IDMODELO} = '{veiculo.Modelo.Id.ToString()}'";
+                        filter = $"{Veiculos.Campos.IDMODELO} = '{veiculo.Modelo.Id}'";
                     }
 
                     conditions += filter;
@@ -318,7 +318,6 @@ namespace ParkingSystem.Controller.Implements
                 if (!(listaVeiculos is null))
                 {
                     listaVeiculos.Clear();
-                    listaVeiculos = null;
                 }
 
             }

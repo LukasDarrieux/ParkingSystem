@@ -16,8 +16,8 @@ namespace ParkingSystem.Models.Veiculo
 
         public Fabricantes(int id, string nome)
         {
-            this.Id = id;
-            this.Nome = nome;
+            Id = id;
+            Nome = nome;
         }
 
         public void Dispose()
@@ -35,7 +35,7 @@ namespace ParkingSystem.Models.Veiculo
         {
             if (obj is Fabricantes)
             {
-                return (this.Id == ((Fabricantes)obj).Id && this.Nome == ((Fabricantes)obj).Nome);
+                return (Id == ((Fabricantes)obj).Id && Nome == ((Fabricantes)obj).Nome);
             }
             return false;
         }

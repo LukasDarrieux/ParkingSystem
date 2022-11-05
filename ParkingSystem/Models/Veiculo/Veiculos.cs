@@ -23,11 +23,11 @@ namespace ParkingSystem.Models.Veiculo
 
         public Veiculos(int id, string placa, Modelos modelo, Clientes cliente, EnumVeiculos.tipo tipo)
         {
-            this.Id = id;
-            this.Placa = placa;
-            this.Modelo = modelo;
-            this.Cliente = cliente;
-            this.Tipo = (int)tipo;
+            Id = id;
+            Placa = placa;
+            Modelo = modelo;
+            Cliente = cliente;
+            Tipo = (int)tipo;
         }
 
         public virtual void Dispose()
@@ -47,7 +47,7 @@ namespace ParkingSystem.Models.Veiculo
         {
             if (obj is Veiculos)
             {
-                return (this.Id == ((Veiculos)obj).Id && this.Placa == ((Veiculos)obj).Placa);
+                return (Id == ((Veiculos)obj).Id && Placa == ((Veiculos)obj).Placa);
             }
             return false;
         }

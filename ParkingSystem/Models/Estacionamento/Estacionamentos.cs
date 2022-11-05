@@ -30,20 +30,20 @@ namespace ParkingSystem.Models.Estacionamento
 
         public Estacionamentos(int id, Vagas vaga, Veiculos veiculo, DateTime entrada, DateTime? saida, double valor)
         {
-            this.Id = id;
-            this.Vaga = vaga;
-            this.Veiculo = veiculo;
-            this.Entrada = entrada;
-            this.Saida = saida;
-            this.ValorTotal = valor;
+            Id = id;
+            Vaga = vaga;
+            Veiculo = veiculo;
+            Entrada = entrada;
+            Saida = saida;
+            ValorTotal = valor;
         }
 
         public void Dispose()
         {
-            this.Id = 0;
-            if (!(this.Vaga is null)) this.Vaga.Dispose();
-            if (!(this.Veiculo is null)) this.Veiculo.Dispose();
-            this.ValorTotal = 0;
+            Id = 0;
+            if (!(Vaga is null)) Vaga.Dispose();
+            if (!(Veiculo is null)) Veiculo.Dispose();
+            ValorTotal = 0;
         }
     }
 }

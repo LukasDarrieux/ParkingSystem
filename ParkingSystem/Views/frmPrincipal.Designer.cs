@@ -47,9 +47,11 @@
             this.mnusEstacionamento = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuVaga = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEstaciomentos = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblDatabase = new System.Windows.Forms.Label();
             this.mnuEstacionamento = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEntradaEstacionamento = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblDatabase = new System.Windows.Forms.Label();
+            this.mnuRelatorios = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuRelatorioFaturamento = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,7 +85,8 @@
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuSistema,
             this.mnuCadastros,
-            this.mnuEstaciomentos});
+            this.mnuEstaciomentos,
+            this.mnuRelatorios});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(784, 24);
@@ -134,7 +137,7 @@
             // mnuClientes
             // 
             this.mnuClientes.Name = "mnuClientes";
-            this.mnuClientes.Size = new System.Drawing.Size(180, 22);
+            this.mnuClientes.Size = new System.Drawing.Size(159, 22);
             this.mnuClientes.Text = "Clientes";
             this.mnuClientes.Click += new System.EventHandler(this.mnuClientes_Click);
             // 
@@ -145,7 +148,7 @@
             this.mnuModelos,
             this.mnuVeiculos});
             this.mnusVeiculos.Name = "mnusVeiculos";
-            this.mnusVeiculos.Size = new System.Drawing.Size(180, 22);
+            this.mnusVeiculos.Size = new System.Drawing.Size(159, 22);
             this.mnusVeiculos.Text = "Veículos";
             // 
             // mnuFabricantes
@@ -174,7 +177,7 @@
             this.mnusEstacionamento.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuVaga});
             this.mnusEstacionamento.Name = "mnusEstacionamento";
-            this.mnusEstacionamento.Size = new System.Drawing.Size(180, 22);
+            this.mnusEstacionamento.Size = new System.Drawing.Size(159, 22);
             this.mnusEstacionamento.Text = "Estacionamento";
             // 
             // mnuVaga
@@ -193,16 +196,6 @@
             this.mnuEstaciomentos.Size = new System.Drawing.Size(109, 20);
             this.mnuEstaciomentos.Text = "Estacionamentos";
             // 
-            // lblDatabase
-            // 
-            this.lblDatabase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDatabase.AutoSize = true;
-            this.lblDatabase.Location = new System.Drawing.Point(418, 535);
-            this.lblDatabase.Name = "lblDatabase";
-            this.lblDatabase.Size = new System.Drawing.Size(154, 17);
-            this.lblDatabase.TabIndex = 3;
-            this.lblDatabase.Text = "Banco de dados: MySQL";
-            // 
             // mnuEstacionamento
             // 
             this.mnuEstacionamento.Name = "mnuEstacionamento";
@@ -216,6 +209,31 @@
             this.mnuEntradaEstacionamento.Size = new System.Drawing.Size(219, 22);
             this.mnuEntradaEstacionamento.Text = "Entrada no Estacionamento";
             this.mnuEntradaEstacionamento.Click += new System.EventHandler(this.mnuEntradaEstacionamento_Click);
+            // 
+            // lblDatabase
+            // 
+            this.lblDatabase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDatabase.AutoSize = true;
+            this.lblDatabase.Location = new System.Drawing.Point(418, 535);
+            this.lblDatabase.Name = "lblDatabase";
+            this.lblDatabase.Size = new System.Drawing.Size(154, 17);
+            this.lblDatabase.TabIndex = 3;
+            this.lblDatabase.Text = "Banco de dados: MySQL";
+            // 
+            // mnuRelatorios
+            // 
+            this.mnuRelatorios.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuRelatorioFaturamento});
+            this.mnuRelatorios.Name = "mnuRelatorios";
+            this.mnuRelatorios.Size = new System.Drawing.Size(71, 20);
+            this.mnuRelatorios.Text = "Relatórios";
+            // 
+            // mnuRelatorioFaturamento
+            // 
+            this.mnuRelatorioFaturamento.Name = "mnuRelatorioFaturamento";
+            this.mnuRelatorioFaturamento.Size = new System.Drawing.Size(208, 22);
+            this.mnuRelatorioFaturamento.Text = "Relatório de Faturamento";
+            this.mnuRelatorioFaturamento.Click += new System.EventHandler(this.mnuRelatorioFaturamento_Click);
             // 
             // frmPrincipal
             // 
@@ -264,5 +282,7 @@
         private System.Windows.Forms.Label lblDatabase;
         private System.Windows.Forms.ToolStripMenuItem mnuEstacionamento;
         private System.Windows.Forms.ToolStripMenuItem mnuEntradaEstacionamento;
+        private System.Windows.Forms.ToolStripMenuItem mnuRelatorios;
+        private System.Windows.Forms.ToolStripMenuItem mnuRelatorioFaturamento;
     }
 }

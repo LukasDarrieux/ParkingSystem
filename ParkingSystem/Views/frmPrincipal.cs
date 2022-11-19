@@ -4,6 +4,7 @@ using ParkingSystem.Shared;
 using ParkingSystem.Views.Cliente;
 using ParkingSystem.Views.Config;
 using ParkingSystem.Views.Estacionamento;
+using ParkingSystem.Views.Relatorios;
 using ParkingSystem.Views.Usuario;
 using ParkingSystem.Views.Veiculo.Fabricante;
 using ParkingSystem.Views.Veiculo.Modelo;
@@ -98,6 +99,11 @@ namespace ParkingSystem.Views
         private void mnuEntradaEstacionamento_Click(object sender, EventArgs e)
         {
             new frmEntrada().Show();
+        }
+
+        private void mnuRelatorioFaturamento_Click(object sender, EventArgs e)
+        {
+            new frmRelatorioFaturamento().Show();
         }
     }
 }

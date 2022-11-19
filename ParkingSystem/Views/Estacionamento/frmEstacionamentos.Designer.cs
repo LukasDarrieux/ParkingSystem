@@ -30,12 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEstacionamentos));
             this.gridEstacionamento = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VAGA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VEICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CLIENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ENTRADA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.STATUS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.lblCliente = new System.Windows.Forms.Label();
             this.txtCliente = new System.Windows.Forms.ComboBox();
@@ -47,6 +41,12 @@
             this.txtDataInicio = new System.Windows.Forms.MaskedTextBox();
             this.lblAte = new System.Windows.Forms.Label();
             this.txtDataFim = new System.Windows.Forms.MaskedTextBox();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VAGA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VEICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CLIENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ENTRADA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TEMPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridEstacionamento)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,51 +62,12 @@
             this.VEICULO,
             this.CLIENTE,
             this.ENTRADA,
-            this.STATUS});
+            this.TEMPO});
             this.gridEstacionamento.Location = new System.Drawing.Point(15, 111);
             this.gridEstacionamento.Name = "gridEstacionamento";
             this.gridEstacionamento.Size = new System.Drawing.Size(971, 334);
             this.gridEstacionamento.TabIndex = 9;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 50;
-            // 
-            // VAGA
-            // 
-            this.VAGA.HeaderText = "VAGA";
-            this.VAGA.Name = "VAGA";
-            this.VAGA.ReadOnly = true;
-            // 
-            // VEICULO
-            // 
-            this.VEICULO.HeaderText = "VEICULO";
-            this.VEICULO.Name = "VEICULO";
-            this.VEICULO.ReadOnly = true;
-            this.VEICULO.Width = 260;
-            // 
-            // CLIENTE
-            // 
-            this.CLIENTE.HeaderText = "CLIENTE";
-            this.CLIENTE.Name = "CLIENTE";
-            this.CLIENTE.ReadOnly = true;
-            this.CLIENTE.Width = 250;
-            // 
-            // ENTRADA
-            // 
-            this.ENTRADA.HeaderText = "ENTRADA";
-            this.ENTRADA.Name = "ENTRADA";
-            this.ENTRADA.ReadOnly = true;
-            this.ENTRADA.Width = 140;
-            // 
-            // STATUS
-            // 
-            this.STATUS.HeaderText = "STATUS";
-            this.STATUS.Name = "STATUS";
-            this.STATUS.ReadOnly = true;
+            this.gridEstacionamento.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridEstacionamento_CellClick);
             // 
             // btnBuscar
             // 
@@ -217,6 +178,46 @@
             this.txtDataFim.Size = new System.Drawing.Size(100, 25);
             this.txtDataFim.TabIndex = 7;
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 50;
+            // 
+            // VAGA
+            // 
+            this.VAGA.HeaderText = "VAGA";
+            this.VAGA.Name = "VAGA";
+            this.VAGA.ReadOnly = true;
+            // 
+            // VEICULO
+            // 
+            this.VEICULO.HeaderText = "VEICULO";
+            this.VEICULO.Name = "VEICULO";
+            this.VEICULO.ReadOnly = true;
+            this.VEICULO.Width = 260;
+            // 
+            // CLIENTE
+            // 
+            this.CLIENTE.HeaderText = "CLIENTE";
+            this.CLIENTE.Name = "CLIENTE";
+            this.CLIENTE.ReadOnly = true;
+            this.CLIENTE.Width = 250;
+            // 
+            // ENTRADA
+            // 
+            this.ENTRADA.HeaderText = "ENTRADA";
+            this.ENTRADA.Name = "ENTRADA";
+            this.ENTRADA.ReadOnly = true;
+            this.ENTRADA.Width = 140;
+            // 
+            // TEMPO
+            // 
+            this.TEMPO.HeaderText = "TEMPO";
+            this.TEMPO.Name = "TEMPO";
+            this.TEMPO.ReadOnly = true;
+            // 
             // frmEstacionamentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -260,15 +261,15 @@
         private System.Windows.Forms.ComboBox txtVeiculo;
         private System.Windows.Forms.Button btnEntrada;
         private System.Windows.Forms.Button btnSaida;
+        private System.Windows.Forms.Label lblPeriodo;
+        private System.Windows.Forms.MaskedTextBox txtDataInicio;
+        private System.Windows.Forms.Label lblAte;
+        private System.Windows.Forms.MaskedTextBox txtDataFim;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn VAGA;
         private System.Windows.Forms.DataGridViewTextBoxColumn VEICULO;
         private System.Windows.Forms.DataGridViewTextBoxColumn CLIENTE;
         private System.Windows.Forms.DataGridViewTextBoxColumn ENTRADA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn STATUS;
-        private System.Windows.Forms.Label lblPeriodo;
-        private System.Windows.Forms.MaskedTextBox txtDataInicio;
-        private System.Windows.Forms.Label lblAte;
-        private System.Windows.Forms.MaskedTextBox txtDataFim;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TEMPO;
     }
 }

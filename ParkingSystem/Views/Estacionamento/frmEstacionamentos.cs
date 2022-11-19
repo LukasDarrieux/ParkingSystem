@@ -16,6 +16,8 @@ namespace ParkingSystem.Views.Estacionamento
 {
     public partial class frmEstacionamentos : Form
     {
+        private int IdEstacionamento = 0;
+
         public frmEstacionamentos()
         {
             InitializeComponent();
@@ -28,7 +30,7 @@ namespace ParkingSystem.Views.Estacionamento
             VEICULO,
             CLIENTE,
             ENTRADA,
-            STATUS
+            TEMPO
         }
 
         private void frmEstacionamentos_Activated(object sender, EventArgs e)
@@ -70,7 +72,7 @@ namespace ParkingSystem.Views.Estacionamento
         {
             try
             {
-                int widthTotal = gridEstacionamento.Width - gridEstacionamento.Columns[(int)ColsGrid.ID].Width - gridEstacionamento.Columns[(int)ColsGrid.VAGA].Width - gridEstacionamento.Columns[(int)ColsGrid.ENTRADA].Width - gridEstacionamento.Columns[(int)ColsGrid.STATUS].Width - General.scroolWidth;
+                int widthTotal = gridEstacionamento.Width - gridEstacionamento.Columns[(int)ColsGrid.ID].Width - gridEstacionamento.Columns[(int)ColsGrid.VAGA].Width - gridEstacionamento.Columns[(int)ColsGrid.ENTRADA].Width - gridEstacionamento.Columns[(int)ColsGrid.TEMPO].Width - General.scroolWidth;
                 gridEstacionamento.Columns[(int)ColsGrid.CLIENTE].Width = widthTotal / 2;
                 gridEstacionamento.Columns[(int)ColsGrid.VEICULO].Width = widthTotal / 2;
             }
@@ -117,7 +119,7 @@ namespace ParkingSystem.Views.Estacionamento
 
                 using (EstacionamentosController estacionamentoController = new EstacionamentosController())
                 {
-                    listaEstacionamentos = estacionamentoController.GetAll(estacionamento);
+                    listaEstacionamentos = estacionamentoController.GetAll(estacionamento, true);
 
                     if (!(listaEstacionamentos is null) && listaEstacionamentos.Count > 0)
                     {
@@ -131,8 +133,8 @@ namespace ParkingSystem.Views.Estacionamento
                             gridEstacionamento[(int)ColsGrid.VEICULO, row].Value = parking.Veiculo.ToString();
                             gridEstacionamento[(int)ColsGrid.CLIENTE, row].Value = parking.Veiculo.Cliente.ToString();
                             gridEstacionamento[(int)ColsGrid.ENTRADA, row].Value = parking.Entrada.ToString();
-                            gridEstacionamento[(int)ColsGrid.STATUS, row].Value = String.Empty; //parking.Saida.ToString();
-                            row++;
+                            gridEstacionamento[(int)ColsGrid.TEMPO, row].Value = parking.GetTotalHoras();
+                            row++;   
                         }
                     }
                 }
@@ -152,7 +154,6 @@ namespace ParkingSystem.Views.Estacionamento
                 if (!(listaEstacionamentos is null)) 
                 { 
                     listaEstacionamentos.Clear();
-                    listaEstacionamentos = null;
                 }
             }
         }
@@ -161,7 +162,12 @@ namespace ParkingSystem.Views.Estacionamento
         {
             try
             {
-                new frmSaida().Show();
+                if (IdEstacionamento == 0)
+                {
+                    General.MessageShowAttention("Selecione um estacionamento primeiro!");
+                    return;
+                }
+                new frmSaida(IdEstacionamento).Show();
                 this.Close();
             }
             catch (Exception error)
@@ -171,6 +177,30 @@ namespace ParkingSystem.Views.Estacionamento
             finally
             {
 
+            }
+        }
+
+        private void gridEstacionamento_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                IdEstacionamento = 0;
+
+                if (e.RowIndex >= 0)
+                {
+                    if (!(gridEstacionamento[(int)ColsGrid.ID, e.RowIndex].Value is null))
+                    {
+                        if (gridEstacionamento[(int)ColsGrid.ID, e.RowIndex].Value.ToString().Trim().Length > 0)
+                        {
+                            IdEstacionamento = Int16.Parse(gridEstacionamento[(int)ColsGrid.ID, e.RowIndex].Value.ToString());
+                            return;
+                        }
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                General.MessageShowError(error.Message);
             }
         }
     }

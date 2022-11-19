@@ -55,43 +55,17 @@ namespace ParkingSystem.Controller.Implements
 
         public List<Estacionamentos> GetAll()
         {
-            string sql = $"SELECT * FROM {TABELA}";
-            return GetEstacionamentos(sql);
+            return GetEstacionamentos(GetQuerySql(null));
         }
 
         public List<Estacionamentos> GetAll(Estacionamentos estacionamento)
         {
-            string sql = $"SELECT * FROM {TABELA}";
-            if (!(estacionamento is null))
-            {
-                string conditions = string.Empty;
+            return GetEstacionamentos(GetQuerySql(estacionamento));
+        }
 
-                if (estacionamento.Id > 0) conditions = $" WHERE {Estacionamentos.Campos.ID}={estacionamento.Id}";
-
-                if (!(estacionamento.Vaga is null))
-                {
-                    if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
-                    else conditions += $" AND ";
-                    conditions += $"{Estacionamentos.Campos.IDVAGA} LIKE {estacionamento.Vaga.Id}";
-                }
-
-                if (General.IsDate(estacionamento.Entrada.ToString("dd-MM-yyyy")))
-                {
-                    if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
-                    else conditions += $" AND ";
-                    conditions += $"{Estacionamentos.Campos.ENTRADA} >= '{estacionamento.Entrada:dd-MM-yyyy 00:00:00}'";
-                }
-
-                if (General.IsDate(estacionamento.Saida.ToString().Replace(" 00:00:00", "")))
-                {
-                    if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
-                    else conditions += $" AND ";
-                    conditions += $"({Estacionamentos.Campos.SAIDA} <= '{Convert.ToDateTime(estacionamento.Saida):dd-MM-yyyy 23:59:59}' OR SAIDA IS NULL)";
-                }
-
-                sql += conditions;
-            }
-            return GetEstacionamentos(sql);
+        public List<Estacionamentos> GetAll(Estacionamentos estacionamento, bool filtrarEstacionamento)
+        {
+            return GetEstacionamentos(GetQuerySql(estacionamento, filtrarEstacionamento));
         }
 
         public bool Insert(Estacionamentos estacionamento)
@@ -303,6 +277,55 @@ namespace ParkingSystem.Controller.Implements
             {
                 throw error;
             }
+        }
+
+        private string GetQuerySql(Estacionamentos estacionamento, bool filtrarEstacionamentoEncerrado = false)
+        {
+            string sql = $"SELECT * FROM {TABELA}";
+            string conditions = string.Empty;
+            if (!(estacionamento is null))
+            {
+                if (estacionamento.Id > 0) conditions = $" WHERE {Estacionamentos.Campos.ID}={estacionamento.Id}";
+
+                if (!(estacionamento.Vaga is null))
+                {
+                    if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
+                    else conditions += $" AND ";
+                    conditions += $"{Estacionamentos.Campos.IDVAGA} LIKE {estacionamento.Vaga.Id}";
+                }
+
+                if (!(estacionamento.Veiculo is null))
+                {
+                    if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
+                    else conditions += $" AND ";
+                    conditions += $"{Estacionamentos.Campos.IDVEICULO} = {estacionamento.Veiculo.Id}";
+                }
+
+                if (General.IsDate(estacionamento.Entrada.ToString("dd-MM-yyyy")))
+                {
+                    if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
+                    else conditions += $" AND ";
+                    conditions += $"{Estacionamentos.Campos.ENTRADA} >= '{estacionamento.Entrada:dd-MM-yyyy 00:00:00}'";
+                }
+
+                if (General.IsDate(estacionamento.Saida.ToString().Replace(" 00:00:00", "")))
+                {
+                    if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
+                    else conditions += $" AND ";
+                    conditions += $"({Estacionamentos.Campos.SAIDA} <= '{Convert.ToDateTime(estacionamento.Saida):dd-MM-yyyy 23:59:59}' OR SAIDA IS NULL)";
+                }
+            }
+
+            if (filtrarEstacionamentoEncerrado)
+            {
+                if (String.IsNullOrEmpty(conditions)) conditions += $" WHERE ";
+                else conditions += $" AND ";
+                conditions += $"{Estacionamentos.Campos.SAIDA} IS NULL AND {Estacionamentos.Campos.VALORTOTAL} = 0";
+            }
+
+            sql += conditions;
+            
+            return sql;
         }
 
         #endregion

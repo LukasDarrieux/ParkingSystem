@@ -1,13 +1,6 @@
 ﻿using ParkingSystem.Controller.Implements;
 using ParkingSystem.Models.Estacionamento;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ParkingSystem.Views.Estacionamento
@@ -25,7 +18,7 @@ namespace ParkingSystem.Views.Estacionamento
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -36,7 +29,7 @@ namespace ParkingSystem.Views.Estacionamento
                 {
                     if (estacionamentoController.Update(Estacionamento))
                     {
-                        this.Close();
+                        Close();
                     }
                 }
             }
@@ -56,13 +49,15 @@ namespace ParkingSystem.Views.Estacionamento
                     
                     if (!(Estacionamento is null))
                     {
+                        Estacionamento.Saida = DateTime.Now;
+                        Estacionamento.ValorTotal = Estacionamento.Veiculo.GetSubTotal(Estacionamento.Entrada);
+
                         txtCliente.Text = Estacionamento.Veiculo.Cliente.Nome;
                         txtVeiculo.Text = Estacionamento.Veiculo.ToString();
                         txtVaga.Text = Estacionamento.Vaga.ToString();
                         txtHora.Text = Estacionamento.Entrada.ToString();
                         txtTempoTotal.Text = Estacionamento.GetTotalHoras();
-                        txtSubTotal.Text = Estacionamento.GetSubTotal().ToString("F2");
-
+                        txtSubTotal.Text = Estacionamento.ValorTotal.ToString("F2");
                     }
                     
                 }

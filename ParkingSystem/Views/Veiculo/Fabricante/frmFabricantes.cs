@@ -2,12 +2,6 @@
 using ParkingSystem.Models.Veiculo;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ParkingSystem.Views.Veiculo.Fabricante
@@ -32,7 +26,7 @@ namespace ParkingSystem.Views.Veiculo.Fabricante
             try
             {
                 lblQuantidade.Text = String.Empty;
-                this.OnResize(null);
+                OnResize(null);
                 btnBuscar.PerformClick();
             }
             catch (Exception error)
@@ -66,7 +60,7 @@ namespace ParkingSystem.Views.Veiculo.Fabricante
             }
             frmFabricantesCrud fabricanteCrud = new frmFabricantesCrud(IdFabricanteSelecionado, typeAccess);
             fabricanteCrud.Show();
-            this.Close();
+            Close();
         }
 
         private void btnIncluir_Click(object sender, EventArgs e)
@@ -92,7 +86,7 @@ namespace ParkingSystem.Views.Veiculo.Fabricante
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             btnBuscar.Enabled = false;
-            this.Cursor = Cursors.WaitCursor;
+            Cursor = Cursors.WaitCursor;
             gridFabricantes.Rows.Clear();
             FabricantesController fabricanteController = new FabricantesController();
             Fabricantes fabricante = null;
@@ -139,14 +133,13 @@ namespace ParkingSystem.Views.Veiculo.Fabricante
             finally
             {
                 btnBuscar.Enabled = true;
-                this.Cursor = Cursors.Default;
+                Cursor = Cursors.Default;
 
                 fabricanteController.Dispose();
                 if (!(fabricante is null)) fabricante.Dispose();
                 if (!(listaFabricantes is null))
                 {
                     listaFabricantes.Clear();
-                    listaFabricantes = null;
                 }
             }
         }

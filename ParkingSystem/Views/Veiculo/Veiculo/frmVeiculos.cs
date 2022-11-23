@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ParkingSystem.Controller.Implements;
 using ParkingSystem.Models.Cliente;
@@ -49,7 +43,7 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
         private void frmVeiculos_Load(object sender, EventArgs e)
         {
             lblQuantidade.Text = String.Empty;
-            this.OnResize(null);
+            OnResize(null);
             btnBuscar.PerformClick();
         }
 
@@ -63,7 +57,7 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
             catch (Exception error)
             {
                 General.MessageShowError(error.Message);
-                this.Close();
+                Close();
             }
             
         }
@@ -93,7 +87,7 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
             }
             frmVeiculosCrud modeloCrud = new frmVeiculosCrud(IdVeiculoSelecionado, typeAccess);
             modeloCrud.Show();
-            this.Close();
+            Close();
         }
 
         private void btnIncluir_Click(object sender, EventArgs e)
@@ -118,7 +112,7 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            this.Cursor = Cursors.WaitCursor;
+            Cursor = Cursors.WaitCursor;
             btnBuscar.Enabled = false;
             gridVeiculos.Rows.Clear();
             ClientesController clientesController = new ClientesController();
@@ -166,7 +160,7 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
                         }
                     }
                     if (listaVeiculos.Count == 1) lblQuantidade.Text = "1 veiculo encontrado";
-                    else lblQuantidade.Text = $"{listaVeiculos.Count.ToString()} veiculos encontrados";
+                    else lblQuantidade.Text = $"{listaVeiculos.Count} veiculos encontrados";
                 }
                 else
                 {
@@ -182,14 +176,13 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
             finally
             {
                 btnBuscar.Enabled = true;
-                this.Cursor = Cursors.Default;
+                Cursor = Cursors.Default;
 
                 modelosController.Dispose();
                 fabricantesController.Dispose();
                 if (!(listaVeiculos is null))
                 {
                     listaVeiculos.Clear();
-                    listaVeiculos = null;
                 }
             }
         }

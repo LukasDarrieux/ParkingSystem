@@ -2,12 +2,6 @@
 using ParkingSystem.Models.Cliente;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ParkingSystem.Views.Cliente
@@ -133,7 +127,7 @@ namespace ParkingSystem.Views.Cliente
             }
             frmClientesCrud clienteCrud = new frmClientesCrud(IdClienteSelecionado, typeAccess);
             clienteCrud.Show();
-            this.Close();
+            Close();
         }
 
         private void gridClientes_CellClick(object sender, DataGridViewCellEventArgs e)

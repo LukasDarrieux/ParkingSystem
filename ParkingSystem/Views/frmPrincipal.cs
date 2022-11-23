@@ -10,20 +10,13 @@ using ParkingSystem.Views.Veiculo.Fabricante;
 using ParkingSystem.Views.Veiculo.Modelo;
 using ParkingSystem.Views.Veiculo.Veiculo;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ParkingSystem.Views
 {
     public partial class frmPrincipal : Form
     {
-        private Usuarios usuario;
+        private readonly Usuarios usuario;
 
         public int IdUsuario { get; private set; }
 
@@ -47,7 +40,7 @@ namespace ParkingSystem.Views
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            lblHoraData.Text = $"Data: {DateTime.Now.ToString("dd/MM/yyyy - HH:mm:ss")}";
+            lblHoraData.Text = $"Data: {DateTime.Now:dd/MM/yyyy - HH:mm:ss}";
             lblHoraData.Refresh();
         }
 

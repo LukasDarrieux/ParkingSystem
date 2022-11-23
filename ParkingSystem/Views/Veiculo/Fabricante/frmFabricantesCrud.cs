@@ -1,21 +1,14 @@
 ﻿using ParkingSystem.Controller.Implements;
 using ParkingSystem.Models.Veiculo;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ParkingSystem.Views.Veiculo.Fabricante
 {
     public partial class frmFabricantesCrud : Form
     {
-        private General.TypeAccess TipoAcesso;
-        private int IdFabricante;
+        private readonly General.TypeAccess TipoAcesso;
+        private readonly int IdFabricante;
 
         public frmFabricantesCrud(int idFabricante, int tipoAcesso)
         {
@@ -26,7 +19,7 @@ namespace ParkingSystem.Views.Veiculo.Fabricante
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void frmFabricanteCrud_FormClosed(object sender, FormClosedEventArgs e)
@@ -119,7 +112,7 @@ namespace ParkingSystem.Views.Veiculo.Fabricante
                 {
                     if (fabricanteController.Insert(fabricante))
                     {
-                        this.Close();
+                        Close();
                     }
                 }
             }
@@ -133,7 +126,7 @@ namespace ParkingSystem.Views.Veiculo.Fabricante
                 {
                     if (fabricanteController.Update(fabricante))
                     {
-                        this.Close();
+                        Close();
                     }
                 }
             }
@@ -149,7 +142,7 @@ namespace ParkingSystem.Views.Veiculo.Fabricante
                     {
                         if (fabricanteController.Delete(fabricante))
                         {
-                            this.Close();
+                            Close();
                         }
                     }
 
@@ -178,7 +171,7 @@ namespace ParkingSystem.Views.Veiculo.Fabricante
             {
                 DisableControls();
                 btnSalvar.Text = "Excluir";
-                this.Refresh();
+                Refresh();
             }
             catch (Exception error)
             {

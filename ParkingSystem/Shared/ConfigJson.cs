@@ -1,11 +1,4 @@
-﻿using ParkingSystem.Utils.Implements;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ParkingSystem.Shared
+﻿namespace ParkingSystem.Shared
 {
     class ConfigJson
     {

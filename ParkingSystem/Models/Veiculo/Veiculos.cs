@@ -1,10 +1,14 @@
 ﻿using System;
 using ParkingSystem.Models.Cliente;
+using ParkingSystem.Shared;
 
 namespace ParkingSystem.Models.Veiculo
 {
     class Veiculos : IDisposable
     {
+        protected const short TOTAL_MINUTOS_DIA = 1440;
+        protected const short TOTAL_MINUTOS_HORAS = 60;
+
         public enum Campos
         {
             ID,
@@ -56,5 +60,11 @@ namespace ParkingSystem.Models.Veiculo
         {
             return base.GetHashCode();
         }
+
+        public virtual double GetSubTotal(DateTime Entrada)
+        {
+            return 0;
+        }
+
     }
 }

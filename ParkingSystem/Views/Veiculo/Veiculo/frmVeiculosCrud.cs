@@ -15,13 +15,13 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
 {
     public partial class frmVeiculosCrud : Form
     {
-        private General.TypeAccess TipoAcesso;
-        private int IdVeiculo = 0;
+        private readonly General.TypeAccess TipoAcesso;
+        private readonly int IdVeiculo = 0;
 
         public frmVeiculosCrud(int idVeiculo, int tipoAcesso)
         {
-            this.IdVeiculo = idVeiculo;
-            this.TipoAcesso = (General.TypeAccess)tipoAcesso;
+            IdVeiculo = idVeiculo;
+            TipoAcesso = (General.TypeAccess)tipoAcesso;
             InitializeComponent();
         }
 
@@ -41,7 +41,7 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void frmVeiculosCrud_FormClosed(object sender, FormClosedEventArgs e)
@@ -94,7 +94,7 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
                 DisableControls(true);
 
                 btnCancelar.Left = (this.Width / 2) - (btnCancelar.Width / 2);
-                this.Refresh();
+                Refresh();
             }
             catch (Exception error)
             {
@@ -108,7 +108,7 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
             {
                 DisableControls();
                 btnSalvar.Text = "Excluir";
-                this.Refresh();
+                Refresh();
             }
             catch (Exception error)
             {
@@ -132,18 +132,41 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
 
         private void CreateVeiculos()
         {
+            if (((Modelos)txtModelo.SelectedItem).Tipo == EnumVeiculos.tipo.Moto) CreateMoto();
+            else CreateCarro();
+            
+        }
+
+        private void CreateCarro()
+        {
             using (VeiculosController veiculoController = new VeiculosController())
             {
-                using (Veiculos veiculo = new Veiculos(0, txtPlaca.Text, new ModelosController().Get(((Modelos)txtModelo.SelectedItem).Id), new ClientesController().Get(((Clientes)txtCliente.SelectedItem).Id), EnumVeiculos.tipo.Carro))
+                using (Veiculos veiculo = new Carros(0, txtPlaca.Text, new ModelosController().Get(((Modelos)txtModelo.SelectedItem).Id), new ClientesController().Get(((Clientes)txtCliente.SelectedItem).Id)))
                 {
                     if (veiculoController.Insert(veiculo))
                     {
-                        this.Close();
+                        Close();
                     }
                 }
-             
+
             }
         }
+
+        private void CreateMoto()
+        {
+            using (VeiculosController veiculoController = new VeiculosController())
+            {
+                using (Veiculos veiculo = new Motos(0, txtPlaca.Text, new ModelosController().Get(((Modelos)txtModelo.SelectedItem).Id), new ClientesController().Get(((Clientes)txtCliente.SelectedItem).Id)))
+                {
+                    if (veiculoController.Insert(veiculo))
+                    {
+                        Close();
+                    }
+                }
+
+            }
+        }
+
 
         private void UpdateVeiculos()
         {
@@ -153,7 +176,7 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
                 {
                     if (veiculoController.Update(veiculo))
                     {
-                        this.Close();
+                        Close();
                     }
                 }
 
@@ -170,7 +193,7 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
                     {
                         if (veiculoController.Delete(veiculo))
                         {
-                            this.Close();
+                            Close();
                         }
                     }
                 }
@@ -204,7 +227,7 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
                 if (!General.ValidateField(txtModelo, lblModelo.Text)) return;
                 if (!General.ValidateField(txtPlaca, lblModelo.Text)) return;
                 
-                switch (this.TipoAcesso)
+                switch (TipoAcesso)
                 {
                     case General.TypeAccess.CREATE:
                         CreateVeiculos();

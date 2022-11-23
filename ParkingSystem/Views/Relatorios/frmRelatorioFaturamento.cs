@@ -70,7 +70,7 @@ namespace ParkingSystem.Views.Relatorios
                         if (listaEstacionamentos.Count > 1) lblQuantidade.Text = $"{listaEstacionamentos.Count} registros encontrados.";
                         else lblQuantidade.Text = "1 registro encontrado";
 
-                        lblValorTotal.Text = $"Sub Total: R${subTotal.ToString("F2")}";
+                        lblValorTotal.Text = $"Sub Total: R${subTotal:F2}";
                     }
                     else
                     {

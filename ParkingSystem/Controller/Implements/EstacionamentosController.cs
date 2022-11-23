@@ -7,8 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ParkingSystem.Controller.Implements
 {
@@ -78,6 +76,12 @@ namespace ParkingSystem.Controller.Implements
                 if (VagaOcupada(estacionamento))
                 {
                     General.MessageShowAttention("A vaga informada está ocupada!");
+                    return false;
+                }
+
+                if (VeiculoJaEstaEstacionado(estacionamento))
+                {
+                    General.MessageShowAttention("O veículo informado já se encontra estacionado!");
                     return false;
                 }
 
@@ -326,6 +330,19 @@ namespace ParkingSystem.Controller.Implements
             sql += conditions;
             
             return sql;
+        }
+
+        private bool VeiculoJaEstaEstacionado(Estacionamentos estacionamento)
+        {
+            try
+            {
+                string sqlComando = $"SELECT * FROM ESTACIONAMENTO WHERE {Estacionamentos.Campos.IDVEICULO} = {estacionamento.Veiculo.Id} AND SAIDA IS NULL";
+                return (!(GetEstacionamentos(sqlComando) is null));
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
         }
 
         #endregion

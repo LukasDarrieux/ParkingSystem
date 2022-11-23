@@ -3,13 +3,6 @@ using ParkingSystem.Models.Cliente;
 using ParkingSystem.Models.Pessoa;
 using ParkingSystem.Services.ViaCEP;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ParkingSystem.Views.Cliente
@@ -28,7 +21,7 @@ namespace ParkingSystem.Views.Cliente
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void frmClientesCrud_FormClosed(object sender, FormClosedEventArgs e)
@@ -94,7 +87,7 @@ namespace ParkingSystem.Views.Cliente
             {
                 DisableControls();
                 btnSalvar.Text = "Excluir";
-                this.Refresh();
+                Refresh();
             }
             catch (Exception error)
             {
@@ -228,7 +221,7 @@ namespace ParkingSystem.Views.Cliente
                 {
                     if (clienteController.Insert(cliente))
                     {
-                        this.Close();
+                        Close();
                     }
                 }
             }
@@ -242,7 +235,7 @@ namespace ParkingSystem.Views.Cliente
                 {
                     if (clienteController.Update(cliente))
                     {
-                        this.Close();
+                        Close();
                     }
                 }
             }
@@ -258,7 +251,7 @@ namespace ParkingSystem.Views.Cliente
                     {
                         if (clienteController.Delete(cliente))
                         {
-                            this.Close();
+                            Close();
                         }
                     }
 

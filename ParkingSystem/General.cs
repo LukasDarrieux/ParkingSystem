@@ -6,8 +6,6 @@ using ParkingSystem.Utils.Implements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ParkingSystem.Models.Estacionamento;
 
@@ -26,7 +24,7 @@ namespace ParkingSystem
         public const string DIRETORIO = "C:\\ParkingSystem\\";
         public const string ARQUIVOCONFIG = "config.json";
         public static string version = "1.0.0";
-        public const int scroolWidth = 60;
+        public const short scroolWidth = 60;
 
         public static void MessageShowAttention(string msg, string title = "Atenção")
         {
@@ -128,7 +126,7 @@ namespace ParkingSystem
             }
             catch (Exception error)
             {
-                General.MessageShowError($"Error:\n\n{error.Message}", "Error");
+                MessageShowError($"Error:\n\n{error.Message}", "Error");
                 Application.Exit();
                 return false;
             }
@@ -151,13 +149,13 @@ namespace ParkingSystem
                 case TypeAccess.CREATE:
                     title = $"Criar {nameForm}";
                     break;
-                case General.TypeAccess.READ:
+                case TypeAccess.READ:
                     title = $"Exibir {nameForm}";
                     break;
-                case General.TypeAccess.UPDATE:
+                case TypeAccess.UPDATE:
                     title = $"Atualizar {nameForm}";
                     break;
-                case General.TypeAccess.DELETE:
+                case TypeAccess.DELETE:
                     title = $"Excluir {nameForm}";
                     break;
             }
@@ -274,7 +272,6 @@ namespace ParkingSystem
             finally
             {
                 if (!(listaClientes is null)) listaClientes = null;
-                
             }
         }
 
@@ -353,15 +350,23 @@ namespace ParkingSystem
             }
         }
 
+        public static void CarregaComboTipoModelo(ComboBox combo)
+        {
+            combo.Items.Clear();
+            combo.Items.Add(EnumVeiculos.tipo.Carro);
+            combo.Items.Add(EnumVeiculos.tipo.Moto);
+
+            combo.SelectedItem = EnumVeiculos.tipo.Carro;
+        }
+
         public static bool ValidateCpf(string CPF)
         {
-            int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-            int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+            short[] multiplicador1 = new short[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+            short[] multiplicador2 = new short[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
 
             string auxCPF, digito;
-            int soma = 0, resto = 0;
-            int qtdCaracter = Convert.ToInt16(CPF.Length);
-
+            int soma = 0; 
+            
             CPF = CPF.Trim().Replace(".", "").Replace("-", "").Replace(",", "");
 
             if (CPF.Length < 11) return false;
@@ -370,10 +375,10 @@ namespace ParkingSystem
             
             for (int i = 0; i < 9; i++)
             {
-                soma += int.Parse(auxCPF[i].ToString()) * multiplicador1[i];
+                soma += short.Parse(auxCPF[i].ToString()) * multiplicador1[i];
             }
-
-            resto = soma % 11;
+            
+            int resto = soma % 11;
             if (resto < 2) resto = 0;
             else resto = 11 - resto;
 
@@ -385,7 +390,7 @@ namespace ParkingSystem
 
             for (int i = 0; i < 10; i++)
             {
-                soma += int.Parse(auxCPF[i].ToString()) * multiplicador2[i];
+                soma += short.Parse(auxCPF[i].ToString()) * multiplicador2[i];
             }
 
             resto = soma % 11;
@@ -456,7 +461,7 @@ namespace ParkingSystem
         {
             if (date.Trim().Length < 10) return false;
             if (!IsNumeric(date.Trim().Replace("/", "").Replace("-", "").Replace(".", ""))) return false;
-            int dia, mes, ano, maiorDiaMes = 0;
+            short dia, mes, ano, maiorDiaMes = 0;
             dia = Convert.ToInt16(date.Substring(0, 2));
             mes = Convert.ToInt16(date.Substring(3, 2));
             ano = Convert.ToInt16(date.Substring(6, 4));

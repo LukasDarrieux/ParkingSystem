@@ -1,11 +1,6 @@
-﻿using ParkingSystem.Models.Usuario;
-using ParkingSystem.Utils.Interfaces;
+﻿using ParkingSystem.Utils.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ParkingSystem.Shared
 {

@@ -2,12 +2,6 @@
 using ParkingSystem.Models.Usuario;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ParkingSystem.Views.Usuario
@@ -31,7 +25,7 @@ namespace ParkingSystem.Views.Usuario
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             btnBuscar.Enabled = false;
-            this.Cursor = Cursors.WaitCursor;
+            Cursor = Cursors.WaitCursor;
             gridUsuario.Rows.Clear();
             UsuariosController usuariosController = new UsuariosController();
             Usuarios usuario = null;
@@ -63,7 +57,7 @@ namespace ParkingSystem.Views.Usuario
                         }
                     }
                     if (listaUsuarios.Count == 1) lblQuantidade.Text = "1 usuário encontrado";
-                    else lblQuantidade.Text = $"{listaUsuarios.Count.ToString()} usuários encontrados";
+                    else lblQuantidade.Text = $"{listaUsuarios.Count} usuários encontrados";
                 }
                 else
                 {
@@ -79,14 +73,13 @@ namespace ParkingSystem.Views.Usuario
             finally
             {
                 btnBuscar.Enabled = true;
-                this.Cursor = Cursors.Default;
+                Cursor = Cursors.Default;
 
                 usuariosController.Dispose();
                 if (!(usuario is null)) usuario.Dispose();
                 if (!(listaUsuarios is null))
                 {
                     listaUsuarios.Clear();
-                    listaUsuarios = null;
                 }
             }
         }
@@ -118,7 +111,7 @@ namespace ParkingSystem.Views.Usuario
             }
             frmUsuariosCrud usuarioCrud = new frmUsuariosCrud(IdUsuarioSelecionado, typeAccess);
             usuarioCrud.Show();
-            this.Close();
+            Close();
         }
 
         private void btnIncluir_Click(object sender, EventArgs e)
@@ -172,7 +165,7 @@ namespace ParkingSystem.Views.Usuario
             try
             {
                 lblQuantidade.Text = String.Empty;
-                this.OnResize(null);
+                OnResize(null);
                 btnBuscar.PerformClick();
             }
             catch (Exception error)

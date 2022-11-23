@@ -2,12 +2,6 @@
 using ParkingSystem.Models.Veiculo;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ParkingSystem.Views.Veiculo.Modelo
@@ -38,7 +32,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            this.Cursor = Cursors.WaitCursor;
+            Cursor = Cursors.WaitCursor;
             btnBuscar.Enabled = false;
             gridModelos.Rows.Clear();
             ModelosController modeloController = new ModelosController();
@@ -80,7 +74,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
                         }
                     }
                     if (listaModelos.Count == 1) lblQuantidade.Text = "1 modelo encontrado";
-                    else lblQuantidade.Text = $"{listaModelos.Count.ToString()} modelos encontrados";
+                    else lblQuantidade.Text = $"{listaModelos.Count} modelos encontrados";
                 }
                 else
                 {
@@ -96,7 +90,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
             finally
             {
                 btnBuscar.Enabled = true;
-                this.Cursor = Cursors.Default;
+                Cursor = Cursors.Default;
 
                 modeloController.Dispose();
                 fabricanteController.Dispose();
@@ -104,7 +98,6 @@ namespace ParkingSystem.Views.Veiculo.Modelo
                 if (!(listaModelos is null))
                 {
                     listaModelos.Clear();
-                    listaModelos = null;
                 }
             }
         }
@@ -114,7 +107,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
             try
             {
                 lblQuantidade.Text = String.Empty;
-                this.OnResize(null);
+                OnResize(null);
                 btnBuscar.PerformClick();
             }
             catch (Exception error)
@@ -149,7 +142,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
             }
             frmModelosCrud modeloCrud = new frmModelosCrud(IdModeloSelecionado, typeAccess);
             modeloCrud.Show();
-            this.Close();
+            Close();
         }
 
         private void gridModelos_CellClick(object sender, DataGridViewCellEventArgs e)

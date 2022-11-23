@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ParkingSystem.Models.Pessoa;
 
 namespace ParkingSystem.Models.Usuario
@@ -36,21 +32,21 @@ namespace ParkingSystem.Models.Usuario
 
         public bool IsAdmin()
         {
-            return (this.Id == 1 && this.Nome == "ADMINISTRADOR" && this.Email == "adm@darrieuxinfo.com");
+            return (Id == 1 && Nome == "ADMINISTRADOR" && Email == "adm@darrieuxinfo.com");
         }
 
         public override bool Equals(object obj)
         {
             if (obj is Usuarios)
             {
-                return (this.Id == ((Usuarios)obj).Id && this.Email == ((Usuarios)obj).Email);
+                return (Id == ((Usuarios)obj).Id && Email == ((Usuarios)obj).Email);
             }
             return false;
         }
 
         public override string ToString()
         {
-            return $"{this.Nome}";
+            return $"{Nome}";
         }
 
         public override int GetHashCode()

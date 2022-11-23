@@ -1,13 +1,6 @@
 ﻿using ParkingSystem.Controller.Implements;
 using ParkingSystem.Models.Usuario;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ParkingSystem.Views.Login
@@ -24,7 +17,7 @@ namespace ParkingSystem.Views.Login
 
         private void frmLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (this.FinishSystem) Application.Exit();
+            if (FinishSystem) Application.Exit();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -51,14 +44,14 @@ namespace ParkingSystem.Views.Login
 
                     frmPrincipal Principal = new frmPrincipal(usuario.Id);
                     Principal.Show();
-                    this.FinishSystem = false;
-                    this.Close();
+                    FinishSystem = false;
+                    Close();
                 }
             }
             catch(Exception error)
             {
                 General.MessageShowError(error.Message);
-                this.Close();
+                Close();
                 return;
             }
             finally

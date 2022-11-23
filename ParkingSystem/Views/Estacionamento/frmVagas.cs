@@ -2,12 +2,6 @@
 using ParkingSystem.Models.Estacionamento;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ParkingSystem.Views.Estacionamento
@@ -30,14 +24,14 @@ namespace ParkingSystem.Views.Estacionamento
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             btnBuscar.Enabled = false;
-            this.Cursor = Cursors.WaitCursor;
+            Cursor = Cursors.WaitCursor;
             gridVagas.Rows.Clear();
             VagasController vagaController = new VagasController();
             Vagas vaga = null;
             List<Vagas> listaVagas = null;
             try
             {
-                string nomeVaga = String.Empty;
+                string nomeVaga = string.Empty;
 
                 if (txtVaga.Text.Trim().Length > 0) nomeVaga = txtVaga.Text;
 
@@ -61,7 +55,7 @@ namespace ParkingSystem.Views.Estacionamento
                         }
                     }
                     if (listaVagas.Count == 1) lblQuantidade.Text = "1 vaga encontrada";
-                    else lblQuantidade.Text = $"{listaVagas.Count.ToString()} vagas encontradas";
+                    else lblQuantidade.Text = $"{listaVagas.Count} vagas encontradas";
                 }
                 else
                 {
@@ -84,7 +78,6 @@ namespace ParkingSystem.Views.Estacionamento
                 if (!(listaVagas is null))
                 {
                     listaVagas.Clear();
-                    listaVagas = null;
                 }
             }
         }
@@ -94,7 +87,7 @@ namespace ParkingSystem.Views.Estacionamento
             try
             {
                 lblQuantidade.Text = String.Empty;
-                this.OnResize(null);
+                OnResize(null);
                 btnBuscar.PerformClick();
             }
             catch (Exception error)
@@ -128,7 +121,7 @@ namespace ParkingSystem.Views.Estacionamento
             }
             frmVagasCrud vagaCrud = new frmVagasCrud(IdVagaSelecionada, typeAccess);
             vagaCrud.Show();
-            this.Close();
+            Close();
         }
 
         private void gridVagas_CellClick(object sender, DataGridViewCellEventArgs e)

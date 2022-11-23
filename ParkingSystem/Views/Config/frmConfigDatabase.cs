@@ -65,7 +65,7 @@ namespace ParkingSystem.Views
             catch (Exception error)
             {
                 MessageBox.Show(error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
+                Close();
             }
         }
 
@@ -95,7 +95,7 @@ namespace ParkingSystem.Views
                 }
                 else
                 {
-                    this.Close();
+                    Close();
                 }
                 
 

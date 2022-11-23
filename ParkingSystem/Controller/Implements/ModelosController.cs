@@ -211,7 +211,8 @@ namespace ParkingSystem.Controller.Implements
                 Modelos.Campos.IDFABRICANTE.ToString(),
                 Modelos.Campos.NOME.ToString(),
                 Modelos.Campos.MOTOR.ToString(),
-                Modelos.Campos.ANO.ToString()
+                Modelos.Campos.ANO.ToString(),
+                Modelos.Campos.TIPO.ToString()
             };
 
             return campos;
@@ -227,7 +228,8 @@ namespace ParkingSystem.Controller.Implements
                 modelo.Fabricante.Id.ToString(),
                 modelo.Nome,
                 modelo.Motor,
-                modelo.Ano.ToString()
+                modelo.Ano.ToString(),
+                ((int)modelo.Tipo).ToString()
             };
 
             return valores;
@@ -261,10 +263,11 @@ namespace ParkingSystem.Controller.Implements
                         string motor = reader.GetString((int)Modelos.Campos.MOTOR);
                         int ano = reader.GetFieldValue<int>((int)Modelos.Campos.ANO);
                         Fabricantes fabricante = fabricanteController.Get(reader.GetFieldValue<int>((int)Modelos.Campos.IDFABRICANTE));
+                        EnumVeiculos.tipo tipo = (EnumVeiculos.tipo)reader.GetFieldValue<int>((int)Modelos.Campos.TIPO);
 
                         if (!(fabricante is null))
                         {
-                            listaModelos.Add(new Modelos(id, nome, motor, ano, fabricante));
+                            listaModelos.Add(new Modelos(id, nome, motor, ano, fabricante, tipo));
                         }
                     }
                 }

@@ -1,12 +1,5 @@
 ﻿using ParkingSystem.Shared;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ParkingSystem.Views.Config
@@ -50,7 +43,7 @@ namespace ParkingSystem.Views.Config
                 Configuracoes.AtualizaConfiguracaoEstacionamento(valorCarro, valorMoto, valorPerNoite);
 
                 General.MessageShow("Configurações Salvas com Sucesso!");
-                this.Close();
+                Close();
                 return;
             }
             catch(Exception error)

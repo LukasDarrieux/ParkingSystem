@@ -1,9 +1,5 @@
 ﻿using ParkingSystem.Utils.Implements;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ParkingSystem.Shared
 {
@@ -31,7 +27,7 @@ namespace ParkingSystem.Shared
 
         public static Database GetDatabase()
         {
-            if (String.IsNullOrEmpty(Server) && String.IsNullOrEmpty(User) && String.IsNullOrEmpty(Password))
+            if (string.IsNullOrEmpty(Server) && string.IsNullOrEmpty(User) && string.IsNullOrEmpty(Password))
             {
                 return null;
             }

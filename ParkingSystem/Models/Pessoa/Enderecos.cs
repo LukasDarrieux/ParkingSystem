@@ -19,7 +19,7 @@ namespace ParkingSystem.Models.Pessoa
             Numero = numero;
             Bairro = bairro;
             Cidade = cidade;
-            UF = uf;
+            UF = uf.ToUpper();
         }
 
         public Enderecos(string cep, string logradouro, string numero, string bairro, string cidade, string uf)
@@ -29,7 +29,7 @@ namespace ParkingSystem.Models.Pessoa
             Numero = numero;
             Bairro = bairro;
             Cidade = cidade;
-            UF = uf;
+            UF = uf.ToUpper();
         }
 
         public void Dispose()

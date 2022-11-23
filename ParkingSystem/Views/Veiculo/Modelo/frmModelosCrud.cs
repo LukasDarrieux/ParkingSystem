@@ -1,25 +1,18 @@
 ﻿using ParkingSystem.Controller.Implements;
 using ParkingSystem.Models.Veiculo;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ParkingSystem.Views.Veiculo.Modelo
 {
     public partial class frmModelosCrud : Form
     {
-        private General.TypeAccess TipoAcesso;
-        private int IdModelo;
+        private readonly General.TypeAccess TipoAcesso;
+        private readonly int IdModelo;
 
         public frmModelosCrud(int idModelo, int tipoAcesso)
         {
-            this.IdModelo = idModelo;
+            IdModelo = idModelo;
             TipoAcesso = (General.TypeAccess)tipoAcesso;
             InitializeComponent();
         }
@@ -30,6 +23,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
             {
                 General.ChangeTitleForm(this, "Modelo", TipoAcesso);
                 General.CarregarComboFabricante(txtFabricante);
+                General.CarregaComboTipoModelo(txtTipo);
 
                 if (TipoAcesso != General.TypeAccess.CREATE)
                 {
@@ -64,6 +58,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
             try
             {
                 if (!General.ValidateField(txtFabricante, lblFabricante.Text)) return;
+                if (!General.ValidateField(txtTipo, lblTipo.Text)) return;
                 if (!General.ValidateField(txtModelo, lblModelo.Text)) return;
                 if (!General.ValidateField(txtMotor, lblModelo.Text)) return;
                 if (!General.ValidateField(txtAno, lblAno.Text)) return;
@@ -97,11 +92,11 @@ namespace ParkingSystem.Views.Veiculo.Modelo
                 {
                     using (ModelosController modeloController = new ModelosController())
                     {
-                        using (Modelos modelo = new Modelos(0, txtModelo.Text, txtMotor.Text, int.Parse(txtAno.Text), fabricante))
+                        using (Modelos modelo = new Modelos(0, txtModelo.Text, txtMotor.Text, int.Parse(txtAno.Text), fabricante, (EnumVeiculos.tipo)txtTipo.SelectedItem))
                         {
                             if(modeloController.Insert(modelo))
                             {
-                                this.Close();
+                                Close();
                             }
                         }
                     }
@@ -117,11 +112,11 @@ namespace ParkingSystem.Views.Veiculo.Modelo
                 {
                     using (ModelosController modeloController = new ModelosController())
                     {
-                        using (Modelos modelo = new Modelos(this.IdModelo, txtModelo.Text, txtMotor.Text, int.Parse(txtAno.Text), fabricante))
+                        using (Modelos modelo = new Modelos(IdModelo, txtModelo.Text, txtMotor.Text, int.Parse(txtAno.Text), fabricante, (EnumVeiculos.tipo)txtTipo.SelectedItem))
                         {
                             if (modeloController.Update(modelo))
                             {
-                                this.Close();
+                                Close();
                             }
                         }
                     }
@@ -137,13 +132,13 @@ namespace ParkingSystem.Views.Veiculo.Modelo
                 {
                     using (ModelosController modeloController = new ModelosController())
                     {
-                        using (Modelos modelo = new Modelos(this.IdModelo, txtModelo.Text, txtMotor.Text, int.Parse(txtAno.Text), fabricante))
+                        using (Modelos modelo = new Modelos(IdModelo, txtModelo.Text, txtMotor.Text, int.Parse(txtAno.Text), fabricante, (EnumVeiculos.tipo)txtTipo.SelectedItem))
                         {
                             if (General.MessageQuestion("Tem certeza que deseja excluir este modelo?"))
                             { 
                                 if (modeloController.Delete(modelo))
                                 {
-                                    this.Close();
+                                    Close();
                                 }
                             }
                         }
@@ -161,6 +156,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
                     if (!(modelo is null))
                     {
                         txtFabricante.SelectedItem = modelo.Fabricante;
+                        txtTipo.SelectedItem = modelo.Tipo;
                         txtModelo.Text = modelo.Nome;
                         txtMotor.Text = modelo.Motor;
                         txtAno.Text = modelo.Ano.ToString();
@@ -176,7 +172,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
                 DisableControls(true);
 
                 btnCancelar.Left = (this.Width / 2) - (btnCancelar.Width / 2);
-                this.Refresh();
+                Refresh();
             }
             catch (Exception error)
             {
@@ -190,7 +186,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
             {
                 DisableControls();
                 btnSalvar.Text = "Excluir";
-                this.Refresh();
+                Refresh();
             }
             catch (Exception error)
             {
@@ -201,6 +197,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
         private void DisableControls(bool IsView = false)
         {
             txtFabricante.Enabled = false;
+            txtTipo.Enabled = false;
             txtModelo.Enabled = false;
             txtMotor.Enabled = false;
             txtAno.Enabled = false;

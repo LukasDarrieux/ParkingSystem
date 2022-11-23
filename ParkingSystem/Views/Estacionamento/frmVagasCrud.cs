@@ -1,13 +1,6 @@
 ﻿using ParkingSystem.Controller.Implements;
 using ParkingSystem.Models.Estacionamento;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ParkingSystem.Views.Estacionamento
@@ -26,7 +19,7 @@ namespace ParkingSystem.Views.Estacionamento
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void LoadVaga()
@@ -51,7 +44,7 @@ namespace ParkingSystem.Views.Estacionamento
                 {
                     if (vagaController.Insert(vaga))
                     {
-                        this.Close();
+                        Close();
                     }
                 }
             }
@@ -65,7 +58,7 @@ namespace ParkingSystem.Views.Estacionamento
                 {
                     if (vagaController.Update(vaga))
                     {
-                        this.Close();
+                        Close();
                     }
                 }
             }
@@ -81,7 +74,7 @@ namespace ParkingSystem.Views.Estacionamento
                     {
                         if (vagaController.Delete(vaga))
                         {
-                            this.Close();
+                            Close();
                         }
                     }
 
@@ -96,7 +89,7 @@ namespace ParkingSystem.Views.Estacionamento
                 DisableControls(true);
 
                 btnCancelar.Left = (this.Width / 2) - (btnCancelar.Width / 2);
-                this.Refresh();
+                Refresh();
             }
             catch (Exception error)
             {
@@ -110,7 +103,7 @@ namespace ParkingSystem.Views.Estacionamento
             {
                 DisableControls();
                 btnSalvar.Text = "Excluir";
-                this.Refresh();
+                Refresh();
             }
             catch (Exception error)
             {

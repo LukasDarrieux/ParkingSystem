@@ -1,21 +1,14 @@
 ﻿using ParkingSystem.Controller.Implements;
 using ParkingSystem.Models.Usuario;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ParkingSystem.Views.Usuario
 {
     public partial class frmUsuariosCrud : Form
     {
-        private int IdUsuario;
-        private General.TypeAccess TipoAcesso;
+        private readonly int IdUsuario;
+        private readonly General.TypeAccess TipoAcesso;
 
         public frmUsuariosCrud(int idUsuario, int tipoAcesso)
         {
@@ -83,7 +76,7 @@ namespace ParkingSystem.Views.Usuario
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void frmUsuariosCrud_FormClosed(object sender, FormClosedEventArgs e)
@@ -115,7 +108,7 @@ namespace ParkingSystem.Views.Usuario
                 {
                     if (usuarioController.Insert(usuario))
                     {
-                        this.Close();
+                        Close();
                     }
                 }
             }
@@ -129,7 +122,7 @@ namespace ParkingSystem.Views.Usuario
                 {
                     if(usuarioController.Update(usuario))
                     {
-                        this.Close();
+                        Close();
                     }
                 }
             }
@@ -145,7 +138,7 @@ namespace ParkingSystem.Views.Usuario
                     {
                         if(usuarioController.Delete(usuario))
                         {
-                            this.Close();
+                            Close();
                         }
                     }
                     
@@ -160,7 +153,7 @@ namespace ParkingSystem.Views.Usuario
                 DisableControls(true);
 
                 btnCancelar.Left = (this.Width / 2) - (btnCancelar.Width / 2);
-                this.Refresh();
+                Refresh();
             }
             catch(Exception error)
             {
@@ -174,7 +167,7 @@ namespace ParkingSystem.Views.Usuario
             {
                 DisableControls();
                 btnSalvar.Text = "Excluir";
-                this.Refresh();
+                Refresh();
             }
             catch (Exception error)
             {

@@ -31,6 +31,8 @@ namespace ParkingSystem.Views.Estacionamento
         {
             General.CarregarComboClientes(txtCliente);
             txtCliente_SelectedIndexChanged(null, null);
+
+            if (gridEstacionamento.Rows.Count > 1) timerTempo.Enabled = true;
         }
 
         private void txtCliente_SelectedIndexChanged(object sender, EventArgs e)
@@ -86,16 +88,16 @@ namespace ParkingSystem.Views.Estacionamento
 
         private void btnEntrada_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
             frmEntrada frmEntrada = new frmEntrada();
             frmEntrada.Show();
-            
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             btnBuscar.Enabled = false;
             Cursor = Cursors.WaitCursor;
+            timerTempo.Enabled = false;
             Estacionamentos estacionamento = null;
             Veiculos veiculo = null;
             List<Estacionamentos> listaEstacionamentos = null;
@@ -130,9 +132,11 @@ namespace ParkingSystem.Views.Estacionamento
                             gridEstacionamento[(int)ColsGrid.TEMPO, row].Value = parking.GetTotalHoras();
                             row++;   
                         }
+
+                        timerTempo.Enabled = true;
                     }
                 }
-
+                
 
             }
             catch(Exception error)
@@ -162,7 +166,7 @@ namespace ParkingSystem.Views.Estacionamento
                     return;
                 }
                 new frmSaida(IdEstacionamento).Show();
-                this.Close();
+                Close();
             }
             catch (Exception error)
             {
@@ -195,6 +199,32 @@ namespace ParkingSystem.Views.Estacionamento
             catch (Exception error)
             {
                 General.MessageShowError(error.Message);
+            }
+        }
+
+        private void timerTempo_Tick(object sender, EventArgs e)
+        {
+            const short TOTAL_MINUTOS_DIA = 1440;
+
+            if (gridEstacionamento.Rows.Count > 1 && gridEstacionamento[(int)ColsGrid.ID, 0].Value.ToString().Trim().Length > 0)
+            {
+                string periodo = string.Empty;
+                for (int row = 0; row < gridEstacionamento.Rows.Count - 1; row++)
+                {
+                    if (!(gridEstacionamento[(int)ColsGrid.TEMPO, row].Value is null) && 
+                        !String.IsNullOrEmpty(gridEstacionamento[(int)ColsGrid.TEMPO, row].Value.ToString()))
+                    {
+                        DateTime Entrada = DateTime.Parse(gridEstacionamento[(int)ColsGrid.ENTRADA, row].Value.ToString());
+                        double tempoTotal = (double)DateTime.Now.Subtract(Entrada).TotalMinutes;
+                        TimeSpan tempoCompleto = TimeSpan.FromMinutes(tempoTotal);
+
+                        periodo = tempoCompleto.ToString(@"hh\:mm\:ss");
+                        if (tempoTotal > TOTAL_MINUTOS_DIA) periodo = tempoCompleto.ToString(@"d\.hh\:mm\:ss");
+
+                        gridEstacionamento[(int)ColsGrid.TEMPO, row].Value = periodo;
+                    }
+                }
+                gridEstacionamento.Refresh();
             }
         }
     }

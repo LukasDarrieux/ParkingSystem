@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data;
 using System.Data.Common;
-using ParkingSystem.Utils.Interfaces;
 using MySql.Data.MySqlClient;
 
 namespace ParkingSystem.Utils.Implements
@@ -111,6 +107,13 @@ namespace ParkingSystem.Utils.Implements
                 if (versaoBanco < 8)
                 {
                     ExecuteSql("INSERT INTO CONFIGURACOES(TITULO, CARRO, MOTO, PERNOITE) VALUES('', 0, 0, 0)");
+                    versaoBanco++;
+                    ExecuteSql($"UPDATE CONFIGBANCO SET VERSAO = {versaoBanco}");
+                }
+
+                if (versaoBanco < 9)
+                {
+                    ExecuteSql("ALTER TABLE MODELOS ADD TIPO INT NOT NULL DEFAULT (1)");
                     versaoBanco++;
                     ExecuteSql($"UPDATE CONFIGBANCO SET VERSAO = {versaoBanco}");
                 }

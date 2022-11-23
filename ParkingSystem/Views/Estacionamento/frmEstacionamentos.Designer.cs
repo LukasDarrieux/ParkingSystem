@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEstacionamentos));
             this.gridEstacionamento = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +48,7 @@
             this.txtDataInicio = new System.Windows.Forms.MaskedTextBox();
             this.lblAte = new System.Windows.Forms.Label();
             this.txtDataFim = new System.Windows.Forms.MaskedTextBox();
+            this.timerTempo = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridEstacionamento)).BeginInit();
             this.SuspendLayout();
             // 
@@ -216,6 +218,11 @@
             this.txtDataFim.Size = new System.Drawing.Size(100, 25);
             this.txtDataFim.TabIndex = 7;
             // 
+            // timerTempo
+            // 
+            this.timerTempo.Interval = 1000;
+            this.timerTempo.Tick += new System.EventHandler(this.timerTempo_Tick);
+            // 
             // frmEstacionamentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -239,7 +246,6 @@
             this.Name = "frmEstacionamentos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmEstacionamento";
-            this.TopMost = true;
             this.Activated += new System.EventHandler(this.frmEstacionamentos_Activated);
             this.Load += new System.EventHandler(this.frmEstacionamentos_Load);
             this.Resize += new System.EventHandler(this.frmEstacionamentos_Resize);
@@ -269,5 +275,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CLIENTE;
         private System.Windows.Forms.DataGridViewTextBoxColumn ENTRADA;
         private System.Windows.Forms.DataGridViewTextBoxColumn TEMPO;
+        private System.Windows.Forms.Timer timerTempo;
     }
 }

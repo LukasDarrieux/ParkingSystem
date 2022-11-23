@@ -11,7 +11,8 @@ namespace ParkingSystem.Models.Veiculo
             NOME,
             MOTOR,
             ANO,
-            LAST = ANO
+            TIPO,
+            LAST = TIPO
         }
 
 
@@ -21,9 +22,21 @@ namespace ParkingSystem.Models.Veiculo
         public int Ano { get; set; }
         public Fabricantes Fabricante { get; set; }
 
+        public EnumVeiculos.tipo Tipo { get; set; }
+
         public Modelos()
         {
 
+        }
+
+        public Modelos(int id, string nome, string motor, int ano, Fabricantes fabricante, EnumVeiculos.tipo tipo)
+        {
+            Id = id;
+            Nome = nome;
+            Motor = motor;
+            Ano = ano;
+            Fabricante = fabricante;
+            Tipo = tipo;
         }
 
         public Modelos(int id, string nome, string motor, int ano, Fabricantes fabricante)
@@ -50,7 +63,6 @@ namespace ParkingSystem.Models.Veiculo
             {
                 Fabricante.Dispose();
             }
-            
         }
 
         public override bool Equals(object obj)

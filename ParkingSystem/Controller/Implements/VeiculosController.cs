@@ -274,7 +274,7 @@ namespace ParkingSystem.Controller.Implements
                         int idModelo = reader.GetFieldValue<int>((int)Veiculos.Campos.IDMODELO);
                         int idCliente = reader.GetFieldValue<int>((int)Veiculos.Campos.IDCLIENTE);
                         string placa = reader.GetString((int)Veiculos.Campos.PLACA);
-                        EnumVeiculos.tipo tipo = (EnumVeiculos.tipo)reader.GetFieldValue<int>((int)Veiculos.Campos.TIPO);
+                        EnumVeiculos.tipo tipo = modeloController.Get(idModelo).Tipo;
 
                         switch (tipo)
                         {

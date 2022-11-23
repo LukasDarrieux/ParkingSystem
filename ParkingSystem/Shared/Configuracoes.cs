@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ParkingSystem.Utils.Interfaces;
-using ParkingSystem.Utils.Implements;
-
+﻿using ParkingSystem.Utils.Implements;
 
 namespace ParkingSystem.Shared
 {

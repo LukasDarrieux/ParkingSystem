@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ParkingSystem.Shared;
 using ParkingSystem.Views.Login;
@@ -34,12 +27,12 @@ namespace ParkingSystem.Views.Splash
             progress.Value = value;
             progress.Refresh();
 
-            this.Refresh();
+            Refresh();
         }
 
         private void frmSplash_Activated(object sender, EventArgs e)
         {
-            this.Refresh();
+            Refresh();
             UpdateProgress(10, "Iniciando sistema...");
             Thread.Sleep(1000);
 
@@ -58,7 +51,7 @@ namespace ParkingSystem.Views.Splash
                 UpdateProgress(100, "Iniciando...");
                 Thread.Sleep(500);
                 new frmLogin(true).Show();
-                this.Visible = false;
+                Visible = false;
             }
         }
     }

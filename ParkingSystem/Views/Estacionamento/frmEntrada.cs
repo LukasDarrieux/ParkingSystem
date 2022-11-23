@@ -29,6 +29,8 @@ namespace ParkingSystem.Views.Estacionamento
                 int IdCliente = 0;
                 if (!(txtCliente.SelectedItem is null)) IdCliente = ((Clientes)txtCliente.SelectedItem).Id;
                 General.CarregarComboVeiculos(IdCliente, txtVeiculo);
+                txtVeiculo.SelectedIndex = General.COMBO_VAZIA;
+                txtVeiculo.Text = string.Empty;
             }
             catch (Exception error)
             {

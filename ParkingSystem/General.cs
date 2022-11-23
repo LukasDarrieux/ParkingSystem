@@ -25,6 +25,7 @@ namespace ParkingSystem
         public const string ARQUIVOCONFIG = "config.json";
         public static string version = "1.0.0";
         public const short scroolWidth = 60;
+        public const short COMBO_VAZIA = -1;
 
         public static void MessageShowAttention(string msg, string title = "Atenção")
         {
@@ -171,6 +172,7 @@ namespace ParkingSystem
             {
                 object itemSelected = combo.SelectedItem;
                 combo.Items.Clear();
+                combo.SelectedIndex = COMBO_VAZIA;
                 using (FabricantesController fabricanteController = new FabricantesController())
                 {
                     listaFabricantes = fabricanteController.GetAll();
@@ -208,6 +210,7 @@ namespace ParkingSystem
             {
                 object itemSelected = combo.SelectedItem;
                 combo.Items.Clear();
+                combo.SelectedIndex = COMBO_VAZIA;
                 using (FabricantesController fabricanteController = new FabricantesController())
                 {
                     modelo.Fabricante = fabricanteController.Get(IdFabricante);
@@ -248,6 +251,7 @@ namespace ParkingSystem
             {
                 object itemSelected = combo.SelectedItem;
                 combo.Items.Clear();
+                combo.SelectedIndex = COMBO_VAZIA;
                 using (ClientesController clienteController = new ClientesController())
                 {
                     listaClientes = clienteController.GetAll();
@@ -282,6 +286,7 @@ namespace ParkingSystem
             {
                 object itemSelected = combo.SelectedItem;
                 combo.Items.Clear();
+                combo.SelectedIndex = COMBO_VAZIA;
                 using (VagasController vagaController = new VagasController())
                 {
                     listaVagas = vagaController.GetAll();
@@ -318,6 +323,7 @@ namespace ParkingSystem
             {
                 object itemSelected = combo.SelectedItem;
                 combo.Items.Clear();
+                combo.SelectedIndex = COMBO_VAZIA;
                 using (ClientesController clienteController = new ClientesController())
                 {
                     cliente = clienteController.Get(IdCliente);

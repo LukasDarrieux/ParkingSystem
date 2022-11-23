@@ -101,6 +101,7 @@ namespace ParkingSystem.Views.Relatorios
             txtDataInicio.Text = $"01/{DateTime.Now.Month}/{DateTime.Now.Year}";
             DateTime dataFinal = new DateTime(DateTime.Now.Year, DateTime.Now.AddMonths(1).Month, 1).AddDays(-1);
             txtDataFim.Text = dataFinal.ToString("dd/MM/yyyy");
+            frmRelatorioFaturamento_Resize(null, null);
         }
 
         private void frmRelatorioFaturamento_Resize(object sender, EventArgs e)

@@ -32,26 +32,34 @@ namespace ParkingSystem.Views.Splash
 
         private void frmSplash_Activated(object sender, EventArgs e)
         {
-            Refresh();
-            UpdateProgress(10, "Iniciando sistema...");
-            Thread.Sleep(1000);
-
-            UpdateProgress(30, "Carregando configurações da base de dados...");
-            General.CarregarConfiguracoes();
-            Thread.Sleep(1000);
-
-            UpdateProgress(60, "Conectando com a base de dados...");
-            Thread.Sleep(1000);
-            if (General.CriarBanco())
+            try
             {
-                UpdateProgress(90, "Carregando configurações...");
-                Configuracoes.LoadConfiguracaoEstacionamento();
+                Refresh();
+                UpdateProgress(10, "Iniciando sistema...");
                 Thread.Sleep(1000);
 
-                UpdateProgress(100, "Iniciando...");
-                Thread.Sleep(500);
-                new frmLogin(true).Show();
-                Visible = false;
+                UpdateProgress(30, "Carregando configurações da base de dados...");
+                General.CarregarConfiguracoes();
+                Thread.Sleep(1000);
+
+                UpdateProgress(60, "Conectando com a base de dados...");
+                Thread.Sleep(1000);
+                if (General.CriarBanco())
+                {
+                    UpdateProgress(90, "Carregando configurações...");
+                    Configuracoes.LoadConfiguracaoEstacionamento();
+                    Thread.Sleep(1000);
+
+                    UpdateProgress(100, "Iniciando...");
+                    Thread.Sleep(500);
+                    new frmLogin(true).Show();
+                    Visible = false;
+                }
+            }
+            catch (Exception error)
+            {
+                General.MessageShowError(error.Message);
+                return;
             }
         }
     }

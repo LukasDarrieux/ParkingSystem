@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using ParkingSystem.Models.Estacionamento;
+using ParkingSystem.Views;
 
 namespace ParkingSystem
 {
@@ -119,16 +120,19 @@ namespace ParkingSystem
         public static bool CriarBanco()
         {
             DatabaseCreator DbCreator = DatabaseCreator.GetDatabase(ConfiguracaoDatabase.SGBD, ConfiguracaoDatabase.Server, ConfiguracaoDatabase.AutenticationWindows, ConfiguracaoDatabase.User, ConfiguracaoDatabase.Password);
+            bool createDatabase = false;
             try
             {
                 DbCreator.CreateDatabase();
+                createDatabase = true;
                 DbCreator.UpdateDatabase();
                 return true;
             }
             catch (Exception error)
             {
                 MessageShowError($"Error:\n\n{error.Message}", "Error");
-                Application.Exit();
+                if (!createDatabase) new frmConfigDatabase().ShowDialog();
+                else Application.Exit();
                 return false;
             }
             finally
@@ -492,6 +496,22 @@ namespace ParkingSystem
         public static string FormatValue(double value)
         {
             return value.ToString("F2").Replace(",", ".").Trim();
+        }
+
+        public static DateTime GetLastDayMonth(int year = 0, int month = 0)
+        {
+            if (year == uint.MinValue) year = DateTime.Now.Year;
+            if (month == uint.MinValue) month = DateTime.Now.Month;
+
+            return new DateTime(year, month, DateTime.DaysInMonth(year, month));
+        }
+
+        public static DateTime GetFirstDayMonth(int year = 0, int month = 0)
+        {
+            if (year == uint.MinValue) year = DateTime.Now.Year;
+            if (month == uint.MinValue) month = DateTime.Now.Month;
+
+            return new DateTime(year, month, 1);
         }
     }
 }

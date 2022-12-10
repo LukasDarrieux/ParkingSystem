@@ -11,14 +11,8 @@ namespace ParkingSystem.Shared
         public static void LoadConfig()
         {
             CheckFile();
-            if (FileHasContent())
-            {
-                ReadFile();
-            }
-            else
-            {
-                new frmConfigDatabase().ShowDialog();
-            }
+            if (FileHasContent()) ReadFile();
+            else new frmConfigDatabase().ShowDialog();
         }
 
         private static void CheckDiretory()

@@ -98,9 +98,8 @@ namespace ParkingSystem.Views.Relatorios
 
         private void frmRelatorioFaturamento_Load(object sender, EventArgs e)
         {
-            txtDataInicio.Text = $"01/{DateTime.Now.Month}/{DateTime.Now.Year}";
-            DateTime dataFinal = new DateTime(DateTime.Now.Year, DateTime.Now.AddMonths(1).Month, 1).AddDays(-1);
-            txtDataFim.Text = dataFinal.ToString("dd/MM/yyyy");
+            txtDataInicio.Text = General.GetFirstDayMonth().ToString("dd/MM/yyyy");
+            txtDataFim.Text = General.GetLastDayMonth().ToString("dd/MM/yyyy");
             frmRelatorioFaturamento_Resize(null, null);
         }
 

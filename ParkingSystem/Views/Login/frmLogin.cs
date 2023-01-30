@@ -1,5 +1,6 @@
 ﻿using ParkingSystem.Controller.Implements;
 using ParkingSystem.Models.Usuario;
+using ParkingSystem.Views.Usuario;
 using System;
 using System.Windows.Forms;
 
@@ -30,8 +31,8 @@ namespace ParkingSystem.Views.Login
 
                 string email = txtEmail.Text.Trim();
                 string senha = txtSenha.Text;
-
-                Usuarios usuario = usuarioController.Login(email, senha);
+                bool CreatePassword = false;
+                Usuarios usuario = usuarioController.Login(email, senha, out CreatePassword);
 
                 if (usuario is null)
                 {
@@ -41,9 +42,18 @@ namespace ParkingSystem.Views.Login
                 }
                 else
                 {
-
-                    frmPrincipal Principal = new frmPrincipal(usuario.Id);
-                    Principal.Show();
+                    if (CreatePassword)
+                    {
+                        using (var frm = new frmSenha(usuario.Id, usuario.Senha))
+                        {
+                            frm.ShowDialog();
+                            if (!frm.CadastrouSenha) Application.Exit();
+                        }
+                    }
+                    using (var frm = new frmPrincipal(usuario.Id))
+                    {
+                        frm.Show();
+                    }
                     FinishSystem = false;
                     Close();
                 }

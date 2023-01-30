@@ -208,8 +208,10 @@ namespace ParkingSystem.Views.Veiculo.Modelo
         {
             try
             {
-                frmModelos frmModelo = new frmModelos();
-                frmModelo.Show();
+                using (var frm = new frmModelos())
+                {
+                    frm.Show();
+                }   
             }
             catch (Exception error)
             {

@@ -81,8 +81,11 @@ namespace ParkingSystem.Views.Usuario
 
         private void frmUsuariosCrud_FormClosed(object sender, FormClosedEventArgs e)
         {
-            frmUsuarios frmUsuario = new frmUsuarios();
-            frmUsuario.Show();
+            using (var frm = new frmUsuarios())
+            {
+                frm.Show();
+            }
+                
         }
 
         private void LoadUsuario()
@@ -104,7 +107,7 @@ namespace ParkingSystem.Views.Usuario
         {
             using (UsuariosController usuarioController = new UsuariosController())
             {
-                using (Usuarios usuario = new Usuarios(0, txtNome.Text, txtEmail.Text, String.Empty))
+                using (Usuarios usuario = new Usuarios(0, txtNome.Text, txtEmail.Text, General.SENHA_PADRAO))
                 {
                     if (usuarioController.Insert(usuario))
                     {
@@ -152,7 +155,7 @@ namespace ParkingSystem.Views.Usuario
             {
                 DisableControls(true);
 
-                btnCancelar.Left = (this.Width / 2) - (btnCancelar.Width / 2);
+                btnCancelar.Left = (Width / 2) - (btnCancelar.Width / 2);
                 Refresh();
             }
             catch(Exception error)

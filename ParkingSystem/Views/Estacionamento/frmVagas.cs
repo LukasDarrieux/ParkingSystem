@@ -35,7 +35,6 @@ namespace ParkingSystem.Views.Estacionamento
 
                 if (txtVaga.Text.Trim().Length > 0) nomeVaga = txtVaga.Text;
 
-
                 vaga = new Vagas(0, nomeVaga);
                 listaVagas = vagaController.GetAll(vaga);
                 if (!(listaVagas is null))
@@ -71,7 +70,7 @@ namespace ParkingSystem.Views.Estacionamento
             finally
             {
                 btnBuscar.Enabled = true;
-                this.Cursor = Cursors.Default;
+                Cursor = Cursors.Default;
 
                 vagaController.Dispose();
                 if (!(vaga is null)) vaga.Dispose();
@@ -119,8 +118,10 @@ namespace ParkingSystem.Views.Estacionamento
                     return;
                 }
             }
-            frmVagasCrud vagaCrud = new frmVagasCrud(IdVagaSelecionada, typeAccess);
-            vagaCrud.Show();
+            using (var frm = new frmVagasCrud(IdVagaSelecionada, typeAccess))
+            {
+                frm.Show();
+            }
             Close();
         }
 
@@ -136,7 +137,7 @@ namespace ParkingSystem.Views.Estacionamento
                     {
                         if (gridVagas[(int)ColsGrid.ID, e.RowIndex].Value.ToString().Trim().Length > 0)
                         {
-                            IdVagaSelecionada = Int16.Parse(gridVagas[(int)ColsGrid.ID, e.RowIndex].Value.ToString());
+                            IdVagaSelecionada = int.Parse(gridVagas[(int)ColsGrid.ID, e.RowIndex].Value.ToString());
                             return;
                         }
                     }

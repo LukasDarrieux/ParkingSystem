@@ -121,8 +121,10 @@ namespace ParkingSystem.Views.Estacionamento
         {
             try
             {
-                frmVagas frmVaga = new frmVagas();
-                frmVaga.Show();
+                using (var frm = new frmVagas())
+                {
+                    frm.Show();
+                }
             }
             catch(Exception error)
             {

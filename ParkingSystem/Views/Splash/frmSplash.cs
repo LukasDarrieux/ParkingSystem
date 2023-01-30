@@ -52,7 +52,11 @@ namespace ParkingSystem.Views.Splash
 
                     UpdateProgress(100, "Iniciando...");
                     Thread.Sleep(500);
-                    new frmLogin(true).Show();
+
+                    using (var frm = new frmLogin(true))
+                    {
+                        frm.Show();
+                    }
                     Visible = false;
                 }
             }

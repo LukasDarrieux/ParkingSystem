@@ -30,7 +30,7 @@ namespace ParkingSystem.Views
             lblUsuario.Text = $"Usuário: {usuario.Nome}";
             lblDatabase.Text = $"Banco de Dados: {ConfiguracaoDatabase.SGBD}";
             timer.Enabled = true;
-            this.Text = Configuracoes.GetConfiguracaoPersonalizacao().Titulo + " - DARRIEUX INFO";
+            Text = Configuracoes.GetConfiguracaoPersonalizacao().Titulo + " - DARRIEUX INFO";
         }
 
         private void frmPrincipal_FormClosed(object sender, FormClosedEventArgs e)
@@ -46,57 +46,104 @@ namespace ParkingSystem.Views
 
         private void mnuUsuarios_Click(object sender, EventArgs e)
         {
-            new frmUsuarios().Show();
+            using (var frm = new frmUsuarios())
+            {
+                frm.Show();
+            }
         }
 
         private void mnuConfiguracoesBancoDados_Click(object sender, EventArgs e)
         {
-            new frmConfigDatabase().Show();
+            using (var frm = new frmConfigDatabase())
+            { 
+                frm.Show();
+            }
         }
 
         private void mnuFabricantes_Click(object sender, EventArgs e)
         {
-            new frmFabricantes().Show();
+            using (var frm = new frmFabricantes())
+            {
+                frm.Show();
+            }
         }
 
         private void mnuModelos_Click(object sender, EventArgs e)
         {
-            new frmModelos().Show();
+            using (var frm = new frmModelos())
+            {
+                frm.Show();
+            }
         }
 
         private void mnuClientes_Click(object sender, EventArgs e)
         {
-            new frmClientes().Show();
+            using (var frm = new frmClientes())
+            {
+                frm.Show();
+            }
         }
 
         private void mnuVeiculos_Click(object sender, EventArgs e)
         {
-            new frmVeiculos().Show();
+            using (var frm = new frmVeiculos())
+            {
+                frm.Show();
+            }
         }
 
         private void mnuVaga_Click(object sender, EventArgs e)
         {
-            new frmVagas().Show();
+            using (var frm = new frmVagas())
+            {
+                frm.Show();
+            }
         }
 
         private void mnuConfiguracoes_Click(object sender, EventArgs e)
         {
-            new frmConfig().Show();
+            using (var frm = new frmConfig())
+            {
+                frm.Show();
+            }
         }
 
         private void mnuEstacionamento_Click(object sender, EventArgs e)
         {
-            new frmEstacionamentos().Show();
+            using (var frm = new frmEstacionamentos())
+            {
+                frm.Show();
+            }
         }
 
         private void mnuEntradaEstacionamento_Click(object sender, EventArgs e)
         {
-            new frmEntrada().Show();
+            using (var frm = new frmEntrada())
+            {
+                frm.Show();
+            }
         }
 
         private void mnuRelatorioFaturamento_Click(object sender, EventArgs e)
         {
-            new frmRelatorioFaturamento().Show();
+            using (var frm = new frmRelatorioFaturamento())
+            {
+                frm.Show();
+            }
+        }
+
+        private void mnuAlterarSenha_Click(object sender, EventArgs e)
+        {
+            if (usuario.IsAdmin())
+            {
+                General.MessageShowAttention("Não é possível alterar a senha do Administrador do Sistema!");
+                return;
+            }
+
+            using (var frm = new frmSenha(usuario.Id, usuario.Senha))
+            {
+                frm.ShowDialog();
+            }
         }
     }
 }

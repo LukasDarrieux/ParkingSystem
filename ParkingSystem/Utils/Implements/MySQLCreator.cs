@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.Common;
 using MySql.Data.MySqlClient;
+using ParkingSystem.Models.Usuario;
 
 namespace ParkingSystem.Utils.Implements
 {
@@ -118,6 +119,19 @@ namespace ParkingSystem.Utils.Implements
                     ExecuteSql($"UPDATE CONFIGBANCO SET VERSAO = {versaoBanco}");
                 }
 
+                if (versaoBanco < 10)
+                {
+                    ExecuteSql("ALTER TABLE USUARIOS ADD TIPO INT NOT NULL DEFAULT(0)");
+                    versaoBanco++;
+                    ExecuteSql($"UPDATE CONFIGBANCO SET VERSAO = {versaoBanco}");
+                }
+
+                if (versaoBanco < 11)
+                {
+                    ExecuteSql($"UPDATE USUARIOS SET TIPO = {(int)Usuarios.TipoUsuario.ADMINISTRADOR} WHERE ID = 1");
+                    versaoBanco++;
+                    ExecuteSql($"UPDATE CONFIGBANCO SET VERSAO = {versaoBanco}");
+                }
 
             }
             catch (Exception error)

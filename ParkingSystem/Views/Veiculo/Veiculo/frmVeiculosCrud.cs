@@ -48,7 +48,10 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
         {
             try
             {
-                new frmVeiculos().Show();
+                using (var frm = new frmVeiculos())
+                {
+                    frm.Show();
+                }
                 return;
             }
             catch (Exception error)
@@ -93,7 +96,7 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
             {
                 DisableControls(true);
 
-                btnCancelar.Left = (this.Width / 2) - (btnCancelar.Width / 2);
+                btnCancelar.Left = (Width / 2) - (btnCancelar.Width / 2);
                 Refresh();
             }
             catch (Exception error)

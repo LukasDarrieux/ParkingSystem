@@ -85,8 +85,10 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
                     return;
                 }
             }
-            frmVeiculosCrud modeloCrud = new frmVeiculosCrud(IdVeiculoSelecionado, typeAccess);
-            modeloCrud.Show();
+            using (var frm = new frmVeiculosCrud(IdVeiculoSelecionado, typeAccess))
+            {
+                frm.Show();
+            }
             Close();
         }
 

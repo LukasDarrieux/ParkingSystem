@@ -241,6 +241,18 @@
     <Compile Include="Views\Splash\frmSplash.Designer.cs">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Usuario\frmPermissoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Usuario\frmPermissoes.Designer.cs">
+      <DependentUpon>frmPermissoes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Usuario\frmSenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Usuario\frmSenha.Designer.cs">
+      <DependentUpon>frmSenha.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Usuario\frmUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -337,6 +349,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Splash\frmSplash.resx">
       <DependentUpon>frmSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Usuario\frmPermissoes.resx">
+      <DependentUpon>frmPermissoes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Usuario\frmSenha.resx">
+      <DependentUpon>frmSenha.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Usuario\frmUsuarios.resx">
       <DependentUpon>frmUsuarios.cs</DependentUpon>

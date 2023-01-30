@@ -26,8 +26,10 @@ namespace ParkingSystem.Views.Veiculo.Fabricante
         {
             try
             {
-                frmFabricantes frmFabricante = new frmFabricantes();
-                frmFabricante.Show();
+                using (var frm = new frmFabricantes())
+                {
+                    frm.Show();
+                }
             }
             catch(Exception error)
             {

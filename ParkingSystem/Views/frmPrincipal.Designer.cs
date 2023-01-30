@@ -35,7 +35,7 @@
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.menu = new System.Windows.Forms.MenuStrip();
             this.mnuSistema = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuUsuarios = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuUser = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuConfiguracoes = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuConfiguracoesBancoDados = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCadastros = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,9 +49,11 @@
             this.mnuEstaciomentos = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEstacionamento = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEntradaEstacionamento = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblDatabase = new System.Windows.Forms.Label();
             this.mnuRelatorios = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuRelatorioFaturamento = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblDatabase = new System.Windows.Forms.Label();
+            this.mnuUsuarios = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAlterarSenha = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,19 +98,21 @@
             // mnuSistema
             // 
             this.mnuSistema.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuUsuarios,
+            this.mnuUser,
             this.mnuConfiguracoes,
             this.mnuConfiguracoesBancoDados});
             this.mnuSistema.Name = "mnuSistema";
             this.mnuSistema.Size = new System.Drawing.Size(61, 20);
             this.mnuSistema.Text = "Sistema";
             // 
-            // mnuUsuarios
+            // mnuUser
             // 
-            this.mnuUsuarios.Name = "mnuUsuarios";
-            this.mnuUsuarios.Size = new System.Drawing.Size(246, 22);
-            this.mnuUsuarios.Text = "Usuários";
-            this.mnuUsuarios.Click += new System.EventHandler(this.mnuUsuarios_Click);
+            this.mnuUser.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuUsuarios,
+            this.mnuAlterarSenha});
+            this.mnuUser.Name = "mnuUser";
+            this.mnuUser.Size = new System.Drawing.Size(246, 22);
+            this.mnuUser.Text = "Usuários";
             // 
             // mnuConfiguracoes
             // 
@@ -210,16 +214,6 @@
             this.mnuEntradaEstacionamento.Text = "Entrada no Estacionamento";
             this.mnuEntradaEstacionamento.Click += new System.EventHandler(this.mnuEntradaEstacionamento_Click);
             // 
-            // lblDatabase
-            // 
-            this.lblDatabase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDatabase.AutoSize = true;
-            this.lblDatabase.Location = new System.Drawing.Point(418, 535);
-            this.lblDatabase.Name = "lblDatabase";
-            this.lblDatabase.Size = new System.Drawing.Size(154, 17);
-            this.lblDatabase.TabIndex = 3;
-            this.lblDatabase.Text = "Banco de dados: MySQL";
-            // 
             // mnuRelatorios
             // 
             this.mnuRelatorios.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -234,6 +228,30 @@
             this.mnuRelatorioFaturamento.Size = new System.Drawing.Size(208, 22);
             this.mnuRelatorioFaturamento.Text = "Relatório de Faturamento";
             this.mnuRelatorioFaturamento.Click += new System.EventHandler(this.mnuRelatorioFaturamento_Click);
+            // 
+            // lblDatabase
+            // 
+            this.lblDatabase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDatabase.AutoSize = true;
+            this.lblDatabase.Location = new System.Drawing.Point(418, 535);
+            this.lblDatabase.Name = "lblDatabase";
+            this.lblDatabase.Size = new System.Drawing.Size(154, 17);
+            this.lblDatabase.TabIndex = 3;
+            this.lblDatabase.Text = "Banco de dados: MySQL";
+            // 
+            // mnuUsuarios
+            // 
+            this.mnuUsuarios.Name = "mnuUsuarios";
+            this.mnuUsuarios.Size = new System.Drawing.Size(180, 22);
+            this.mnuUsuarios.Text = "Usuários";
+            this.mnuUsuarios.Click += new System.EventHandler(this.mnuUsuarios_Click);
+            // 
+            // mnuAlterarSenha
+            // 
+            this.mnuAlterarSenha.Name = "mnuAlterarSenha";
+            this.mnuAlterarSenha.Size = new System.Drawing.Size(180, 22);
+            this.mnuAlterarSenha.Text = "Alterar Senha";
+            this.mnuAlterarSenha.Click += new System.EventHandler(this.mnuAlterarSenha_Click);
             // 
             // frmPrincipal
             // 
@@ -267,7 +285,7 @@
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.MenuStrip menu;
         private System.Windows.Forms.ToolStripMenuItem mnuSistema;
-        private System.Windows.Forms.ToolStripMenuItem mnuUsuarios;
+        private System.Windows.Forms.ToolStripMenuItem mnuUser;
         private System.Windows.Forms.ToolStripMenuItem mnuConfiguracoes;
         private System.Windows.Forms.ToolStripMenuItem mnuConfiguracoesBancoDados;
         private System.Windows.Forms.ToolStripMenuItem mnuCadastros;
@@ -284,5 +302,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuEntradaEstacionamento;
         private System.Windows.Forms.ToolStripMenuItem mnuRelatorios;
         private System.Windows.Forms.ToolStripMenuItem mnuRelatorioFaturamento;
+        private System.Windows.Forms.ToolStripMenuItem mnuUsuarios;
+        private System.Windows.Forms.ToolStripMenuItem mnuAlterarSenha;
     }
 }

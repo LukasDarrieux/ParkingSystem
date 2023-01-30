@@ -27,6 +27,7 @@ namespace ParkingSystem
         public static string version = "1.0.0";
         public const short scroolWidth = 60;
         public const short COMBO_VAZIA = -1;
+        public const string SENHA_PADRAO = "1234567890";
 
         public static void MessageShowAttention(string msg, string title = "Atenção")
         {
@@ -50,10 +51,13 @@ namespace ParkingSystem
 
         public static bool ValidateField(TextBox textBox, string nameField)
         {
-            if (textBox.Text.Trim().Length > 0) return true;
+            int length = 0;
+            if (textBox.PasswordChar.ToString() != String.Empty) length = 7;
+            
+            if (textBox.Text.Trim().Length > length) return true;
             else
             {
-                MessageShowAttention($"Informe {nameField}");
+                MessageShowAttention($"Informe {nameField.Replace(":", "")}");
                 textBox.Focus();
                 return false;
             }
@@ -66,7 +70,7 @@ namespace ParkingSystem
             if (ValidateDecimal(textBox.Text.Trim())) return true;
             else
             {
-                MessageShowAttention($"Informe um valor válido para {nameField}");
+                MessageShowAttention($"Informe um valor válido para {nameField.Replace(":", "")}");
                 textBox.Focus();
                 return false;
             }
@@ -78,7 +82,7 @@ namespace ParkingSystem
             {
                 if (canEmpty) return true;
                 
-                MessageShowAttention($"Informe {nameField}");
+                MessageShowAttention($"Informe {nameField.Replace(":", "")}");
                 txtDateTime.Focus();
                 return false;
             }
@@ -86,7 +90,7 @@ namespace ParkingSystem
             {
                 if (!IsDate(txtDateTime.Text))
                 {
-                    MessageShowAttention($"Informe uma data válida para {nameField}");
+                    MessageShowAttention($"Informe uma data válida para {nameField.Replace(":", "")}");
                     txtDateTime.Focus();
                     return false;
                 }
@@ -100,7 +104,7 @@ namespace ParkingSystem
             if (comboBox.SelectedIndex > -1 && comboBox.Text.Trim().Length > 0) return true;
             else
             {
-                MessageShowAttention($"Informe {nameField}");
+                MessageShowAttention($"Informe {nameField.Replace(":", "")}");
                 comboBox.Focus();
                 return false;
             }
@@ -111,7 +115,7 @@ namespace ParkingSystem
             if (maskedBox.Text.Trim().Length > 0 && maskedBox.MaskCompleted) return true;
             else
             {
-                MessageShowAttention($"Informe {nameField}");
+                MessageShowAttention($"Informe {nameField.Replace(":", "")}");
                 maskedBox.Focus();
                 return false;
             }

@@ -140,8 +140,10 @@ namespace ParkingSystem.Views.Veiculo.Modelo
                     return;
                 }
             }
-            frmModelosCrud modeloCrud = new frmModelosCrud(IdModeloSelecionado, typeAccess);
-            modeloCrud.Show();
+            using (var frm = new frmModelosCrud(IdModeloSelecionado, typeAccess))
+            {
+                frm.Show();
+            }
             Close();
         }
 
@@ -157,7 +159,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
                     {
                         if (gridModelos[(int)ColsGrid.ID, e.RowIndex].Value.ToString().Trim().Length > 0)
                         {
-                            IdModeloSelecionado = Int16.Parse(gridModelos[(int)ColsGrid.ID, e.RowIndex].Value.ToString());
+                            IdModeloSelecionado = int.Parse(gridModelos[(int)ColsGrid.ID, e.RowIndex].Value.ToString());
                             return;
                         }
                     }

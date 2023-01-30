@@ -58,8 +58,10 @@ namespace ParkingSystem.Views.Veiculo.Fabricante
                     return;
                 }
             }
-            frmFabricantesCrud fabricanteCrud = new frmFabricantesCrud(IdFabricanteSelecionado, typeAccess);
-            fabricanteCrud.Show();
+            using (var frm = new frmFabricantesCrud(IdFabricanteSelecionado, typeAccess))
+            {
+                frm.Show();
+            }
             Close();
         }
 

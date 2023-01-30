@@ -70,7 +70,10 @@ namespace ParkingSystem.Views.Estacionamento
 
         private void frmSaida_FormClosed(object sender, FormClosedEventArgs e)
         {
-            new frmEstacionamentos().Show();
+            using (var frm = new frmEstacionamentos())
+            {
+                frm.Show();
+            }
             if (!(Estacionamento is null)) Estacionamento.Dispose();
 
         }

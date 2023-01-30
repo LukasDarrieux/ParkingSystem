@@ -80,7 +80,7 @@ namespace ParkingSystem.Utils.Implements
         {
             try
             {
-                if (!this.IsConnected()) throw new ExceptionConnNotOpen();
+                if (!IsConnected()) throw new ExceptionConnNotOpen();
                 _cmd.Connection = _con;
                 _cmd.CommandText = sql;
                 _cmd.ExecuteNonQuery();
@@ -95,7 +95,7 @@ namespace ParkingSystem.Utils.Implements
         {
             try
             {
-                if (!this.IsConnected()) throw new ExceptionConnNotOpen();
+                if (!IsConnected()) throw new ExceptionConnNotOpen();
                 _cmd.Connection = _con;
                 _cmd.CommandText = sqlQuery;
                 _dataReader = _cmd.ExecuteReader();
@@ -109,18 +109,18 @@ namespace ParkingSystem.Utils.Implements
 
         public virtual void Dispose()
         {
-            if (!(this._cmd is null)) this._cmd.Dispose();
+            if (!(_cmd is null)) _cmd.Dispose();
 
-            if (!(this._dataReader is null))
+            if (!(_dataReader is null))
             {
-                this._dataReader.Close();
-                this._dataReader.Dispose();
+                _dataReader.Close();
+                _dataReader.Dispose();
             }
 
-            if (!(this._con is null))
+            if (!(_con is null))
             {
-                this.CloseConnection();
-                this._con.Dispose();
+                CloseConnection();
+                _con.Dispose();
             }
                 
         }

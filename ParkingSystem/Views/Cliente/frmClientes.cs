@@ -96,7 +96,6 @@ namespace ParkingSystem.Views.Cliente
                 if (!(ListaClientes is null))
                 {
                     ListaClientes.Clear();
-                    ListaClientes = null;
                 }
             }
         }
@@ -125,8 +124,12 @@ namespace ParkingSystem.Views.Cliente
                     return;
                 }
             }
-            frmClientesCrud clienteCrud = new frmClientesCrud(IdClienteSelecionado, typeAccess);
-            clienteCrud.Show();
+
+            using (var frm = new frmClientesCrud(IdClienteSelecionado, typeAccess))
+            {
+                frm.Show();
+            }
+
             Close();
         }
 
@@ -142,7 +145,7 @@ namespace ParkingSystem.Views.Cliente
                     {
                         if (gridClientes[(int)ColsGrid.ID, e.RowIndex].Value.ToString().Trim().Length > 0)
                         {
-                            IdClienteSelecionado = Int16.Parse(gridClientes[(int)ColsGrid.ID, e.RowIndex].Value.ToString());
+                            IdClienteSelecionado = int.Parse(gridClientes[(int)ColsGrid.ID, e.RowIndex].Value.ToString());
                             return;
                         }
                     }

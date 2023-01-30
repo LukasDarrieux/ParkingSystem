@@ -2,10 +2,12 @@
 using ParkingSystem.Models.Usuario;
 using ParkingSystem.Shared;
 using ParkingSystem.Utils.Implements;
+using ParkingSystem.Views.Usuario;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace ParkingSystem.Controller.Implements
 {
@@ -23,13 +25,13 @@ namespace ParkingSystem.Controller.Implements
 
         public UsuariosController(Usuarios usuario)
         {
-            this._usuario = usuario;
-            this.db = Configuracoes.GetDatabase();
+            _usuario = usuario;
+            db = Configuracoes.GetDatabase();
         }
 
         public UsuariosController()
         {
-            this.db = Configuracoes.GetDatabase();
+            db = Configuracoes.GetDatabase();
         }
 
         #endregion
@@ -38,13 +40,13 @@ namespace ParkingSystem.Controller.Implements
 
         public bool Delete()
         {
-            return this.Delete(_usuario);
+            return Delete(_usuario);
         }
 
         public bool Delete(Usuarios usuario)
         {
             if (usuario is null) return false;
-            Crud crud = new Crud(this.db, TABELA, GetFieldID(), GetValueID(usuario.Id));
+            Crud crud = new Crud(db, TABELA, GetFieldID(), GetValueID(usuario.Id));
             try
             {
                 if (usuario.Id <= uint.MinValue) return false;
@@ -72,7 +74,7 @@ namespace ParkingSystem.Controller.Implements
 
             if (listaUsuarios.Count == 1)
             {
-                return listaUsuarios.ElementAt<Usuarios>(0);
+                return listaUsuarios.ElementAt(0);
             }
             return null;
         }
@@ -112,7 +114,7 @@ namespace ParkingSystem.Controller.Implements
 
         public bool Insert()
         {
-            return this.Insert(_usuario);
+            return Insert(_usuario);
         }
 
         public bool Insert(Usuarios usuario)
@@ -146,7 +148,7 @@ namespace ParkingSystem.Controller.Implements
 
         public bool Update()
         {
-            return this.Update(_usuario);
+            return Update(_usuario);
         }
 
         public bool Update(Usuarios usuario)
@@ -180,11 +182,11 @@ namespace ParkingSystem.Controller.Implements
             }
         }
 
-        public Usuarios Login(string email, string password)
+        public Usuarios Login(string email, string password, out bool CreatePassword)
         {
             const int SENHA = 3;
-
-            DbDataReader dbReader = db.ExecuteQuery($"SELECT ID, NOME, EMAIL, SENHA FROM USUARIOS WHERE EMAIL='{email}'");
+            CreatePassword = false;
+            DbDataReader dbReader = db.ExecuteQuery($"SELECT ID, NOME, EMAIL, SENHA, TIPO FROM USUARIOS WHERE EMAIL='{email}'");
             try
             {
                 if (dbReader.HasRows)
@@ -195,8 +197,16 @@ namespace ParkingSystem.Controller.Implements
                         {
                             int id = dbReader.GetFieldValue<int>((int)Usuarios.Campos.ID);
                             string nome = dbReader.GetString((int)Usuarios.Campos.NOME);
+                            Usuarios.TipoUsuario tipo = (Usuarios.TipoUsuario)dbReader.GetFieldValue<int>((int)Usuarios.Campos.TIPO);
                             
-                            _usuario = new Usuarios(id, nome, email, string.Empty);
+                            _usuario = new Usuarios(id, nome, email, string.Empty, tipo);
+                            
+                            //Se o usuário estiver utilizando a senha o sistema o solicitara a criar uma nova senha
+                            if (password == General.SENHA_PADRAO)
+                            {
+                                CreatePassword= true;
+                                
+                            }
                         }
                     }
                 }
@@ -215,22 +225,18 @@ namespace ParkingSystem.Controller.Implements
 
         public bool UpdatePassword(Usuarios usuario, string oldPassword, string newPassword)
         {
-            const int ID = 0;
-            const int SENHA = 3;
-
-            DbDataReader dbReader = db.ExecuteQuery($"SELECT ID, NOME, EMAIL, SENHA FROM USUARIOS WHERE NOME={usuario.Nome} AND EMAIL={usuario.Email}");
             try
             {
-                if (dbReader.HasRows)
+                if (oldPassword == usuario.Senha)
                 {
-                    if (dbReader.Read())
+                    if (oldPassword == newPassword)
                     {
-                        if (oldPassword == dbReader.GetString(SENHA))
-                        {
-                            db.ExecuteSql($"UPDATE USUARIOS SET SENHA={newPassword} WHERE ID={dbReader.GetString(ID)} AND EMAIL={usuario.Email}");
-                            return true;
-                        }
+                        General.MessageShowAttention("A nova senha não pode ser igual a anterior");
+                        return true;
                     }
+
+                    db.ExecuteSql($"UPDATE USUARIOS SET SENHA='{newPassword}' WHERE ID='{usuario.Id}' AND EMAIL='{usuario.Email}'");
+                    return true;
                 }
                 return false;
             }
@@ -238,16 +244,12 @@ namespace ParkingSystem.Controller.Implements
             {
                 throw error;
             }
-            finally
-            {
-                dbReader.Close();
-                dbReader.Dispose();
-            }
+
         }
 
         public void Dispose()
         {
-            this.db.Dispose();
+            db.Dispose();
             if (!(_usuario is null))
             {
                 _usuario.Dispose();
@@ -265,7 +267,8 @@ namespace ParkingSystem.Controller.Implements
                 Usuarios.Campos.ID.ToString(),
                 Usuarios.Campos.NOME.ToString(),
                 Usuarios.Campos.EMAIL.ToString(),
-                Usuarios.Campos.SENHA.ToString()
+                Usuarios.Campos.SENHA.ToString(),
+                Usuarios.Campos.TIPO.ToString(),
             };
 
             return campos;
@@ -278,6 +281,7 @@ namespace ParkingSystem.Controller.Implements
                 Usuarios.Campos.ID.ToString(),
                 Usuarios.Campos.NOME.ToString(),
                 Usuarios.Campos.EMAIL.ToString(),
+                Usuarios.Campos.TIPO.ToString(),
             };
 
             return campos;
@@ -292,7 +296,8 @@ namespace ParkingSystem.Controller.Implements
                 usuario.Id.ToString(),
                 usuario.Nome,
                 usuario.Email,
-                usuario.Senha
+                usuario.Senha,
+                ((int)usuario.Tipo).ToString(),
             };
 
             return valores;
@@ -306,7 +311,8 @@ namespace ParkingSystem.Controller.Implements
             {
                 usuario.Id.ToString(),
                 usuario.Nome,
-                usuario.Email
+                usuario.Email,
+                ((int)usuario.Tipo).ToString(),
             };
 
             return valores;
@@ -338,8 +344,9 @@ namespace ParkingSystem.Controller.Implements
                         int id = reader.GetFieldValue<int>((int)Usuarios.Campos.ID);
                         string nome = reader.GetString((int)Usuarios.Campos.NOME);
                         string email = reader.GetString((int)Usuarios.Campos.EMAIL);
+                        Usuarios.TipoUsuario tipo = (Usuarios.TipoUsuario)reader.GetFieldValue<int>((int)Usuarios.Campos.TIPO);
 
-                        listaUsuarios.Add(new Usuarios(id, nome, email, string.Empty));
+                        listaUsuarios.Add(new Usuarios(id, nome, email, string.Empty, tipo));
 
                     }
                 }
@@ -361,7 +368,7 @@ namespace ParkingSystem.Controller.Implements
             List<Usuarios> listaUsuarios = null;
             try
             {
-                listaUsuarios = this.GetAll(usuario);
+                listaUsuarios = GetAll(usuario);
 
                 if (listaUsuarios is null) return false;
 

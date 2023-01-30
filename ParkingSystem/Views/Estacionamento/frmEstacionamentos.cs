@@ -89,8 +89,10 @@ namespace ParkingSystem.Views.Estacionamento
         private void btnEntrada_Click(object sender, EventArgs e)
         {
             Close();
-            frmEntrada frmEntrada = new frmEntrada();
-            frmEntrada.Show();
+            using (var frm = new frmEntrada())
+            { 
+                frm.Show(); 
+            }
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -165,16 +167,15 @@ namespace ParkingSystem.Views.Estacionamento
                     General.MessageShowAttention("Selecione um estacionamento primeiro!");
                     return;
                 }
-                new frmSaida(IdEstacionamento).Show();
+                using (var frm = new frmSaida(IdEstacionamento)) 
+                { 
+                    frm.Show(); 
+                }
                 Close();
             }
             catch (Exception error)
             {
                 General.MessageShowError(error.Message);
-            }
-            finally
-            {
-
             }
         }
 

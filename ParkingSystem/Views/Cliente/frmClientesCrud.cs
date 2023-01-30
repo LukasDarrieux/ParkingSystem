@@ -28,7 +28,10 @@ namespace ParkingSystem.Views.Cliente
         {
             try
             {
-                new frmClientes().Show();
+                using (var frm = new frmClientes()) 
+                { 
+                    frm.Show(); 
+                }
             }
             catch (Exception error)
             {
@@ -72,8 +75,8 @@ namespace ParkingSystem.Views.Cliente
             {
                 DisableControls(true);
 
-                btnCancelar.Left = (this.Width / 2) - (btnCancelar.Width / 2);
-                this.Refresh();
+                btnCancelar.Left = (Width / 2) - (btnCancelar.Width / 2);
+                Refresh();
             }
             catch (Exception error)
             {

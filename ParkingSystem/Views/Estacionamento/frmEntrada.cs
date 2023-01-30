@@ -62,8 +62,10 @@ namespace ParkingSystem.Views.Estacionamento
         private void frmEntrada_FormClosed(object sender, FormClosedEventArgs e)
         {
             timer.Enabled = false;
-            frmEstacionamentos frmEstacionamento = new frmEstacionamentos();
-            frmEstacionamento.Show();
+            using (var frm = new frmEstacionamentos())
+            {
+                frm.Show();
+            }
         }
 
         private void timer_Tick(object sender, EventArgs e)

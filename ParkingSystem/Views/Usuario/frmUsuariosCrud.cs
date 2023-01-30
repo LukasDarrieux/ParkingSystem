@@ -81,11 +81,7 @@ namespace ParkingSystem.Views.Usuario
 
         private void frmUsuariosCrud_FormClosed(object sender, FormClosedEventArgs e)
         {
-            using (var frm = new frmUsuarios())
-            {
-                frm.Show();
-            }
-                
+            new frmUsuarios().Show();  
         }
 
         private void LoadUsuario()

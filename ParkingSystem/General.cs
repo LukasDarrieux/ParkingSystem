@@ -52,7 +52,7 @@ namespace ParkingSystem
         public static bool ValidateField(TextBox textBox, string nameField)
         {
             int length = 0;
-            if (textBox.PasswordChar.ToString() != String.Empty) length = 7;
+            if (textBox.PasswordChar.ToString() == "•") length = 7;
             
             if (textBox.Text.Trim().Length > length) return true;
             else

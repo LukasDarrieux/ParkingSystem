@@ -27,8 +27,8 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
 
         private void frmVeiculosCrud_Activated(object sender, EventArgs e)
         {
-            General.CarregarComboClientes(txtCliente);
-            General.CarregarComboFabricante(txtFabricante);
+            //General.CarregarComboClientes(txtCliente);
+            //General.CarregarComboFabricante(txtFabricante);
         }
 
         private void txtFabricante_SelectedIndexChanged(object sender, EventArgs e)
@@ -48,10 +48,7 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
         {
             try
             {
-                using (var frm = new frmVeiculos())
-                {
-                    frm.Show();
-                }
+                new frmVeiculos().Show();
                 return;
             }
             catch (Exception error)
@@ -65,7 +62,9 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
             try
             {
                 General.ChangeTitleForm(this, "Veículo", TipoAcesso);
+                General.CarregarComboClientes(txtCliente);
                 General.CarregarComboFabricante(txtFabricante);
+                General.CarregarComboModelos(0, txtModelo);
 
                 if (TipoAcesso != General.TypeAccess.CREATE)
                 {
@@ -137,7 +136,6 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
         {
             if (((Modelos)txtModelo.SelectedItem).Tipo == EnumVeiculos.tipo.Moto) CreateMoto();
             else CreateCarro();
-            
         }
 
         private void CreateCarro()
@@ -151,7 +149,6 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
                         Close();
                     }
                 }
-
             }
         }
 
@@ -166,7 +163,6 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
                         Close();
                     }
                 }
-
             }
         }
 
@@ -182,7 +178,6 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
                         Close();
                     }
                 }
-
             }
         }
 
@@ -212,9 +207,9 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
                 {
                     if (!(veiculo is null))
                     {
-                        txtCliente.Text = veiculo.Cliente.Nome;
-                        txtFabricante.Text = veiculo.Modelo.Fabricante.Nome;
-                        txtModelo.Text = veiculo.Modelo.Nome;
+                        txtCliente.SelectedItem = veiculo.Cliente;
+                        txtFabricante.SelectedItem = veiculo.Modelo.Fabricante;
+                        txtModelo.SelectedItem = veiculo.Modelo;
                         txtPlaca.Text = veiculo.Placa.ToUpper();
                     }
                 }

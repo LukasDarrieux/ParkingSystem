@@ -125,11 +125,7 @@ namespace ParkingSystem.Views.Cliente
                 }
             }
 
-            using (var frm = new frmClientesCrud(IdClienteSelecionado, typeAccess))
-            {
-                frm.Show();
-            }
-
+            new frmClientesCrud(IdClienteSelecionado, typeAccess).Show();
             Close();
         }
 

@@ -44,7 +44,7 @@ namespace ParkingSystem.Models.Veiculo
 
         public override string ToString()
         {
-            return $"{this.Modelo} - {this.Placa}";
+            return $"{Modelo} - {Placa}";
         }
 
         public override bool Equals(object obj)

@@ -53,11 +53,11 @@ namespace ParkingSystem.Views.Splash
                     UpdateProgress(100, "Iniciando...");
                     Thread.Sleep(500);
 
+                    Visible = false;
                     using (var frm = new frmLogin(true))
                     {
-                        frm.Show();
+                        frm.ShowDialog();
                     }
-                    Visible = false;
                 }
             }
             catch (Exception error)

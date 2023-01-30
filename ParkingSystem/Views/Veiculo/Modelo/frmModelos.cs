@@ -80,7 +80,6 @@ namespace ParkingSystem.Views.Veiculo.Modelo
                 {
                     lblQuantidade.Text = "Nenhum modelo encontrado";
                 }
-
                 lblQuantidade.Refresh();
             }
             catch (Exception error)
@@ -140,10 +139,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
                     return;
                 }
             }
-            using (var frm = new frmModelosCrud(IdModeloSelecionado, typeAccess))
-            {
-                frm.Show();
-            }
+            new frmModelosCrud(IdModeloSelecionado, typeAccess).Show();
             Close();
         }
 

@@ -109,8 +109,7 @@ namespace ParkingSystem.Views.Usuario
                     return;
                 }
             }
-            frmUsuariosCrud usuarioCrud = new frmUsuariosCrud(IdUsuarioSelecionado, typeAccess);
-            usuarioCrud.Show();
+            new frmUsuariosCrud(IdUsuarioSelecionado, typeAccess).Show();
             Close();
         }
 
@@ -146,7 +145,7 @@ namespace ParkingSystem.Views.Usuario
                     {
                         if (gridUsuario[(int)ColsGrid.ID, e.RowIndex].Value.ToString().Trim().Length > 0)
                         {
-                            IdUsuarioSelecionado = Int16.Parse(gridUsuario[(int)ColsGrid.ID, e.RowIndex].Value.ToString());
+                            IdUsuarioSelecionado = int.Parse(gridUsuario[(int)ColsGrid.ID, e.RowIndex].Value.ToString());
                             ValidateUserIsAdmin();
                             return;
                         }
@@ -172,7 +171,6 @@ namespace ParkingSystem.Views.Usuario
             {
                 General.MessageShowError(error.Message);
             }
-
         }
 
         private void ValidateUserIsAdmin()

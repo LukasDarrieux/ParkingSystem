@@ -58,10 +58,7 @@ namespace ParkingSystem.Views.Veiculo.Fabricante
                     return;
                 }
             }
-            using (var frm = new frmFabricantesCrud(IdFabricanteSelecionado, typeAccess))
-            {
-                frm.Show();
-            }
+            new frmFabricantesCrud(IdFabricanteSelecionado, typeAccess).Show();
             Close();
         }
 
@@ -125,7 +122,6 @@ namespace ParkingSystem.Views.Veiculo.Fabricante
                 {
                     lblQuantidade.Text = "Nenhum fabricante encontrado";
                 }
-
                 lblQuantidade.Refresh();
             }
             catch (Exception error)

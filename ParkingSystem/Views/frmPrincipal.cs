@@ -46,90 +46,57 @@ namespace ParkingSystem.Views
 
         private void mnuUsuarios_Click(object sender, EventArgs e)
         {
-            using (var frm = new frmUsuarios())
-            {
-                frm.Show();
-            }
+            new frmUsuarios().Show();
         }
 
         private void mnuConfiguracoesBancoDados_Click(object sender, EventArgs e)
         {
-            using (var frm = new frmConfigDatabase())
-            { 
-                frm.Show();
-            }
+            new frmConfigDatabase().Show();
         }
 
         private void mnuFabricantes_Click(object sender, EventArgs e)
         {
-            using (var frm = new frmFabricantes())
-            {
-                frm.Show();
-            }
+            new frmFabricantes().Show();
         }
 
         private void mnuModelos_Click(object sender, EventArgs e)
         {
-            using (var frm = new frmModelos())
-            {
-                frm.Show();
-            }
+            new frmModelos().Show();
         }
 
         private void mnuClientes_Click(object sender, EventArgs e)
         {
-            using (var frm = new frmClientes())
-            {
-                frm.Show();
-            }
+            new frmClientes().Show();
         }
 
         private void mnuVeiculos_Click(object sender, EventArgs e)
         {
-            using (var frm = new frmVeiculos())
-            {
-                frm.Show();
-            }
+            new frmVeiculos().Show();
         }
 
         private void mnuVaga_Click(object sender, EventArgs e)
         {
-            using (var frm = new frmVagas())
-            {
-                frm.Show();
-            }
+            new frmVagas().Show();
         }
 
         private void mnuConfiguracoes_Click(object sender, EventArgs e)
         {
-            using (var frm = new frmConfig())
-            {
-                frm.Show();
-            }
+            new frmConfig().Show();
         }
 
         private void mnuEstacionamento_Click(object sender, EventArgs e)
         {
-            using (var frm = new frmEstacionamentos())
-            {
-                frm.Show();
-            }
+            new frmEstacionamentos().Show();
         }
 
         private void mnuEntradaEstacionamento_Click(object sender, EventArgs e)
         {
-            using (var frm = new frmEntrada())
-            {
-                frm.Show();
-            }
+            new frmEntrada().Show();
         }
 
         private void mnuRelatorioFaturamento_Click(object sender, EventArgs e)
         {
-            using (var frm = new frmRelatorioFaturamento())
-            {
-                frm.Show();
-            }
+            new frmRelatorioFaturamento().Show();
         }
 
         private void mnuAlterarSenha_Click(object sender, EventArgs e)

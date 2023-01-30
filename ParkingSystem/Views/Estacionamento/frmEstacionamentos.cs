@@ -89,10 +89,7 @@ namespace ParkingSystem.Views.Estacionamento
         private void btnEntrada_Click(object sender, EventArgs e)
         {
             Close();
-            using (var frm = new frmEntrada())
-            { 
-                frm.Show(); 
-            }
+            new frmEntrada().Show(); 
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)

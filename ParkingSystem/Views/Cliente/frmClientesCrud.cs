@@ -28,10 +28,7 @@ namespace ParkingSystem.Views.Cliente
         {
             try
             {
-                using (var frm = new frmClientes()) 
-                { 
-                    frm.Show(); 
-                }
+                new frmClientes().Show();
             }
             catch (Exception error)
             {
@@ -208,7 +205,6 @@ namespace ParkingSystem.Views.Cliente
         private bool ValidateTabEndereco()
         {
             if (!General.ValidateField(txtLogradouro, lblLogradouro.Text)) return false;
-            if (!General.ValidateField(txtNumero, lblNumero.Text)) return false;
             if (!General.ValidateField(txtBairro, lblBairro.Text)) return false;
             if (!General.ValidateField(txtCidade, lblCidade.Text)) return false;
             if (!General.ValidateField(txtUF, lblUF.Text)) return false;

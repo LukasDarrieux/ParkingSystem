@@ -50,10 +50,7 @@ namespace ParkingSystem.Views.Login
                             if (!frm.CadastrouSenha) Application.Exit();
                         }
                     }
-                    using (var frm = new frmPrincipal(usuario.Id))
-                    {
-                        frm.Show();
-                    }
+                    new frmPrincipal(usuario.Id).Show();
                     FinishSystem = false;
                     Close();
                 }

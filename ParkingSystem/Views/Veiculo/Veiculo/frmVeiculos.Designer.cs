@@ -144,6 +144,7 @@
             this.gridVeiculos.Name = "gridVeiculos";
             this.gridVeiculos.Size = new System.Drawing.Size(905, 296);
             this.gridVeiculos.TabIndex = 9;
+            this.gridVeiculos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridVeiculos_CellClick);
             // 
             // ID
             // 

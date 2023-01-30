@@ -50,7 +50,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -63,7 +63,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
                 if (!General.ValidateField(txtMotor, lblModelo.Text)) return;
                 if (!General.ValidateField(txtAno, lblAno.Text)) return;
 
-                switch (this.TipoAcesso)
+                switch (TipoAcesso)
                 {
                     case General.TypeAccess.CREATE:
                         CreateModelos();
@@ -171,7 +171,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
             {
                 DisableControls(true);
 
-                btnCancelar.Left = (this.Width / 2) - (btnCancelar.Width / 2);
+                btnCancelar.Left = (Width / 2) - (btnCancelar.Width / 2);
                 Refresh();
             }
             catch (Exception error)
@@ -208,10 +208,7 @@ namespace ParkingSystem.Views.Veiculo.Modelo
         {
             try
             {
-                using (var frm = new frmModelos())
-                {
-                    frm.Show();
-                }   
+                new frmModelos().Show();   
             }
             catch (Exception error)
             {

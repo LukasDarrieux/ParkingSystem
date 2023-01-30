@@ -118,10 +118,7 @@ namespace ParkingSystem.Views.Estacionamento
                     return;
                 }
             }
-            using (var frm = new frmVagasCrud(IdVagaSelecionada, typeAccess))
-            {
-                frm.Show();
-            }
+            new frmVagasCrud(IdVagaSelecionada, typeAccess).Show();
             Close();
         }
 

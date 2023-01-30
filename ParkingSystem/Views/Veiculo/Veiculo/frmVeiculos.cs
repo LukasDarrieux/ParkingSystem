@@ -85,10 +85,7 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
                     return;
                 }
             }
-            using (var frm = new frmVeiculosCrud(IdVeiculoSelecionado, typeAccess))
-            {
-                frm.Show();
-            }
+            new frmVeiculosCrud(IdVeiculoSelecionado, typeAccess).Show();
             Close();
         }
 
@@ -168,7 +165,6 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
                 {
                     lblQuantidade.Text = "Nenhum veiculo encontrado";
                 }
-
                 lblQuantidade.Refresh();
             }
             catch (Exception error)
@@ -186,6 +182,30 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
                 {
                     listaVeiculos.Clear();
                 }
+            }
+        }
+
+        private void gridVeiculos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                IdVeiculoSelecionado = 0;
+
+                if (e.RowIndex >= 0)
+                {
+                    if (!(gridVeiculos[(int)ColsGrid.ID, e.RowIndex].Value is null))
+                    {
+                        if (gridVeiculos[(int)ColsGrid.ID, e.RowIndex].Value.ToString().Trim().Length > 0)
+                        {
+                            IdVeiculoSelecionado = int.Parse(gridVeiculos[(int)ColsGrid.ID, e.RowIndex].Value.ToString());
+                            return;
+                        }
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                General.MessageShowError(error.Message);
             }
         }
     }

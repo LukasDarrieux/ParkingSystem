@@ -69,7 +69,7 @@ namespace ParkingSystem.Models.Veiculo
         {
             if (obj is Modelos)
             {
-                return (((Modelos)obj).Id != Id && ((Modelos)obj).Nome == Nome && ((Modelos)obj).Fabricante.Id == Fabricante.Id);
+                return (((Modelos)obj).Id == Id && ((Modelos)obj).Nome == Nome && ((Modelos)obj).Fabricante.Id == Fabricante.Id);
             }
             return false;
         }

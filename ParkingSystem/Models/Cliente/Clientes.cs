@@ -60,7 +60,7 @@ namespace ParkingSystem.Models.Cliente
         {
             if (obj is Clientes)
             {
-                return (((Clientes)obj).Id != Id && 
+                return (((Clientes)obj).Id == Id && 
                     ((Clientes)obj).Nome == Nome && 
                     ((Clientes)obj).Cpf == Cpf &&
                     ((Clientes)obj).Email == Email);

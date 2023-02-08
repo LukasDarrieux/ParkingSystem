@@ -164,10 +164,8 @@ namespace ParkingSystem.Views.Estacionamento
                     General.MessageShowAttention("Selecione um estacionamento primeiro!");
                     return;
                 }
-                using (var frm = new frmSaida(IdEstacionamento)) 
-                { 
-                    frm.Show(); 
-                }
+                 new frmSaida(IdEstacionamento).Show(); 
+                
                 Close();
             }
             catch (Exception error)

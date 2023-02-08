@@ -24,13 +24,13 @@ namespace ParkingSystem.Controller.Implements
 
         public ClientesController()
         {
-            this.db = Configuracoes.GetDatabase();
+            db = Configuracoes.GetDatabase();
         }
 
         public ClientesController(Clientes cliente)
         {
-            this._cliente = cliente;
-            this.db = Configuracoes.GetDatabase();
+            _cliente = cliente;
+            db = Configuracoes.GetDatabase();
         }
 
         #endregion
@@ -39,12 +39,12 @@ namespace ParkingSystem.Controller.Implements
 
         public bool Delete()
         {
-            return this.Delete(_cliente);
+            return Delete(_cliente);
         }
 
         public bool Delete(Clientes cliente)
         {
-            Crud crud = new Crud(this.db, TABELA, GetFieldID(), GetValueID(cliente));
+            Crud crud = new Crud(db, TABELA, GetFieldID(), GetValueID(cliente));
             try
             {
                 if (cliente is null) return false;
@@ -156,7 +156,7 @@ namespace ParkingSystem.Controller.Implements
 
         public bool Insert()
         {
-            return this.Insert(_cliente);
+            return Insert(_cliente);
         }
 
         public bool Insert(Clientes cliente)
@@ -165,7 +165,11 @@ namespace ParkingSystem.Controller.Implements
             try
             {
                 if (cliente is null) return false;
-
+                if (CpfExists(cliente.Cpf))
+                {
+                    General.MessageShowAttention("CPF já cadastrado!");
+                    return false;
+                }
                 if (!crud.Insert()) return false;
                 return true;
             }
@@ -181,7 +185,7 @@ namespace ParkingSystem.Controller.Implements
 
         public bool Update()
         {
-            return this.Update(_cliente);
+            return Update(_cliente);
         }
 
         public bool Update(Clientes cliente)
@@ -190,6 +194,11 @@ namespace ParkingSystem.Controller.Implements
             Crud crud = new Crud(db, TABELA, GetFields(), GetValues(cliente));
             try
             {
+                if (CpfExists(cliente.Cpf))
+                {
+                    General.MessageShowAttention("CPF já cadastrado!");
+                    return false;
+                }
                 if (!crud.Update()) return false;
                 return true;
             }
@@ -293,6 +302,29 @@ namespace ParkingSystem.Controller.Implements
             {
                 reader.Close();
                 reader.Dispose();
+            }
+        }
+
+        private bool CpfExists(string cpf)
+        {
+            Clientes cliente = new Clientes(0, string.Empty, string.Empty, cpf, null);
+            List<Clientes> ListaCliente;
+            try
+            {
+                ListaCliente = GetAll(cliente);
+                if (!(ListaCliente is null))
+                {
+                    return ListaCliente.Count > 0;
+                }
+                return true;
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+            finally
+            {
+                cliente.Dispose();
             }
         }
 

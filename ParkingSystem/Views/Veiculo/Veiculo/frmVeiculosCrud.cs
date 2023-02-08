@@ -27,8 +27,8 @@ namespace ParkingSystem.Views.Veiculo.Veiculo
 
         private void frmVeiculosCrud_Activated(object sender, EventArgs e)
         {
-            //General.CarregarComboClientes(txtCliente);
-            //General.CarregarComboFabricante(txtFabricante);
+            General.CarregarComboClientes(txtCliente);
+            General.CarregarComboFabricante(txtFabricante);
         }
 
         private void txtFabricante_SelectedIndexChanged(object sender, EventArgs e)

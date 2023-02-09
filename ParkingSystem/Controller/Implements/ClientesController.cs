@@ -191,13 +191,17 @@ namespace ParkingSystem.Controller.Implements
         public bool Update(Clientes cliente)
         {
             if (cliente is null) return false;
+            Clientes client = Get(cliente.Id);
             Crud crud = new Crud(db, TABELA, GetFields(), GetValues(cliente));
             try
             {
-                if (CpfExists(cliente.Cpf))
+                if (client.Cpf != cliente.Cpf)
                 {
-                    General.MessageShowAttention("CPF já cadastrado!");
-                    return false;
+                    if (CpfExists(cliente.Cpf))
+                    {
+                        General.MessageShowAttention("CPF já cadastrado!");
+                        return false;
+                    }
                 }
                 if (!crud.Update()) return false;
                 return true;
@@ -208,6 +212,7 @@ namespace ParkingSystem.Controller.Implements
             }
             finally
             {
+                client.Dispose();
                 crud.Dispose();
             }
         }

@@ -30,6 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRelatorioFaturamento));
             this.gridFaturamento = new System.Windows.Forms.DataGridView();
+            this.ENTRADA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SAIDA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CLIENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VEICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TEMPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VALOR_TOTAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnFechar = new System.Windows.Forms.Button();
             this.txtDataFim = new System.Windows.Forms.MaskedTextBox();
             this.lblAte = new System.Windows.Forms.Label();
@@ -38,12 +44,7 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.lblValorTotal = new System.Windows.Forms.Label();
             this.lblQuantidade = new System.Windows.Forms.Label();
-            this.ENTRADA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SAIDA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CLIENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VEICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TEMPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VALOR_TOTAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnImprimir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridFaturamento)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,10 +66,52 @@
             this.gridFaturamento.Size = new System.Drawing.Size(1215, 513);
             this.gridFaturamento.TabIndex = 5;
             // 
+            // ENTRADA
+            // 
+            this.ENTRADA.HeaderText = "DATA ENTRADA";
+            this.ENTRADA.Name = "ENTRADA";
+            this.ENTRADA.ReadOnly = true;
+            this.ENTRADA.Width = 130;
+            // 
+            // SAIDA
+            // 
+            this.SAIDA.HeaderText = "DATA SAÍDA";
+            this.SAIDA.Name = "SAIDA";
+            this.SAIDA.ReadOnly = true;
+            this.SAIDA.Width = 130;
+            // 
+            // CLIENTE
+            // 
+            this.CLIENTE.HeaderText = "CLIENTE";
+            this.CLIENTE.Name = "CLIENTE";
+            this.CLIENTE.ReadOnly = true;
+            this.CLIENTE.Width = 380;
+            // 
+            // VEICULO
+            // 
+            this.VEICULO.HeaderText = "VEÍCULO";
+            this.VEICULO.Name = "VEICULO";
+            this.VEICULO.ReadOnly = true;
+            this.VEICULO.Width = 330;
+            // 
+            // TEMPO
+            // 
+            this.TEMPO.HeaderText = "TEMPO";
+            this.TEMPO.Name = "TEMPO";
+            this.TEMPO.ReadOnly = true;
+            this.TEMPO.Width = 80;
+            // 
+            // VALOR_TOTAL
+            // 
+            this.VALOR_TOTAL.HeaderText = "VALOR TOTAL";
+            this.VALOR_TOTAL.Name = "VALOR_TOTAL";
+            this.VALOR_TOTAL.ReadOnly = true;
+            this.VALOR_TOTAL.Width = 120;
+            // 
             // btnFechar
             // 
             this.btnFechar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnFechar.Location = new System.Drawing.Point(568, 619);
+            this.btnFechar.Location = new System.Drawing.Point(626, 619);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(104, 31);
             this.btnFechar.TabIndex = 8;
@@ -140,53 +183,23 @@
             this.lblQuantidade.Size = new System.Drawing.Size(0, 17);
             this.lblQuantidade.TabIndex = 6;
             // 
-            // ENTRADA
+            // btnImprimir
             // 
-            this.ENTRADA.HeaderText = "DATA ENTRADA";
-            this.ENTRADA.Name = "ENTRADA";
-            this.ENTRADA.ReadOnly = true;
-            this.ENTRADA.Width = 130;
-            // 
-            // SAIDA
-            // 
-            this.SAIDA.HeaderText = "DATA SAÍDA";
-            this.SAIDA.Name = "SAIDA";
-            this.SAIDA.ReadOnly = true;
-            this.SAIDA.Width = 130;
-            // 
-            // CLIENTE
-            // 
-            this.CLIENTE.HeaderText = "CLIENTE";
-            this.CLIENTE.Name = "CLIENTE";
-            this.CLIENTE.ReadOnly = true;
-            this.CLIENTE.Width = 380;
-            // 
-            // VEICULO
-            // 
-            this.VEICULO.HeaderText = "VEÍCULO";
-            this.VEICULO.Name = "VEICULO";
-            this.VEICULO.ReadOnly = true;
-            this.VEICULO.Width = 330;
-            // 
-            // TEMPO
-            // 
-            this.TEMPO.HeaderText = "TEMPO";
-            this.TEMPO.Name = "TEMPO";
-            this.TEMPO.ReadOnly = true;
-            this.TEMPO.Width = 80;
-            // 
-            // VALOR_TOTAL
-            // 
-            this.VALOR_TOTAL.HeaderText = "VALOR TOTAL";
-            this.VALOR_TOTAL.Name = "VALOR_TOTAL";
-            this.VALOR_TOTAL.ReadOnly = true;
-            this.VALOR_TOTAL.Width = 120;
+            this.btnImprimir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnImprimir.Location = new System.Drawing.Point(516, 619);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(104, 31);
+            this.btnImprimir.TabIndex = 9;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // frmRelatorioFaturamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1239, 662);
+            this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.lblQuantidade);
             this.Controls.Add(this.lblValorTotal);
             this.Controls.Add(this.txtDataFim);
@@ -227,5 +240,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn VEICULO;
         private System.Windows.Forms.DataGridViewTextBoxColumn TEMPO;
         private System.Windows.Forms.DataGridViewTextBoxColumn VALOR_TOTAL;
+        private System.Windows.Forms.Button btnImprimir;
     }
 }

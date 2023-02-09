@@ -2,13 +2,14 @@
 using ParkingSystem.Models.Estacionamento;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 
 namespace ParkingSystem.Views.Relatorios
 {
     public partial class frmRelatorioFaturamento : Form
     {
-
+        private DataTable dataTableEstacionamentos;
         enum ColsGrid
         {
             ENTRADA,
@@ -18,6 +19,7 @@ namespace ParkingSystem.Views.Relatorios
             TEMPO,
             VALORTOTAL
         }
+
 
         public frmRelatorioFaturamento()
         {
@@ -35,6 +37,7 @@ namespace ParkingSystem.Views.Relatorios
             Cursor = Cursors.WaitCursor;
             Estacionamentos estacionamento = null;
             List<Estacionamentos> listaEstacionamentos = null;
+            dataTableEstacionamentos.Clear();
             gridFaturamento.Rows.Clear();
             try
             {
@@ -64,6 +67,16 @@ namespace ParkingSystem.Views.Relatorios
                             gridFaturamento[(int)ColsGrid.CLIENTE, row].Value = parking.Veiculo.Cliente.ToString();
                             gridFaturamento[(int)ColsGrid.TEMPO, row].Value = parking.GetTotalHoras();
                             gridFaturamento[(int)ColsGrid.VALORTOTAL, row].Value = parking.ValorTotal.ToString("F2");
+
+                            DataRow dtRow = dataTableEstacionamentos.NewRow();
+                            dtRow["Id"] = parking.Id;
+                            dtRow["Entrada"] = parking.Entrada;
+                            dtRow["Saida"] = parking.Saida;
+                            dtRow["Veiculo"] = parking.Veiculo;
+                            dtRow["Vaga"] = parking.Vaga;
+                            dtRow["ValorTotal"] = parking.ValorTotal.ToString("F2");
+                            dataTableEstacionamentos.Rows.Add(dtRow);
+
                             row++;
                         }
 
@@ -100,6 +113,7 @@ namespace ParkingSystem.Views.Relatorios
         {
             txtDataInicio.Text = General.GetFirstDayMonth().ToString("dd/MM/yyyy");
             txtDataFim.Text = General.GetLastDayMonth().ToString("dd/MM/yyyy");
+            CreateDataTable();
             frmRelatorioFaturamento_Resize(null, null);
         }
 
@@ -115,6 +129,23 @@ namespace ParkingSystem.Views.Relatorios
             {
                 General.MessageShowError(error.Message);
             }
+        }
+
+        private void CreateDataTable()
+        {
+            dataTableEstacionamentos = new DataTable();
+            dataTableEstacionamentos.Columns.Add("Id", typeof(int));
+            dataTableEstacionamentos.Columns.Add("Entrada", typeof(string));
+            dataTableEstacionamentos.Columns.Add("Saida", typeof(string));
+            dataTableEstacionamentos.Columns.Add("Veiculo", typeof(string));
+            dataTableEstacionamentos.Columns.Add("Vaga", typeof(string));
+            dataTableEstacionamentos.Columns.Add("ValorTotal", typeof(string));
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            string periodo = $"{txtDataInicio.Text.Trim()} à {txtDataFim.Text.Trim()}";
+            new frmReportRelatorioFaturamento(periodo, lblQuantidade.Text, lblValorTotal.Text, dataTableEstacionamentos).ShowDialog();
         }
     }
 }
